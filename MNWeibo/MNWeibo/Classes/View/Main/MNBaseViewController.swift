@@ -13,6 +13,7 @@ class MNBaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        view.backgroundColor = UIColor.cz_random()
         // Do any additional setup after loading the view.
     }
     
