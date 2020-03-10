@@ -1,15 +1,15 @@
 //
-//  LearnSwiftTests.swift
-//  LearnSwiftTests
+//  MNWeiboTests.swift
+//  MNWeiboTests
 //
-//  Created by Tyrion Liang on 2019/4/22.
-//  Copyright © 2019 Tyrion Liang. All rights reserved.
+//  Created by miniLV on 2020/3/9.
+//  Copyright © 2020 miniLV. All rights reserved.
 //
 
 import XCTest
-@testable import LearnSwift
+@testable import MNWeibo
 
-class LearnSwiftTests: XCTestCase {
+class MNWeiboTests: XCTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
