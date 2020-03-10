@@ -31,6 +31,8 @@
 		A7FFE6EA2417D68D0082F464 /* NSString+CZHash.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FFE6A92417D68B0082F464 /* NSString+CZHash.m */; };
 		A7FFE6EB2417D68D0082F464 /* NSAttributedString+CZAdditon.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FFE6AC2417D68B0082F464 /* NSAttributedString+CZAdditon.m */; };
 		A7FFE6EC2417D68D0082F464 /* NSArray+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FFE6AD2417D68B0082F464 /* NSArray+Log.m */; };
+		A7FFE71F2417DA160082F464 /* Bundle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FFE7192417DA160082F464 /* Bundle+Extensions.swift */; };
+		A7FFE7202417DA160082F464 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FFE71A2417DA160082F464 /* Date+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +97,8 @@
 		A7FFE6AD2417D68B0082F464 /* NSArray+Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Log.m"; sourceTree = "<group>"; };
 		A7FFE6AE2417D68B0082F464 /* NSString+CZPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CZPath.h"; sourceTree = "<group>"; };
 		A7FFE7132417D7120082F464 /* MNWeibo-Bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MNWeibo-Bridge.h"; sourceTree = "<group>"; };
+		A7FFE7192417DA160082F464 /* Bundle+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+Extensions.swift"; sourceTree = "<group>"; };
+		A7FFE71A2417DA160082F464 /* Date+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +198,7 @@
 		A7FFE67F2417D05E0082F464 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				A7FFE7142417DA160082F464 /* Extensions */,
 				A7FFE6952417D68B0082F464 /* Additions */,
 			);
 			path = Tools;
@@ -290,6 +295,15 @@
 				A7FFE6AE2417D68B0082F464 /* NSString+CZPath.h */,
 			);
 			path = Additions;
+			sourceTree = "<group>";
+		};
+		A7FFE7142417DA160082F464 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A7FFE7192417DA160082F464 /* Bundle+Extensions.swift */,
+				A7FFE71A2417DA160082F464 /* Date+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -423,6 +437,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A7FFE6E22417D68D0082F464 /* UIView+CZAddition.m in Sources */,
+				A7FFE71F2417DA160082F464 /* Bundle+Extensions.swift in Sources */,
 				A7FFE6E62417D68D0082F464 /* NSString+CZPath.m in Sources */,
 				A7FFE6E12417D68D0082F464 /* UIColor+CZAddition.m in Sources */,
 				A7FFE68E2417D1440082F464 /* MNHomeViewController.swift in Sources */,
@@ -430,6 +445,7 @@
 				A7FFE68B2417D1070082F464 /* MNBaseViewController.swift in Sources */,
 				A7FFE6E42417D68D0082F464 /* UILabel+CZAddition.m in Sources */,
 				A7FFE6E82417D68D0082F464 /* NSObject+CZRuntime.m in Sources */,
+				A7FFE7202417DA160082F464 /* Date+Extensions.swift in Sources */,
 				A7383AF7241682A90099822E /* AppDelegate.swift in Sources */,
 				A7FFE6E92417D68D0082F464 /* UIViewController+CZAddition.m in Sources */,
 				A7FFE6872417D0B60082F464 /* MNMainTabBarController.swift in Sources */,
