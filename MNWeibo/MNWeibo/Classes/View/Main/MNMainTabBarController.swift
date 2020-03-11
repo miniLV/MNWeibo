@@ -19,6 +19,12 @@ class MNMainTabBarController: UITabBarController {
     
     private lazy var tabBarCenterButtion:UIButton = UIButton.cz_imageButton("tabbar_compose_icon_add",
                                                                    backgroundImageName: "tabbar_compose_button")
+    
+    //center click action
+    //@objc: 可以用OC的消息机制调用
+    @objc private func centerBtnClick() {
+        print("123")
+    }
 }
 
 extension MNMainTabBarController{
@@ -34,6 +40,7 @@ extension MNMainTabBarController{
         let leftItemCount:CGFloat = 2
         tabBarCenterButtion.frame = tabBar.bounds.insetBy(dx: leftItemCount * width, dy: 0)
         print("frame = \(tabBarCenterButtion.frame)")
+        tabBarCenterButtion.addTarget(self, action: #selector(centerBtnClick), for: .touchUpInside)
         
     }
     

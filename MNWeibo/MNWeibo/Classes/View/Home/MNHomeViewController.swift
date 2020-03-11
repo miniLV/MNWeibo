@@ -12,20 +12,19 @@ class MNHomeViewController: MNBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.view.backgroundColor = UIColor.cz_random()
-        // Do any additional setup after loading the view.
+        
     }
-    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @objc func showFridends() {
+        let vc = UIViewController.init()
+        vc.view.backgroundColor = UIColor.white
+        navigationController?.pushViewController(vc, animated: true)
     }
-    */
+}
 
+extension MNHomeViewController{
+
+    override func setupUI() {
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "好友", style: .plain, target: self, action: #selector(showFridends))
+    }
 }
