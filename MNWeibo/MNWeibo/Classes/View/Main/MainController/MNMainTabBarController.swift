@@ -24,6 +24,15 @@ class MNMainTabBarController: UITabBarController {
     //@objc: 可以用OC的消息机制调用
     @objc private func centerBtnClick() {
         print("123")
+        
+        let vc = UIViewController()
+        let navi = UINavigationController(rootViewController: vc)
+        vc.view.backgroundColor = UIColor.orange
+        present(navi, animated: true, completion: nil)
+    }
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask{
+        return .portrait
     }
 }
 

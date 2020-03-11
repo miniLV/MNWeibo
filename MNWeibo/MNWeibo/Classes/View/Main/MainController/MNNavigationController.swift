@@ -32,7 +32,7 @@ class MNNavigationController: UINavigationController {
                     title = children.first?.title ?? "返回"
                 }
                 
-                vc.naviItem.leftBarButtonItem = UIBarButtonItem(title: title, target: self, action: #selector(popToParent))
+                vc.naviItem.leftBarButtonItem = UIBarButtonItem(title: title, target: self, action: #selector(popViewController(animated:)), isBackItem: true)
             }
         }
         

@@ -189,6 +189,15 @@
 			path = Demo;
 			sourceTree = "<group>";
 		};
+		A745A59C2419327500F9E138 /* MainController */ = {
+			isa = PBXGroup;
+			children = (
+				A7FFE6862417D0B60082F464 /* MNMainTabBarController.swift */,
+				A7FFE6882417D0E00082F464 /* MNNavigationController.swift */,
+			);
+			path = MainController;
+			sourceTree = "<group>";
+		};
 		A7FFE67D2417D05E0082F464 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -263,8 +272,7 @@
 		A7FFE6852417D05E0082F464 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				A7FFE6862417D0B60082F464 /* MNMainTabBarController.swift */,
-				A7FFE6882417D0E00082F464 /* MNNavigationController.swift */,
+				A745A59C2419327500F9E138 /* MainController */,
 				A7FFE68A2417D1070082F464 /* MNBaseViewController.swift */,
 			);
 			path = Main;

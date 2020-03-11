@@ -17,8 +17,7 @@ class DemoViewController: MNBaseViewController {
     }
     override func setupUI() {
         super.setupUI()
-//        
-//        naviItem.rightBarButtonItem = 
+
     }
 
 }

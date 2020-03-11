@@ -8,17 +8,40 @@
 
 import UIKit
 
+private let cellID = "cellID"
+
 class MNHomeViewController: MNBaseViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    private lazy var list = [String]()
+
+    override func loadDatas() {
         
+        for i in 0..<20 {
+            list.insert(i.description, at: 0)
+        }
     }
 
     @objc func showFridends() {
         let vc = DemoViewController.init()
-        vc.view.backgroundColor = UIColor.white
+        vc.title = "Demo"
         navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+
+extension MNHomeViewController{
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+       return list.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath)
+        
+        if cell == nil {
+            cell = UITableViewCell(style: .default, reuseIdentifier: cellID)
+        }
+        cell.textLabel?.text = list[indexPath.row]
+        return cell
     }
 }
 
@@ -28,5 +51,7 @@ extension MNHomeViewController{
    
         super.setupUI()
         naviItem.leftBarButtonItem = UIBarButtonItem(title: "好友", fontSize: 16, target: self, action: #selector(showFridends))
+        
+        tableView?.register(UITableViewCell.self, forCellReuseIdentifier: cellID)
     }
 }
