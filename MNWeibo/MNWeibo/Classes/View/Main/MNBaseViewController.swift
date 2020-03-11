@@ -17,6 +17,8 @@ class MNBaseViewController: UIViewController{
     
     var tableView: UITableView?
     
+    var refreshControl: UIRefreshControl?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -29,7 +31,7 @@ class MNBaseViewController: UIViewController{
         }
     }
     
-    func loadDatas() {
+    @objc func loadDatas() {
         
     }
     
@@ -44,6 +46,10 @@ extension MNBaseViewController{
 
         //取消自动缩进
         automaticallyAdjustsScrollViewInsets = false
+        
+        refreshControl = UIRefreshControl()
+        refreshControl?.addTarget(self, action: #selector(loadDatas), for: .valueChanged)
+        tableView?.addSubview(refreshControl!)
     }
     
     private func setupTableView(){
