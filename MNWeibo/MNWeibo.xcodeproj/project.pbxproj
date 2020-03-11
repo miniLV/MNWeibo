@@ -12,6 +12,8 @@
 		A7383B00241682AA0099822E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7383AFF241682AA0099822E /* Assets.xcassets */; };
 		A7383B0E241682AB0099822E /* MNWeiboTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7383B0D241682AB0099822E /* MNWeiboTests.swift */; };
 		A7383B19241682AB0099822E /* MNWeiboUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7383B18241682AB0099822E /* MNWeiboUITests.swift */; };
+		A745A5982419206F00F9E138 /* UIBarButtonItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A745A5972419206F00F9E138 /* UIBarButtonItem+Extension.swift */; };
+		A745A59B241923F600F9E138 /* DemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A745A59A241923F600F9E138 /* DemoViewController.swift */; };
 		A7FFE6872417D0B60082F464 /* MNMainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FFE6862417D0B60082F464 /* MNMainTabBarController.swift */; };
 		A7FFE6892417D0E00082F464 /* MNNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FFE6882417D0E00082F464 /* MNNavigationController.swift */; };
 		A7FFE68B2417D1070082F464 /* MNBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FFE68A2417D1070082F464 /* MNBaseViewController.swift */; };
@@ -64,6 +66,8 @@
 		A7383B14241682AB0099822E /* MNWeiboUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MNWeiboUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7383B18241682AB0099822E /* MNWeiboUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNWeiboUITests.swift; sourceTree = "<group>"; };
 		A7383B1A241682AB0099822E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A745A5972419206F00F9E138 /* UIBarButtonItem+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Extension.swift"; sourceTree = "<group>"; };
+		A745A59A241923F600F9E138 /* DemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoViewController.swift; sourceTree = "<group>"; };
 		A7FFE6862417D0B60082F464 /* MNMainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNMainTabBarController.swift; sourceTree = "<group>"; };
 		A7FFE6882417D0E00082F464 /* MNNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNNavigationController.swift; sourceTree = "<group>"; };
 		A7FFE68A2417D1070082F464 /* MNBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNBaseViewController.swift; sourceTree = "<group>"; };
@@ -177,6 +181,14 @@
 			path = MNWeiboUITests;
 			sourceTree = "<group>";
 		};
+		A745A599241923E100F9E138 /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				A745A59A241923F600F9E138 /* DemoViewController.swift */,
+			);
+			path = Demo;
+			sourceTree = "<group>";
+		};
 		A7FFE67D2417D05E0082F464 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -214,6 +226,7 @@
 		A7FFE6812417D05E0082F464 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A745A599241923E100F9E138 /* Demo */,
 				A7FFE6852417D05E0082F464 /* Main */,
 				A7FFE68C2417D11A0082F464 /* Home */,
 				A7FFE6822417D05E0082F464 /* Discover */,
@@ -302,6 +315,7 @@
 			children = (
 				A7FFE7192417DA160082F464 /* Bundle+Extensions.swift */,
 				A7FFE71A2417DA160082F464 /* Date+Extensions.swift */,
+				A745A5972419206F00F9E138 /* UIBarButtonItem+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -445,6 +459,7 @@
 				A7FFE68B2417D1070082F464 /* MNBaseViewController.swift in Sources */,
 				A7FFE6E42417D68D0082F464 /* UILabel+CZAddition.m in Sources */,
 				A7FFE6E82417D68D0082F464 /* NSObject+CZRuntime.m in Sources */,
+				A745A59B241923F600F9E138 /* DemoViewController.swift in Sources */,
 				A7FFE7202417DA160082F464 /* Date+Extensions.swift in Sources */,
 				A7383AF7241682A90099822E /* AppDelegate.swift in Sources */,
 				A7FFE6E92417D68D0082F464 /* UIViewController+CZAddition.m in Sources */,
@@ -452,6 +467,7 @@
 				A7FFE6892417D0E00082F464 /* MNNavigationController.swift in Sources */,
 				A7FFE6EB2417D68D0082F464 /* NSAttributedString+CZAdditon.m in Sources */,
 				A7383AF9241682A90099822E /* SceneDelegate.swift in Sources */,
+				A745A5982419206F00F9E138 /* UIBarButtonItem+Extension.swift in Sources */,
 				A7FFE6902417D1510082F464 /* MNDiscoverViewController.swift in Sources */,
 				A7FFE6EC2417D68D0082F464 /* NSArray+Log.m in Sources */,
 				A7FFE6922417D1570082F464 /* MNMessageViewController.swift in Sources */,

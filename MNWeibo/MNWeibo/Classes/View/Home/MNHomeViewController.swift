@@ -16,7 +16,7 @@ class MNHomeViewController: MNBaseViewController {
     }
 
     @objc func showFridends() {
-        let vc = UIViewController.init()
+        let vc = DemoViewController.init()
         vc.view.backgroundColor = UIColor.white
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -25,6 +25,8 @@ class MNHomeViewController: MNBaseViewController {
 extension MNHomeViewController{
 
     override func setupUI() {
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "好友", style: .plain, target: self, action: #selector(showFridends))
+   
+        super.setupUI()
+        naviItem.leftBarButtonItem = UIBarButtonItem(title: "好友", fontSize: 16, target: self, action: #selector(showFridends))
     }
 }
