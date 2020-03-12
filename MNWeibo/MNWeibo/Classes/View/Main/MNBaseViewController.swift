@@ -19,6 +19,10 @@ class MNBaseViewController: UIViewController{
     
     var refreshControl: UIRefreshControl?
     
+    var isPull: Bool = false
+    
+    var isLogin: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -32,7 +36,7 @@ class MNBaseViewController: UIViewController{
     }
     
     @objc func loadDatas() {
-        
+        refreshControl?.endRefreshing()
     }
     
 }
@@ -41,9 +45,10 @@ class MNBaseViewController: UIViewController{
 extension MNBaseViewController{
      @objc func setupUI() {
         view.backgroundColor = UIColor.cz_random()
-        self.setupNavigationBar()
-        self.setupTableView()
-
+        setupNavigationBar()
+        
+        isLogin ? setupTableView() : setupVisitorView()
+        
         //取消自动缩进
         automaticallyAdjustsScrollViewInsets = false
         
@@ -63,6 +68,12 @@ extension MNBaseViewController{
         let toolHeight:CGFloat = 20
         let tabBarHeight:CGFloat = 0
         tableView?.contentInset = UIEdgeInsets(top: toolHeight, left: 0, bottom: tabBarHeight, right: 0)
+    }
+    
+    private func setupVisitorView(){
+        let visitorView = MNVisitorView(frame: view.bounds)
+        visitorView.setupUI()
+        view.insertSubview(visitorView, belowSubview: navigationBar)
     }
     
     private func setupNavigationBar(){
@@ -86,5 +97,29 @@ extension MNBaseViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return UITableViewCell()
+    }
+    
+    //在显示最后一行的时候，自动上拉刷新
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        //index contain(section & row)
+        let row = indexPath.row
+        
+        let section = tableView.numberOfSections - 1
+        
+        if row < 0 || section < 0{
+            print("row or section == 0")
+            return
+        }
+        
+        let count = tableView.numberOfRows(inSection: section)
+        
+        //如果是最后一行，同时没有开始上拉刷新
+        if row == (count - 1) && !isPull{
+            print("上拉刷新")
+            isPull = true
+            
+            //load more data
+            loadDatas()
+        }
     }
 }

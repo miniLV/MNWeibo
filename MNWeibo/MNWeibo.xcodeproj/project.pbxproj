@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A700BE2D241A73BD000E2A1A /* MNVisitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A700BE2C241A73BD000E2A1A /* MNVisitorView.swift */; };
 		A7383AF7241682A90099822E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7383AF6241682A90099822E /* AppDelegate.swift */; };
 		A7383AF9241682A90099822E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7383AF8241682A90099822E /* SceneDelegate.swift */; };
 		A7383B00241682AA0099822E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7383AFF241682AA0099822E /* Assets.xcassets */; };
@@ -55,6 +56,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A700BE2C241A73BD000E2A1A /* MNVisitorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNVisitorView.swift; sourceTree = "<group>"; };
 		A7383AF3241682A90099822E /* MNWeibo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MNWeibo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7383AF6241682A90099822E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A7383AF8241682A90099822E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -130,6 +132,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A700BE2B241A73A0000E2A1A /* VisitorView */ = {
+			isa = PBXGroup;
+			children = (
+				A700BE2C241A73BD000E2A1A /* MNVisitorView.swift */,
+			);
+			path = VisitorView;
+			sourceTree = "<group>";
+		};
 		A7383AEA241682A90099822E = {
 			isa = PBXGroup;
 			children = (
@@ -272,6 +282,7 @@
 		A7FFE6852417D05E0082F464 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				A700BE2B241A73A0000E2A1A /* VisitorView */,
 				A745A59C2419327500F9E138 /* MainController */,
 				A7FFE68A2417D1070082F464 /* MNBaseViewController.swift */,
 			);
@@ -474,6 +485,7 @@
 				A7FFE6872417D0B60082F464 /* MNMainTabBarController.swift in Sources */,
 				A7FFE6892417D0E00082F464 /* MNNavigationController.swift in Sources */,
 				A7FFE6EB2417D68D0082F464 /* NSAttributedString+CZAdditon.m in Sources */,
+				A700BE2D241A73BD000E2A1A /* MNVisitorView.swift in Sources */,
 				A7383AF9241682A90099822E /* SceneDelegate.swift in Sources */,
 				A745A5982419206F00F9E138 /* UIBarButtonItem+Extension.swift in Sources */,
 				A7FFE6902417D1510082F464 /* MNDiscoverViewController.swift in Sources */,

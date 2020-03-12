@@ -19,10 +19,18 @@ class MNHomeViewController: MNBaseViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             
             for i in 0..<20 {
-                self.list.insert(i.description, at: 0)
+                
+                if self.isPull{
+                    //上拉
+                    self.list.append("上拉 ==> \(i)")
+                }else{
+                    //下拉
+                    self.list.insert(i.description, at: 0)
+                }
             }
             self.tableView?.reloadData()
             self.refreshControl?.endRefreshing()
+            self.isPull = false
         }
         
     }
