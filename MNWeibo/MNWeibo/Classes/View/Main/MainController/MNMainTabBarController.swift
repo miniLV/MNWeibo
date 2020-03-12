@@ -54,21 +54,14 @@ extension MNMainTabBarController{
     }
     
     private func setupChildrenControllers(){
-        let array:[[String:Any]] = [
-            ["clsName":"MNHomeViewController","title":"首页", "imageName":"home",
-             "visitorInfo":["imageName":"", "message":""]
-            ],
-            ["clsName":"MNMessageViewController","title":"消息", "imageName":"message_center",
-            "visitorInfo":["imageName":"visitordiscover_image_message", "message":"You can send message to miniLV"]
-            ],
-            ["clsName":"UIViewController"],
-            ["clsName":"MNDiscoverViewController","title":"发现", "imageName":"discover",
-            "visitorInfo":["imageName":"visitordiscover_image_message", "message":"You can find miniLV's bug"]
-            ],
-            ["clsName":"MNProfileViewController","title":"我的", "imageName":"profile",
-            "visitorInfo":["imageName":"visitordiscover_image_profile", "message":"Welcome to miniLV blog."]
-            ],
-        ]
+        //load setting form bundle
+        guard let path = Bundle.main.path(forResource: "main.json", ofType: nil),
+            let data = NSData(contentsOfFile: path),
+            let array = try? JSONSerialization.jsonObject(with: data as Data, options: []) as? [[String:AnyObject]]
+            else {
+                print("main.json don't exist.")
+                return
+        }
         
         var arrayM = [UIViewController]()
         for dic in array {
@@ -76,9 +69,6 @@ extension MNMainTabBarController{
         }
         viewControllers = arrayM
         
-        //write to file
-        let data = try! JSONSerialization.data(withJSONObject: array, options:[.prettyPrinted])
-        (data as NSData).write(toFile: "/Users/minilv/Desktop/demo.json", atomically: true)
     }
     
     private func controller(dic: [String: Any]) -> UIViewController{
