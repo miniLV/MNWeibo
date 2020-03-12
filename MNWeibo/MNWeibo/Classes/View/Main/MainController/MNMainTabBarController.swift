@@ -77,7 +77,8 @@ extension MNMainTabBarController{
         viewControllers = arrayM
         
         //write to file
-        (arrayM as NSArray) .write(toFile: "/Users/minilv/Desktop/demo.plist", atomically: true)
+        let data = try! JSONSerialization.data(withJSONObject: array, options:[.prettyPrinted])
+        (data as NSData).write(toFile: "/Users/minilv/Desktop/demo.json", atomically: true)
     }
     
     private func controller(dic: [String: Any]) -> UIViewController{

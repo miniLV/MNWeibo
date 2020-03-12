@@ -1,0 +1,41 @@
+[
+  {
+    "imageName" : "home",
+    "visitorInfo" : {
+      "imageName" : "",
+      "message" : ""
+    },
+    "title" : "首页",
+    "clsName" : "MNHomeViewController"
+  },
+  {
+    "visitorInfo" : {
+      "imageName" : "visitordiscover_image_message",
+      "message" : "You can send message to miniLV"
+    },
+    "imageName" : "message_center",
+    "clsName" : "MNMessageViewController",
+    "title" : "消息"
+  },
+  {
+    "clsName" : "UIViewController"
+  },
+  {
+    "title" : "发现",
+    "clsName" : "MNDiscoverViewController",
+    "imageName" : "discover",
+    "visitorInfo" : {
+      "imageName" : "visitordiscover_image_message",
+      "message" : "You can find miniLV's bug"
+    }
+  },
+  {
+    "clsName" : "MNProfileViewController",
+    "visitorInfo" : {
+      "imageName" : "visitordiscover_image_profile",
+      "message" : "Welcome to miniLV blog."
+    },
+    "imageName" : "profile",
+    "title" : "我的"
+  }
+]

@@ -22,6 +22,7 @@ class MNVisitorView: UIView {
             }
             
             if imageName == "" {
+                startAnimation()
                 print("is home page")
                 return
             }
@@ -41,6 +42,16 @@ class MNVisitorView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func startAnimation(){
+        let animation = CABasicAnimation(keyPath: "transform.rotation")
+        animation.toValue = 2.0 * .pi
+        animation.repeatCount = MAXFLOAT
+        animation.duration = 15
+        //动画完成不删除(连续动画)，如果父view销毁，动画会一起被销毁
+        animation.isRemovedOnCompletion = false
+        iconView.layer.add(animation, forKey: nil)
     }
     
     //MARK: private
