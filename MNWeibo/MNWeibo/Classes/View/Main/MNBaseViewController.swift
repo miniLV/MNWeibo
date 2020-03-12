@@ -23,6 +23,8 @@ class MNBaseViewController: UIViewController{
     
     var isLogin: Bool = false
     
+    var visitorInfo: [String : String]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -72,7 +74,7 @@ extension MNBaseViewController{
     
     private func setupVisitorView(){
         let visitorView = MNVisitorView(frame: view.bounds)
-        visitorView.setupUI()
+        visitorView.visitorInfo = visitorInfo
         view.insertSubview(visitorView, belowSubview: navigationBar)
     }
     

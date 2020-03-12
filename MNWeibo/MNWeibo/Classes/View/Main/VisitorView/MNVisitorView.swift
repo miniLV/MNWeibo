@@ -10,8 +10,33 @@ import UIKit
 
 class MNVisitorView: UIView {
 
+    /// set visitor view
+    /// - Parameter dic: [imageName / message]
+    /// Home Page ==> imageName = ""
+    var visitorInfo:[String:String]?{
+        didSet{
+            guard let imageName = visitorInfo?["imageName"] ,
+                let message = visitorInfo?["message"] else{
+                    print("visitorInfo contain nil")
+                    return
+            }
+            
+            if imageName == "" {
+                print("is home page")
+                return
+            }
+            iconView.image = UIImage(named: imageName)
+            tipLabel.text = message
+            
+            //not home page
+            houseView.isHidden = true
+        }
+    }
+    
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
+        setupUI()
     }
     
     required init?(coder: NSCoder) {
@@ -20,7 +45,11 @@ class MNVisitorView: UIView {
     
     //MARK: private
     private lazy var iconView = UIImageView(image: (UIImage (named: "visitordiscover_feed_image_smallicon")))
+    
+    internal lazy var maskIconView = UIImageView(image: (UIImage (named: "visitordiscover_feed_mask_smallicon")))
+    
     private lazy var houseView = UIImageView(image:(UIImage (named: "visitordiscover_feed_image_house")))
+    
     private lazy var tipLabel:UILabel = UILabel.cz_label(withText: "talk is cheep, show me the code",
                                                  fontSize: 16,
                                                  color: UIColor.darkGray)
@@ -40,13 +69,16 @@ class MNVisitorView: UIView {
 extension MNVisitorView{
     
     func setupUI() {
-        backgroundColor = UIColor.white
+        backgroundColor = UIColor.cz_color(withHex: 0xEDEDED)
         
         addSubview(iconView)
+        addSubview(maskIconView)
         addSubview(houseView)
         addSubview(tipLabel)
         addSubview(registerButton)
         addSubview(loginButton)
+        
+        tipLabel.textAlignment = .center
         
         for item in subviews {
             item.translatesAutoresizingMaskIntoConstraints = false
@@ -104,6 +136,14 @@ extension MNVisitorView{
                                          attribute:.bottom,
                                          multiplier: 1,
                                          constant: margin))
+        addConstraint(NSLayoutConstraint(item: tipLabel,
+                                         attribute: .width,
+                                         relatedBy: .equal,
+                                         toItem: nil,
+                                         attribute:.notAnAttribute,
+                                         multiplier: 1,
+                                         constant: 240))
+        
         //register button
         addConstraint(NSLayoutConstraint(item: registerButton,
                                          attribute: .left,
@@ -147,6 +187,22 @@ extension MNVisitorView{
                                          toItem: registerButton,
                                          attribute:.width,
                                          multiplier: 1,
-                                         constant: 0`))
+                                         constant: 0))
+        //maskView - VFL
+        let viewDic = ["maskIconView":maskIconView,
+                       "registerButton":registerButton]
+        addConstraints(NSLayoutConstraint.constraints(
+            withVisualFormat: "H:|-0-[maskIconView]-0-|",
+            options: [],
+            metrics: nil,
+            views: viewDic))
+        
+        //FIXME:25 ==> button height
+        let metrics = ["spacing":25]
+        addConstraints(NSLayoutConstraint.constraints(
+            withVisualFormat: "V:|-0-[maskIconView]-(spacing)-[registerButton]",
+            options: [],
+            metrics: metrics,
+            views: viewDic))
     }
 }

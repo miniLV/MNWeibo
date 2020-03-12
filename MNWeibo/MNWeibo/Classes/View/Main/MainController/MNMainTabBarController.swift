@@ -54,12 +54,20 @@ extension MNMainTabBarController{
     }
     
     private func setupChildrenControllers(){
-        let array = [
-            ["clsName":"MNHomeViewController","title":"首页", "imageName":"home"],
-            ["clsName":"MNMessageViewController","title":"消息", "imageName":"message_center"],
+        let array:[[String:Any]] = [
+            ["clsName":"MNHomeViewController","title":"首页", "imageName":"home",
+             "visitorInfo":["imageName":"", "message":""]
+            ],
+            ["clsName":"MNMessageViewController","title":"消息", "imageName":"message_center",
+            "visitorInfo":["imageName":"visitordiscover_image_message", "message":"You can send message to miniLV"]
+            ],
             ["clsName":"UIViewController"],
-            ["clsName":"MNDiscoverViewController","title":"发现", "imageName":"discover"],
-            ["clsName":"MNProfileViewController","title":"我的", "imageName":"profile"],
+            ["clsName":"MNDiscoverViewController","title":"发现", "imageName":"discover",
+            "visitorInfo":["imageName":"visitordiscover_image_message", "message":"You can find miniLV's bug"]
+            ],
+            ["clsName":"MNProfileViewController","title":"我的", "imageName":"profile",
+            "visitorInfo":["imageName":"visitordiscover_image_profile", "message":"Welcome to miniLV blog."]
+            ],
         ]
         
         var arrayM = [UIViewController]()
@@ -67,14 +75,17 @@ extension MNMainTabBarController{
             arrayM.append(controller(dic: dic))
         }
         viewControllers = arrayM
+        
+        //write to file
+        (arrayM as NSArray) .write(toFile: "/Users/minilv/Desktop/demo.plist", atomically: true)
     }
     
-    //[]
-    private func controller(dic: [String: String]) -> UIViewController{
-       guard let clsName = dic["clsName"],
-        let title = dic["title"],
-        let imageName = dic["imageName"],
-        let cls = NSClassFromString(Bundle.main.namespace + "." + clsName) as? UIViewController.Type
+    private func controller(dic: [String: Any]) -> UIViewController{
+       guard let clsName = dic["clsName"] as? String,
+        let title = dic["title"] as? String,
+        let imageName = dic["imageName"] as? String,
+        let cls = NSClassFromString(Bundle.main.namespace + "." + clsName) as? MNBaseViewController.Type,
+        let visitorDic = dic["visitorInfo"] as? [String: String]
         else{
             return UIViewController()
         }
@@ -83,6 +94,9 @@ extension MNMainTabBarController{
         let vc = cls.init()
         vc.title = title
 
+        //set visitor info
+        vc.visitorInfo = visitorDic
+        
         //set icon image
         let normalImage = "tabbar_" + imageName
         let selectedImage = "tabbar_" + imageName + "_selected"
