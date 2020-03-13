@@ -61,9 +61,8 @@ extension MNHomeViewController{
 
 extension MNHomeViewController{
 
-    override func setupUI() {
-   
-        super.setupUI()
+    override func setupTableView() {
+        super.setupTableView()
         naviItem.leftBarButtonItem = UIBarButtonItem(title: "好友", fontSize: 16, target: self, action: #selector(showFridends))
         
         tableView?.register(UITableViewCell.self, forCellReuseIdentifier: cellID)

@@ -8,8 +8,14 @@
 
 import UIKit
 
+protocol LoginDelegate : NSObjectProtocol{
+    func clickLogin()
+    func clickRegister()
+}
+
 class MNVisitorView: UIView {
 
+    weak var delegate : LoginDelegate?
     /// set visitor view
     /// - Parameter dic: [imageName / message]
     /// Home Page ==> imageName = ""
@@ -97,6 +103,17 @@ extension MNVisitorView{
         
         //setup autolayou
         setupLayoutConstraint()
+        
+        loginButton.addTarget(self, action: #selector(clickLogin), for: .touchUpInside)
+        registerButton.addTarget(self, action: #selector(clickRegister), for: .touchUpInside)
+    }
+    
+    @objc private func clickLogin(){
+        delegate?.clickLogin()
+    }
+    
+    @objc private func clickRegister(){
+        delegate?.clickRegister()
     }
     
     private func setupLayoutConstraint(){

@@ -15,9 +15,9 @@ class DemoViewController: MNBaseViewController {
 
         // Do any additional setup after loading the view.
     }
-    override func setupUI() {
-        super.setupUI()
-
-    }
+//    override func setupUI() {
+//        super.setupUI()
+//
+//    }
 
 }

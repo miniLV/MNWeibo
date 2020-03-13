@@ -54,10 +54,20 @@ extension MNMainTabBarController{
     }
     
     private func setupChildrenControllers(){
-        //load setting form bundle
-        guard let path = Bundle.main.path(forResource: "main.json", ofType: nil),
-            let data = NSData(contentsOfFile: path),
-            let array = try? JSONSerialization.jsonObject(with: data as Data, options: []) as? [[String:AnyObject]]
+        
+        //load info from Sandbox
+        let documentDir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+        let jsonPath = (documentDir as NSString).appendingPathComponent("main.json")
+        var data = NSData(contentsOfFile: jsonPath)
+   
+        if data == nil {
+            //load setting form bundle
+            let path = Bundle.main.path(forResource: "main.json", ofType: nil)
+            data = NSData(contentsOfFile: path!)
+        }
+        
+        //json to dictionary
+        guard let array = try? JSONSerialization.jsonObject(with: data! as Data, options: []) as? [[String:AnyObject]]
             else {
                 print("main.json don't exist.")
                 return

@@ -44,8 +44,9 @@ class MNBaseViewController: UIViewController{
 }
 
 //MARK: - setup ui
-extension MNBaseViewController{
-     @objc func setupUI() {
+extension MNBaseViewController:LoginDelegate{
+    
+    private func setupUI() {
         view.backgroundColor = UIColor.cz_random()
         setupNavigationBar()
         
@@ -59,7 +60,8 @@ extension MNBaseViewController{
         tableView?.addSubview(refreshControl!)
     }
     
-    private func setupTableView(){
+    //user login success, override this func to setup UI.
+    @objc func setupTableView(){
         tableView = UITableView(frame: view.bounds, style: .plain)
         view.insertSubview(tableView!, belowSubview: navigationBar)
         
@@ -75,19 +77,35 @@ extension MNBaseViewController{
     private func setupVisitorView(){
         let visitorView = MNVisitorView(frame: view.bounds)
         visitorView.visitorInfo = visitorInfo
+        visitorView.delegate = self
         view.insertSubview(visitorView, belowSubview: navigationBar)
+        
+        //set navi item
+        naviItem.leftBarButtonItem = UIBarButtonItem(title: "注册", style: .plain, target: self, action: #selector(clickRegister))
+        naviItem.rightBarButtonItem = UIBarButtonItem(title: "登录", style: .plain, target: self, action: #selector(clickLogin))
     }
     
     private func setupNavigationBar(){
         view.addSubview(navigationBar)
         
         navigationBar.items = [naviItem]
-        
+        //navigationBar background color
         navigationBar.barTintColor = UIColor.cz_color(withHex: 0xF6F6F6)
         //set title color
         navigationBar.titleTextAttributes = [
             NSAttributedString.Key.foregroundColor : UIColor.darkGray
         ]
+        //set system item title color
+        navigationBar.tintColor = UIColor.orange
+    }
+    
+    //Mark: touch event
+    @objc func clickLogin() {
+        print("clickLogin")
+    }
+    
+    @objc func clickRegister() {
+        print("clickRegister")
     }
 }
 
