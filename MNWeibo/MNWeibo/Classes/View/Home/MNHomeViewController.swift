@@ -16,9 +16,9 @@ class MNHomeViewController: MNBaseViewController {
 
     override func loadDatas() {
         
-
-//        MNNetworkManager.shared.fetchHomePageList()
-        
+        MNNetworkManager.shared.fetchHomePageList { (isSuccess, json) in
+            print("json ==> \(String(describing: json))")
+        }
         return
             
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {

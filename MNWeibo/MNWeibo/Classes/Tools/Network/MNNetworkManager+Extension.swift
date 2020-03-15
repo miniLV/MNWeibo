@@ -15,14 +15,16 @@ extension MNNetworkManager{
     /// - Parameters:
     ///   - list: home page list
     ///   - isSuccess: request success
-    func fetchHomePageList(list:[String:AnyObject], isSuccess: Bool) {
+    func fetchHomePageList(completion:@escaping (_ isSuccess: Bool,_ list:[[String:AnyObject]]?) -> ()) {
         let urlString = "https://api.weibo.com/2/statuses/home_timeline.json"
         let parms = ["access_token":"2.00xo2AICPKBYGDc9868e64f5KnkckD"]
         
         request(URLString: urlString, parameters: parms as [String : AnyObject]) { (isSuccess, json) in
-            print("json == \(json)")
-//            let result = json?["statuses"] as [[String:AnyObject]]
-            
+            print("json == \(String(describing: json))")
+            let jsonObject = json as?[String:Any]
+            let result = jsonObject?["statuses"] as? [[String:AnyObject]]
+
+            completion(isSuccess, result)
         }
     }
     
