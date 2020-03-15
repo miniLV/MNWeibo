@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,6 +11,8 @@
 		89AC9C980E3290EE4EBF285C /* Pods_MNWeiboTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFB0D4EFF6B958B7B69E71DF /* Pods_MNWeiboTests.framework */; };
 		A700BE2D241A73BD000E2A1A /* MNVisitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A700BE2C241A73BD000E2A1A /* MNVisitorView.swift */; };
 		A700BE2F241A8ED8000E2A1A /* main.json in Resources */ = {isa = PBXBuildFile; fileRef = A700BE2E241A8ED8000E2A1A /* main.json */; };
+		A700BE32241DF8A4000E2A1A /* MNNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A700BE31241DF8A4000E2A1A /* MNNetworkManager.swift */; };
+		A700BE34241E00D2000E2A1A /* MNNetworkManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A700BE33241E00D2000E2A1A /* MNNetworkManager+Extension.swift */; };
 		A7383AF7241682A90099822E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7383AF6241682A90099822E /* AppDelegate.swift */; };
 		A7383AF9241682A90099822E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7383AF8241682A90099822E /* SceneDelegate.swift */; };
 		A7383B00241682AA0099822E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7383AFF241682AA0099822E /* Assets.xcassets */; };
@@ -68,6 +70,8 @@
 		79AD4EF2DC6883F578E56777 /* Pods_MNWeibo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MNWeibo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A700BE2C241A73BD000E2A1A /* MNVisitorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNVisitorView.swift; sourceTree = "<group>"; };
 		A700BE2E241A8ED8000E2A1A /* main.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = main.json; sourceTree = "<group>"; };
+		A700BE31241DF8A4000E2A1A /* MNNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNNetworkManager.swift; sourceTree = "<group>"; };
+		A700BE33241E00D2000E2A1A /* MNNetworkManager+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MNNetworkManager+Extension.swift"; sourceTree = "<group>"; };
 		A7383AF3241682A90099822E /* MNWeibo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MNWeibo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7383AF6241682A90099822E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A7383AF8241682A90099822E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -169,7 +173,6 @@
 				350E1B2C68583F99789A13EE /* Pods-MNWeiboUITests.debug.xcconfig */,
 				423B7C0A866CCD66472EB9FA /* Pods-MNWeiboUITests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -179,6 +182,15 @@
 				A700BE2C241A73BD000E2A1A /* MNVisitorView.swift */,
 			);
 			path = VisitorView;
+			sourceTree = "<group>";
+		};
+		A700BE30241DF882000E2A1A /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				A700BE31241DF8A4000E2A1A /* MNNetworkManager.swift */,
+				A700BE33241E00D2000E2A1A /* MNNetworkManager+Extension.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		A7383AEA241682A90099822E = {
@@ -272,6 +284,7 @@
 		A7FFE67F2417D05E0082F464 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				A700BE30241DF882000E2A1A /* Network */,
 				A7FFE7142417DA160082F464 /* Extensions */,
 				A7FFE6952417D68B0082F464 /* Additions */,
 			);
@@ -618,6 +631,7 @@
 				A7383AF7241682A90099822E /* AppDelegate.swift in Sources */,
 				A7FFE6E92417D68D0082F464 /* UIViewController+CZAddition.m in Sources */,
 				A7FFE6872417D0B60082F464 /* MNMainTabBarController.swift in Sources */,
+				A700BE34241E00D2000E2A1A /* MNNetworkManager+Extension.swift in Sources */,
 				A7FFE6892417D0E00082F464 /* MNNavigationController.swift in Sources */,
 				A7FFE6EB2417D68D0082F464 /* NSAttributedString+CZAdditon.m in Sources */,
 				A700BE2D241A73BD000E2A1A /* MNVisitorView.swift in Sources */,
@@ -629,6 +643,7 @@
 				A7FFE6EA2417D68D0082F464 /* NSString+CZHash.m in Sources */,
 				A7FFE6E32417D68D0082F464 /* UIScreen+CZAddition.m in Sources */,
 				A7FFE6E72417D68D0082F464 /* UIButton+CZAddition.m in Sources */,
+				A700BE32241DF8A4000E2A1A /* MNNetworkManager.swift in Sources */,
 				A7FFE6942417D1680082F464 /* MNProfileViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

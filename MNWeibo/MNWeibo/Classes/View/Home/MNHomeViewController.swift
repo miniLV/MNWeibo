@@ -16,6 +16,11 @@ class MNHomeViewController: MNBaseViewController {
 
     override func loadDatas() {
         
+
+//        MNNetworkManager.shared.fetchHomePageList()
+        
+        return
+            
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             
             for i in 0..<20 {
