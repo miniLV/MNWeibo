@@ -21,7 +21,7 @@ class MNBaseViewController: UIViewController{
     
     var isPull: Bool = false
     
-    var isLogin: Bool = false
+    var isLogin: Bool = true
     
     var visitorInfo: [String : String]?
     

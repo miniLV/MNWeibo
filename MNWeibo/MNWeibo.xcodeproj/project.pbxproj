@@ -13,6 +13,8 @@
 		A700BE2F241A8ED8000E2A1A /* main.json in Resources */ = {isa = PBXBuildFile; fileRef = A700BE2E241A8ED8000E2A1A /* main.json */; };
 		A700BE32241DF8A4000E2A1A /* MNNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A700BE31241DF8A4000E2A1A /* MNNetworkManager.swift */; };
 		A700BE34241E00D2000E2A1A /* MNNetworkManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A700BE33241E00D2000E2A1A /* MNNetworkManager+Extension.swift */; };
+		A700BE36241E0ED4000E2A1A /* MNStatusModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A700BE35241E0ED4000E2A1A /* MNStatusModel.swift */; };
+		A700BE38241E1646000E2A1A /* MNStatusListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A700BE37241E1646000E2A1A /* MNStatusListViewModel.swift */; };
 		A7383AF7241682A90099822E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7383AF6241682A90099822E /* AppDelegate.swift */; };
 		A7383AF9241682A90099822E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7383AF8241682A90099822E /* SceneDelegate.swift */; };
 		A7383B00241682AA0099822E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7383AFF241682AA0099822E /* Assets.xcassets */; };
@@ -72,6 +74,8 @@
 		A700BE2E241A8ED8000E2A1A /* main.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = main.json; sourceTree = "<group>"; };
 		A700BE31241DF8A4000E2A1A /* MNNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNNetworkManager.swift; sourceTree = "<group>"; };
 		A700BE33241E00D2000E2A1A /* MNNetworkManager+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MNNetworkManager+Extension.swift"; sourceTree = "<group>"; };
+		A700BE35241E0ED4000E2A1A /* MNStatusModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNStatusModel.swift; sourceTree = "<group>"; };
+		A700BE37241E1646000E2A1A /* MNStatusListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNStatusListViewModel.swift; sourceTree = "<group>"; };
 		A7383AF3241682A90099822E /* MNWeibo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MNWeibo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7383AF6241682A90099822E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A7383AF8241682A90099822E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -277,6 +281,7 @@
 		A7FFE67E2417D05E0082F464 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				A700BE37241E1646000E2A1A /* MNStatusListViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -294,6 +299,7 @@
 		A7FFE6802417D05E0082F464 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A700BE35241E0ED4000E2A1A /* MNStatusModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -640,9 +646,11 @@
 				A7FFE6902417D1510082F464 /* MNDiscoverViewController.swift in Sources */,
 				A7FFE6EC2417D68D0082F464 /* NSArray+Log.m in Sources */,
 				A7FFE6922417D1570082F464 /* MNMessageViewController.swift in Sources */,
+				A700BE38241E1646000E2A1A /* MNStatusListViewModel.swift in Sources */,
 				A7FFE6EA2417D68D0082F464 /* NSString+CZHash.m in Sources */,
 				A7FFE6E32417D68D0082F464 /* UIScreen+CZAddition.m in Sources */,
 				A7FFE6E72417D68D0082F464 /* UIButton+CZAddition.m in Sources */,
+				A700BE36241E0ED4000E2A1A /* MNStatusModel.swift in Sources */,
 				A700BE32241DF8A4000E2A1A /* MNNetworkManager.swift in Sources */,
 				A7FFE6942417D1680082F464 /* MNProfileViewController.swift in Sources */,
 			);

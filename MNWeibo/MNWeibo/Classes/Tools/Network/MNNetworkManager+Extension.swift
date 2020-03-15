@@ -17,9 +17,8 @@ extension MNNetworkManager{
     ///   - isSuccess: request success
     func fetchHomePageList(completion:@escaping (_ isSuccess: Bool,_ list:[[String:AnyObject]]?) -> ()) {
         let urlString = "https://api.weibo.com/2/statuses/home_timeline.json"
-        let parms = ["access_token":"2.00xo2AICPKBYGDc9868e64f5KnkckD"]
-        
-        request(URLString: urlString, parameters: parms as [String : AnyObject]) { (isSuccess, json) in
+
+        tokenRequest(URLString: urlString, parameters: nil) { (isSuccess, json) in
             print("json == \(String(describing: json))")
             let jsonObject = json as?[String:Any]
             let result = jsonObject?["statuses"] as? [[String:AnyObject]]
