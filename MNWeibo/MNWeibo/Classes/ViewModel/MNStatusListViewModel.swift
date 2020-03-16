@@ -30,9 +30,9 @@ class MNStatusListViewModel {
         }
         
         //取出当前最新的数据 -> 越上面越新
-        let since_id = pullup ? 0 : statusList.first?.id ?? 0
+        let since_id = pullup ? 0 : (statusList.first?.id ?? 0)
         // 上拉加载更多 -> 取最旧的一条(last)
-        let max_id = !pullup ? 0 : statusList.last?.id ?? 0
+        let max_id = !pullup ? 0 : (statusList.last?.id ?? 0)
         
         MNNetworkManager.shared.fetchHomePageList(since_id: since_id, max_id: max_id){ (isSuccess, list) in
             

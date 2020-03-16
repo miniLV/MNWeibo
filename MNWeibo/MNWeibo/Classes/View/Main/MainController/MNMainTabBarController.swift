@@ -10,11 +10,19 @@ import UIKit
 
 class MNMainTabBarController: UITabBarController {
 
+    //timer: 定时检查未读消息
+    private var timer: Timer?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.cz_random()
         setupChildrenControllers()
         setupCenterButton()
+        setupTimer()
+    }
+    
+    deinit {
+        timer?.invalidate()
     }
     
     private lazy var tabBarCenterButtion:UIButton = UIButton.cz_imageButton("tabbar_compose_icon_add",
@@ -33,6 +41,24 @@ class MNMainTabBarController: UITabBarController {
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask{
         return .portrait
+    }
+}
+
+// MARK: - Timer
+extension MNMainTabBarController{
+    private func setupTimer(){
+        timer = Timer.scheduledTimer(withTimeInterval: 10, repeats: true, block: { (timer) in
+            
+            // request unreadCount data
+            MNNetworkManager.shared.unreadCount { (count) in
+                
+                print("badgeValue = \(count)")
+                //设置首页的badge
+                self.tabBar.items?[0].badgeValue = count > 0 ? "\(count)" : nil
+                //set app badgeValue
+                UIApplication.shared.applicationIconBadgeNumber = count
+            }
+        })
     }
 }
 

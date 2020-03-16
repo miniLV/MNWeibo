@@ -31,4 +31,13 @@ extension MNNetworkManager{
         }
     }
     
+    // 模拟未读消息
+    func unreadCount(completion:@escaping (_ count: Int)->()){
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            
+            let count = 3
+            completion(count)
+        }
+    }
 }

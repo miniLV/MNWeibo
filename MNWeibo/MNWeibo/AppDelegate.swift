@@ -7,12 +7,18 @@
 //
 
 import UIKit
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         fetchAppInfo()
+        
+        //Authorization allowed(.alert, .sound, .badge)
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge, .carPlay]) { (success, error) in
+            print("授权" + (success ? "成功" : "失败"))
+        }
         return true
     }
 

@@ -21,6 +21,8 @@ class MNNetworkManager: AFHTTPSessionManager {
     //The token will expire ==> http error code = 403
     var accessTonken: String? = "2.00xo2AICPKBYGDc9868e64f5KnkckD"
     
+    var uid:String? = ""
+    
     /// AFNetwork request
     /// - Parameters:
     ///   - method: GET/POST
