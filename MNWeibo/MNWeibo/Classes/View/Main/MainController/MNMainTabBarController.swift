@@ -19,6 +19,7 @@ class MNMainTabBarController: UITabBarController {
         setupChildrenControllers()
         setupCenterButton()
         setupTimer()
+        delegate = self
     }
     
     deinit {
@@ -68,10 +69,7 @@ extension MNMainTabBarController{
         tabBar.addSubview(tabBarCenterButtion)
         
         let count = CGFloat(viewControllers?.count ?? 0)
-        /**
-         center button的内缩进宽度减小(centerbutton宽度增大)，避免用户不小心点到容错点
-         */
-        let width = tabBar.bounds.width / count - 1
+        let width = tabBar.bounds.width / count
         let leftItemCount:CGFloat = 2
         tabBarCenterButtion.frame = tabBar.bounds.insetBy(dx: leftItemCount * width, dy: 0)
         print("frame = \(tabBarCenterButtion.frame)")
@@ -139,5 +137,38 @@ extension MNMainTabBarController{
 
         let navi = MNNavigationController(rootViewController: vc)
         return navi
+    }
+}
+
+extension MNMainTabBarController : UITabBarControllerDelegate{
+  
+    
+    /// will selected Tabbar Item
+    /// - Parameters:
+    ///   - tabBarController: tabBarController
+    ///   - viewController: will switch to VC
+    ///   - return: Whether to switch
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        
+        print("will switch to \(viewController)")
+
+        //当前控制器index
+        let index = children.firstIndex(of: viewController)
+        
+        //在首页，又点击了”首页“tabbar, ==> 滚动到顶部
+        if selectedIndex == 0 && index == 0{
+            let navi = children[0] as! UINavigationController
+            let vc = navi.children[0] as! MNBaseViewController
+            
+            //scroll to top
+            vc.tableView?.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+            
+            //FIXME: dispatch work around.(必须滚动完,再刷新)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                 vc.loadDatas()
+            }
+        }
+        
+        return !viewController.isMember(of: UIViewController.self)
     }
 }
