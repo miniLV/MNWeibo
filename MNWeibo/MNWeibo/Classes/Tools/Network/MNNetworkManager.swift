@@ -19,7 +19,11 @@ class MNNetworkManager: AFHTTPSessionManager {
     static let shared = MNNetworkManager()
     
     //The token will expire ==> http error code = 403
-    var accessTonken: String? = "2.00xo2AICPKBYGDc9868e64f5KnkckD"
+    var accessTonken: String? = "2.00xo2AIC7_YlGD1058474413KdQ6FD"
+    
+    var isLogin:Bool {
+        return accessTonken != nil
+    }
     
     var uid:String? = ""
     

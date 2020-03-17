@@ -21,14 +21,12 @@ class MNBaseViewController: UIViewController{
     
     var isPull: Bool = false
     
-    var isLogin: Bool = true
-    
     var visitorInfo: [String : String]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        loadDatas()
+        MNNetworkManager.shared.isLogin ? loadDatas() : ()
     }
     
     override var title: String? {
@@ -50,7 +48,7 @@ extension MNBaseViewController:LoginDelegate{
         view.backgroundColor = UIColor.cz_random()
         setupNavigationBar()
         
-        isLogin ? setupTableView() : setupVisitorView()
+        MNNetworkManager.shared.isLogin ? setupTableView() : setupVisitorView()
         
         //取消自动缩进
         automaticallyAdjustsScrollViewInsets = false

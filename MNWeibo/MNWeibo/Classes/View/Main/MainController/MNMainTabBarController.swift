@@ -47,19 +47,26 @@ class MNMainTabBarController: UITabBarController {
 
 // MARK: - Timer
 extension MNMainTabBarController{
+
     private func setupTimer(){
-        timer = Timer.scheduledTimer(withTimeInterval: 10, repeats: true, block: { (timer) in
+        
+        timer = Timer.scheduledTimer(timeInterval: 20, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+    }
+    
+    @objc func updateTimer(){
+        if !MNNetworkManager.shared.isLogin{
+            return
+        }
+        
+        // request unreadCount data
+        MNNetworkManager.shared.unreadCount { (count) in
             
-            // request unreadCount data
-            MNNetworkManager.shared.unreadCount { (count) in
-                
-                print("badgeValue = \(count)")
-                //设置首页的badge
-                self.tabBar.items?[0].badgeValue = count > 0 ? "\(count)" : nil
-                //set app badgeValue
-                UIApplication.shared.applicationIconBadgeNumber = count
-            }
-        })
+            print("badgeValue = \(count)")
+            //设置首页的badge
+            self.tabBar.items?[0].badgeValue = count > 0 ? "\(count)" : nil
+            //set app badgeValue
+            UIApplication.shared.applicationIconBadgeNumber = count
+        }
     }
 }
 
