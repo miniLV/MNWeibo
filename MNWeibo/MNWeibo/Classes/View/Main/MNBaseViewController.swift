@@ -100,6 +100,7 @@ extension MNBaseViewController:LoginDelegate{
     //Mark: touch event
     @objc func clickLogin() {
         print("clickLogin")
+        NotificationCenter.default.post(name: NSNotification.Name(MNUserShouldLoginNotification), object: nil)
     }
     
     @objc func clickRegister() {
@@ -141,3 +142,4 @@ extension MNBaseViewController: UITableViewDelegate, UITableViewDataSource{
         }
     }
 }
+

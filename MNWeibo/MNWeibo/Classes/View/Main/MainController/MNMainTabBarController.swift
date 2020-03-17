@@ -20,10 +20,19 @@ class MNMainTabBarController: UITabBarController {
         setupCenterButton()
         setupTimer()
         delegate = self
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(userLogin), name: NSNotification.Name(MNUserShouldLoginNotification), object: nil)
+    }
+    
+    @objc func userLogin() {
+        let navi = UINavigationController(rootViewController: MNOAuthViewController())
+        present(navi, animated: true, completion: nil)
     }
     
     deinit {
         timer?.invalidate()
+        
+        NotificationCenter.default.removeObserver(self)
     }
     
     private lazy var tabBarCenterButtion:UIButton = UIButton.cz_imageButton("tabbar_compose_icon_add",
@@ -179,3 +188,4 @@ extension MNMainTabBarController : UITabBarControllerDelegate{
         return !viewController.isMember(of: UIViewController.self)
     }
 }
+
