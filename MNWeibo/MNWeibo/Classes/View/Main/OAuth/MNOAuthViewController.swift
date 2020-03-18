@@ -8,6 +8,7 @@
 
 import UIKit
 import WebKit
+import SVProgressHUD
 
 // Webview load auth view
 class MNOAuthViewController: UIViewController {
@@ -18,6 +19,8 @@ class MNOAuthViewController: UIViewController {
         self.view = webView
         view.backgroundColor = UIColor.white
         
+        webView.navigationDelegate = self
+        webView.scrollView.isScrollEnabled = false
         title = "登录小蠢驴微博"
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "返回", target: self, action: #selector(closeWebView), isBackItem: true)
@@ -32,6 +35,7 @@ class MNOAuthViewController: UIViewController {
     }
     
     private func loadUrl(){
+ 
         let urlString = "https://api.weibo.com/oauth2/authorize?client_id=\(MNAppKey)&redirect_uri=\(MNredirectUri)"
         guard let url = URL(string: urlString) else{
             print("url = nil")
@@ -54,3 +58,34 @@ class MNOAuthViewController: UIViewController {
         webView.evaluateJavaScript(js, completionHandler: nil)
     }
 }
+
+extension MNOAuthViewController: WKNavigationDelegate{
+
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!){
+        print("url =======> \(String(describing: webView.url?.absoluteString))")
+
+    }
+    
+    func webView(_ webView: WKWebView, didReceiveServerRedirectForProvisionalNavigation navigation: WKNavigation!) {
+        
+        //"http://baidu.com/?code=7de67546405abcb1af3b4c2db166b551"
+        if webView.url?.absoluteString.hasPrefix(MNredirectUri) == false{
+            print("请求 url =======> \(String(describing: webView.url?.absoluteString))")
+            return
+        }
+        
+        //get url query ==> 查询字符串 （？后面的内容）
+        if webView.url?.query?.hasPrefix("code=") == false{
+            print("取消授权")
+            closeWebView()
+            return
+        }
+        
+        print("授权授权码")
+        let code = webView.url?.query?.substring(from: "code=".count)
+        print("code = \(String(describing: code))")
+        MNNetworkManager.shared.getAccessToken(code: code ?? "")
+    }
+}
+
+

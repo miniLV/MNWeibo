@@ -41,3 +41,26 @@ extension MNNetworkManager{
         }
     }
 }
+
+//MARK: - OAuth
+extension MNNetworkManager{
+    
+    func getAccessToken(code: String){
+        
+        let urlString = "https://api.weibo.com/oauth2/access_token"
+        let parms = ["client_id":MNAppKey,
+                     "client_secret":MNAppSecret,
+                     "grant_type":"authorization_code",
+                     "code":code,
+                     "redirect_uri":MNredirectUri]
+        request(method: .POST, URLString: urlString, parameters: parms as [String : AnyObject]) { (isSuccess, json) in
+            
+//             let result = self.userAccount.yy_modelSet(with: json as! [String:AnyObject] )
+            
+            self.userAccount.yy_modelSet(with: json as? [String:AnyObject] ?? [:])
+            print(self.userAccount.yy_modelDescription())
+            
+        }
+    }
+    
+}

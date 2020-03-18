@@ -24,6 +24,8 @@
 		A745A59B241923F600F9E138 /* DemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A745A59A241923F600F9E138 /* DemoViewController.swift */; };
 		A7E684EC24210C8A00A58E9E /* MNWeiboCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E684EB24210C8A00A58E9E /* MNWeiboCommon.swift */; };
 		A7E684EF24210E2300A58E9E /* MNOAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E684EE24210E2300A58E9E /* MNOAuthViewController.swift */; };
+		A7E684F124226AD800A58E9E /* String+Substring.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E684F024226AD800A58E9E /* String+Substring.swift */; };
+		A7E684F42422766C00A58E9E /* MNUserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E684F32422766C00A58E9E /* MNUserAccount.swift */; };
 		A7FFE6872417D0B60082F464 /* MNMainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FFE6862417D0B60082F464 /* MNMainTabBarController.swift */; };
 		A7FFE6892417D0E00082F464 /* MNNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FFE6882417D0E00082F464 /* MNNavigationController.swift */; };
 		A7FFE68B2417D1070082F464 /* MNBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FFE68A2417D1070082F464 /* MNBaseViewController.swift */; };
@@ -93,6 +95,8 @@
 		A745A59A241923F600F9E138 /* DemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoViewController.swift; sourceTree = "<group>"; };
 		A7E684EB24210C8A00A58E9E /* MNWeiboCommon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNWeiboCommon.swift; sourceTree = "<group>"; };
 		A7E684EE24210E2300A58E9E /* MNOAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNOAuthViewController.swift; sourceTree = "<group>"; };
+		A7E684F024226AD800A58E9E /* String+Substring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Substring.swift"; sourceTree = "<group>"; };
+		A7E684F32422766C00A58E9E /* MNUserAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNUserAccount.swift; sourceTree = "<group>"; };
 		A7FFE6862417D0B60082F464 /* MNMainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNMainTabBarController.swift; sourceTree = "<group>"; };
 		A7FFE6882417D0E00082F464 /* MNNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNNavigationController.swift; sourceTree = "<group>"; };
 		A7FFE68A2417D1070082F464 /* MNBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNBaseViewController.swift; sourceTree = "<group>"; };
@@ -195,6 +199,7 @@
 		A700BE30241DF882000E2A1A /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				A7E684F22422765500A58E9E /* Model */,
 				A700BE31241DF8A4000E2A1A /* MNNetworkManager.swift */,
 				A700BE33241E00D2000E2A1A /* MNNetworkManager+Extension.swift */,
 			);
@@ -277,6 +282,14 @@
 				A7E684EE24210E2300A58E9E /* MNOAuthViewController.swift */,
 			);
 			path = OAuth;
+			sourceTree = "<group>";
+		};
+		A7E684F22422765500A58E9E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A7E684F32422766C00A58E9E /* MNUserAccount.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		A7FFE67D2417D05E0082F464 /* Classes */ = {
@@ -412,6 +425,7 @@
 				A7FFE7192417DA160082F464 /* Bundle+Extensions.swift */,
 				A7FFE71A2417DA160082F464 /* Date+Extensions.swift */,
 				A745A5972419206F00F9E138 /* UIBarButtonItem+Extension.swift */,
+				A7E684F024226AD800A58E9E /* String+Substring.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -647,12 +661,14 @@
 				A7FFE68B2417D1070082F464 /* MNBaseViewController.swift in Sources */,
 				A7FFE6E42417D68D0082F464 /* UILabel+CZAddition.m in Sources */,
 				A7FFE6E82417D68D0082F464 /* NSObject+CZRuntime.m in Sources */,
+				A7E684F124226AD800A58E9E /* String+Substring.swift in Sources */,
 				A745A59B241923F600F9E138 /* DemoViewController.swift in Sources */,
 				A7FFE7202417DA160082F464 /* Date+Extensions.swift in Sources */,
 				A7383AF7241682A90099822E /* AppDelegate.swift in Sources */,
 				A7FFE6E92417D68D0082F464 /* UIViewController+CZAddition.m in Sources */,
 				A7FFE6872417D0B60082F464 /* MNMainTabBarController.swift in Sources */,
 				A700BE34241E00D2000E2A1A /* MNNetworkManager+Extension.swift in Sources */,
+				A7E684F42422766C00A58E9E /* MNUserAccount.swift in Sources */,
 				A7FFE6892417D0E00082F464 /* MNNavigationController.swift in Sources */,
 				A7E684EF24210E2300A58E9E /* MNOAuthViewController.swift in Sources */,
 				A7FFE6EB2417D68D0082F464 /* NSAttributedString+CZAdditon.m in Sources */,

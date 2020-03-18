@@ -16,16 +16,20 @@ enum RequestMethod{
 
 class MNNetworkManager: AFHTTPSessionManager {
     
-    static let shared = MNNetworkManager()
+    static let shared:MNNetworkManager = {
+        let instance = MNNetworkManager()
+        instance.responseSerializer.acceptableContentTypes?.insert("text/plain")
+        return instance
+    }()
     
-    //The token will expire ==> http error code = 403
-    var accessTonken: String? //= "2.00xo2AIC7_YlGD1058474413KdQ6FD"
+    //user account info
+    lazy var userAccount = MNUserAccount()
     
     var isLogin:Bool {
-        return accessTonken != nil
+        return userAccount.accessToken != nil
     }
     
-    var uid:String? = ""
+    
     
     /// AFNetwork request
     /// - Parameters:
@@ -58,7 +62,7 @@ class MNNetworkManager: AFHTTPSessionManager {
     
     func tokenRequest(method:RequestMethod = .GET, URLString:String, parameters:[String:AnyObject]?, completion:@escaping (_ isSuccess:Bool, _ json:Any?)->()){
         
-        guard let token = accessTonken else{
+        guard let token = userAccount.accessToken else{
             print("token is nil, need to login")
             // FIXME: 未登录
             completion(false, nil)
