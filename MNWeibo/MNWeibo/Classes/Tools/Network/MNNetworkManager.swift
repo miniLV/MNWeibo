@@ -48,7 +48,7 @@ class MNNetworkManager: AFHTTPSessionManager {
                 print("token 过期了兄弟")
                 
                 //notification post message
-                // FIXME: Token过期
+                NotificationCenter.default.post(name: Notification.Name(MNUserShouldLoginNotification) , object: "token403")
             }
             completion(false, nil)
         }
@@ -64,7 +64,7 @@ class MNNetworkManager: AFHTTPSessionManager {
         
         guard let token = userAccount.access_token else{
             print("token is nil, need to login")
-            // FIXME: 未登录
+            NotificationCenter.default.post(name: Notification.Name(MNUserShouldLoginNotification) , object: nil)
             completion(false, nil)
             return
         }

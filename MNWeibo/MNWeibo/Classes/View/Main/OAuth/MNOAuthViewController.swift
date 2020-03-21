@@ -88,11 +88,13 @@ extension MNOAuthViewController: WKNavigationDelegate{
             
             if isSuccess{
                 print("login success")
-                self.closeWebView()
+                
                 //refresh home view data
                 NotificationCenter.default.post(
                     name: NSNotification.Name(MNUserLoginSuccessNotification),
                     object: nil)
+                
+                self.closeWebView()
             }else{
                 print("login failure")
             }

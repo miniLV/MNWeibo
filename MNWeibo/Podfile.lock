@@ -21,7 +21,7 @@ PODS:
   - SDWebImage (5.6.1):
     - SDWebImage/Core (= 5.6.1)
   - SDWebImage/Core (5.6.1)
-  - SVProgressHUD (2.2.5)
+  - SVProgressHUD (2.2.6)
   - SwiftyJSON (5.0.0)
   - YYModel (1.0.4)
 
@@ -30,29 +30,37 @@ DEPENDENCIES:
   - FMDB
   - pop
   - SDWebImage
-  - SVProgressHUD
+  - SVProgressHUD (from `https://github.com/SVProgressHUD/SVProgressHUD.git`)
   - SwiftyJSON
   - YYModel
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - AFNetworking
     - FMDB
     - pop
     - SDWebImage
-    - SVProgressHUD
     - SwiftyJSON
     - YYModel
+
+EXTERNAL SOURCES:
+  SVProgressHUD:
+    :git: https://github.com/SVProgressHUD/SVProgressHUD.git
+
+CHECKOUT OPTIONS:
+  SVProgressHUD:
+    :commit: 4fdf3fdc8703fd9915dae33fc1363c604a06b24e
+    :git: https://github.com/SVProgressHUD/SVProgressHUD.git
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   pop: d582054913807fd11fd50bfe6a539d91c7e1a55a
   SDWebImage: 7edb9c3ea661e77a66661f7f044de8c1b55d1120
-  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+  SVProgressHUD: 6ed134667e9ebb2f33679e8273cd48fd3fa349e5
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: eca0b1ad586dda492cd06e30728b4e8f15b93c97
+PODFILE CHECKSUM: 78e29e8dba98b6b9e44ffca51c3a6c5418d132fd
 
-COCOAPODS: 1.7.5
+COCOAPODS: 1.9.1

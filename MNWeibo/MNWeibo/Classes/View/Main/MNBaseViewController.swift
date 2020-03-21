@@ -46,15 +46,22 @@ class MNBaseViewController: UIViewController{
     }
     
     func registNotification() {
+        //login success
         NotificationCenter.default.addObserver(
             forName: NSNotification.Name(MNUserLoginSuccessNotification),
             object: nil,
-            queue:OperationQueue.main){ _ in
+            queue:OperationQueue.main){ [weak self]_ in
+                guard let weakSelf = self else{
+                    return
+                }
                 
-                //view == nil ==> loadView -> vidwDidLoad
-                self.view = nil
-                //vidwDidLoad will regist notifation, so need to remove current notificaton
-                NotificationCenter.default.removeObserver(self)
+                //clear navigationBar
+                weakSelf.naviItem.leftBarButtonItem = nil
+                weakSelf.naviItem.rightBarButtonItem = nil
+                
+                //reload view
+                weakSelf.setupUI()
+                weakSelf.loadDatas()
         }
     }
 }
@@ -88,6 +95,7 @@ extension MNBaseViewController:LoginDelegate{
         let toolHeight:CGFloat = 20
         let tabBarHeight:CGFloat = 0
         tableView?.contentInset = UIEdgeInsets(top: toolHeight, left: 0, bottom: tabBarHeight, right: 0)
+        tableView?.scrollIndicatorInsets = tableView!.contentInset
     }
     
     private func setupVisitorView(){

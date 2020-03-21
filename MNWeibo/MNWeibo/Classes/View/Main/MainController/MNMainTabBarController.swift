@@ -21,12 +21,23 @@ class MNMainTabBarController: UITabBarController {
         setupTimer()
         delegate = self
         
-        NotificationCenter.default.addObserver(self, selector: #selector(userLogin), name: NSNotification.Name(MNUserShouldLoginNotification), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(userLogin(noti:)), name: NSNotification.Name(MNUserShouldLoginNotification), object: nil)
     }
     
-    @objc func userLogin() {
-        let navi = UINavigationController(rootViewController: MNOAuthViewController())
-        present(navi, animated: true, completion: nil)
+    @objc func userLogin(noti: Notification) {
+        
+        var when = DispatchTime.now()
+        
+        if noti.object != nil{
+            //FIXME: Need toast
+            print("用户登录超时，请重新登陆")
+            when = DispatchTime.now() + 2
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: when) {
+            let navi = UINavigationController(rootViewController: MNOAuthViewController())
+            self.present(navi, animated: true, completion: nil)
+        }
     }
     
     deinit {

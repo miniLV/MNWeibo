@@ -36,7 +36,7 @@ class MNUserAccount: NSObject {
                 print("filePath or data is nil")
                 return
         }
-        //yy_modelSet(with: dic)
+        yy_modelSet(with: dic)
         
         //token expires
         if expiresDate?.compare(Date()) != .orderedDescending{

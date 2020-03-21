@@ -10,7 +10,7 @@ pod "AFNetworking"
 pod "SDWebImage"
 pod "YYModel"
 pod "FMDB"
-pod "SVProgressHUD"
+pod 'SVProgressHUD', :git => 'https://github.com/SVProgressHUD/SVProgressHUD.git'
 pod "pop"
 pod "SwiftyJSON"
 
