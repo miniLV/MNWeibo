@@ -26,7 +26,7 @@ class MNNetworkManager: AFHTTPSessionManager {
     lazy var userAccount = MNUserAccount()
     
     var isLogin:Bool {
-        return userAccount.accessToken != nil
+        return userAccount.access_token != nil
     }
     
     
@@ -62,7 +62,7 @@ class MNNetworkManager: AFHTTPSessionManager {
     
     func tokenRequest(method:RequestMethod = .GET, URLString:String, parameters:[String:AnyObject]?, completion:@escaping (_ isSuccess:Bool, _ json:Any?)->()){
         
-        guard let token = userAccount.accessToken else{
+        guard let token = userAccount.access_token else{
             print("token is nil, need to login")
             // FIXME: 未登录
             completion(false, nil)

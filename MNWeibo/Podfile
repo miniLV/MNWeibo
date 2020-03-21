@@ -12,6 +12,7 @@ pod "YYModel"
 pod "FMDB"
 pod "SVProgressHUD"
 pod "pop"
+pod "SwiftyJSON"
 
   target 'MNWeiboTests' do
     inherit! :search_paths
