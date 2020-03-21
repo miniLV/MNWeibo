@@ -9,10 +9,12 @@
 import UIKit
 import YYModel
 
+private let accountFileName:NSString = "userAccount.json"
+
 class MNUserAccount: NSObject {
 
-    //访问令牌
-    @objc var access_token: String? //= "2.00xo2AICPKBYGDa1010f10b80BrjTU"
+    //访问令牌("2.00xo2AICPKBYGDa1010f10b80BrjTU")
+    @objc var access_token: String?
     //用户id
     @objc var uid:String?
     //过期日期戳
@@ -23,6 +25,34 @@ class MNUserAccount: NSObject {
     }
     //过期日期
     @objc var expiresDate : Date?
+    
+    override init() {
+        super.init()
+        
+        //load save userAccount info form disk
+        guard let filePath = accountFileName.cz_appendDocumentDir(),
+            let data = NSData(contentsOfFile: filePath),
+            let dic = try? JSONSerialization.jsonObject(with: data as Data, options: []) as? [String:AnyObject] else {
+                print("filePath or data is nil")
+                return
+        }
+        yy_modelSet(with: dic)
+        
+        
+        //token expires
+        expiresDate = Date(timeIntervalSinceNow: -3600 * 24)
+        if expiresDate?.compare(Date()) != .orderedDescending{
+            //过期 == 过期时间 < 当前时间 == 降序排列
+            print("账户过期")
+            
+            access_token = nil
+            uid = nil
+            
+            //remove save userinfo
+            try? FileManager.default.removeItem(atPath: filePath)
+        }
+        print("load user info form sandbox -> \(self)")
+    }
     
     override var description: String{
         return yy_modelDescription()
@@ -42,7 +72,7 @@ class MNUserAccount: NSObject {
         
         //序列化
         guard let data = try? JSONSerialization.data(withJSONObject: dic, options: []),
-        let filePath = ("userAccount.json" as NSString).cz_appendDocumentDir()
+        let filePath = accountFileName.cz_appendDocumentDir()
             else{
             return
         }
