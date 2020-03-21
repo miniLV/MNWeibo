@@ -82,9 +82,21 @@ extension MNOAuthViewController: WKNavigationDelegate{
         }
         
         print("授权授权码")
-        let code = webView.url?.query?.substring(from: "code=".count)
+        let code = webView.url?.query?.substring(from: "code=".count) ?? ""
         print("code = \(String(describing: code))")
-        MNNetworkManager.shared.getAccessToken(code: code ?? "")
+        MNNetworkManager.shared.getAccessToken(code: code, completion:{ (isSuccess) in
+            
+            if isSuccess{
+                print("login success")
+                self.closeWebView()
+                //refresh home view data
+                NotificationCenter.default.post(
+                    name: NSNotification.Name(MNUserLoginSuccessNotification),
+                    object: nil)
+            }else{
+                print("login failure")
+            }
+        })
     }
 }
 

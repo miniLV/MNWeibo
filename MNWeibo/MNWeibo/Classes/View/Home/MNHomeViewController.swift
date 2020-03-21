@@ -16,12 +16,7 @@ class MNHomeViewController: MNBaseViewController {
 
     override func loadDatas() {
         
-        print("will load == \(self.listViewModel.statusList.last)")
-        
         listViewModel.loadStatus(pullup: self.isPull) { (isSuccess, needRefresh)   in
-            
-            print("load finish")
-            
             self.refreshControl?.endRefreshing()
             self.isPull = false
             if needRefresh{

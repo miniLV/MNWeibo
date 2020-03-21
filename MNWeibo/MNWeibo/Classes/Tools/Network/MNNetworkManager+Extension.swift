@@ -45,7 +45,7 @@ extension MNNetworkManager{
 //MARK: - OAuth
 extension MNNetworkManager{
     
-    func getAccessToken(code: String){
+    func getAccessToken(code: String, completion: @escaping((_ isSuccess:Bool)->Void)){
         
         let urlString = "https://api.weibo.com/oauth2/access_token"
         let parms = ["client_id":MNAppKey,
@@ -58,10 +58,9 @@ extension MNNetworkManager{
             //使用YYModel转模型,如果转出来是nil,记得属性前面加`@objc` 关键字
             // ==> swift4以后_YYModelMeta中的_keyMappedCount获取不到不带`@objc`的变量
             self.userAccount.yy_modelSet(with: json as? [String:AnyObject] ?? [:])
-            
-            print(self.userAccount.yy_modelDescription())
-            
             self.userAccount.saveAccoutInfo()
+            
+            completion(isSuccess)
         }
     }
     

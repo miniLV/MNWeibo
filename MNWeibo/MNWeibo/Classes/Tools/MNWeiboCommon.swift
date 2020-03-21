@@ -19,4 +19,5 @@ let MNredirectUri = "http://baidu.com"
 
 let MNUserShouldLoginNotification = "MNUserShouldLoginNotification"
 
+let MNUserLoginSuccessNotification = "MNUserLoginSuccessNotification"
 

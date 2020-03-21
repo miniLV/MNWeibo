@@ -36,11 +36,9 @@ class MNUserAccount: NSObject {
                 print("filePath or data is nil")
                 return
         }
-        yy_modelSet(with: dic)
-        
+        //yy_modelSet(with: dic)
         
         //token expires
-        expiresDate = Date(timeIntervalSinceNow: -3600 * 24)
         if expiresDate?.compare(Date()) != .orderedDescending{
             //过期 == 过期时间 < 当前时间 == 降序排列
             print("账户过期")

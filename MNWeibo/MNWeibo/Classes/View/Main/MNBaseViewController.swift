@@ -27,6 +27,12 @@ class MNBaseViewController: UIViewController{
         super.viewDidLoad()
         setupUI()
         MNNetworkManager.shared.isLogin ? loadDatas() : ()
+        
+        registNotification()
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     override var title: String? {
@@ -39,6 +45,18 @@ class MNBaseViewController: UIViewController{
         refreshControl?.endRefreshing()
     }
     
+    func registNotification() {
+        NotificationCenter.default.addObserver(
+            forName: NSNotification.Name(MNUserLoginSuccessNotification),
+            object: nil,
+            queue:OperationQueue.main){ _ in
+                
+                //view == nil ==> loadView -> vidwDidLoad
+                self.view = nil
+                //vidwDidLoad will regist notifation, so need to remove current notificaton
+                NotificationCenter.default.removeObserver(self)
+        }
+    }
 }
 
 //MARK: - setup ui
