@@ -22,6 +22,8 @@
 		A7383B19241682AB0099822E /* MNWeiboUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7383B18241682AB0099822E /* MNWeiboUITests.swift */; };
 		A745A5982419206F00F9E138 /* UIBarButtonItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A745A5972419206F00F9E138 /* UIBarButtonItem+Extension.swift */; };
 		A745A59B241923F600F9E138 /* DemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A745A59A241923F600F9E138 /* DemoViewController.swift */; };
+		A79836142427B0750095586A /* MNWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79836132427B0750095586A /* MNWelcomeView.swift */; };
+		A79836162427B0BB0095586A /* MNNewFeatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79836152427B0BB0095586A /* MNNewFeatureView.swift */; };
 		A7D736342427308400CD3A04 /* MNTitleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D736332427308400CD3A04 /* MNTitleButton.swift */; };
 		A7E684EC24210C8A00A58E9E /* MNWeiboCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E684EB24210C8A00A58E9E /* MNWeiboCommon.swift */; };
 		A7E684EF24210E2300A58E9E /* MNOAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E684EE24210E2300A58E9E /* MNOAuthViewController.swift */; };
@@ -94,6 +96,8 @@
 		A7383B1A241682AB0099822E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A745A5972419206F00F9E138 /* UIBarButtonItem+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Extension.swift"; sourceTree = "<group>"; };
 		A745A59A241923F600F9E138 /* DemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoViewController.swift; sourceTree = "<group>"; };
+		A79836132427B0750095586A /* MNWelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNWelcomeView.swift; sourceTree = "<group>"; };
+		A79836152427B0BB0095586A /* MNNewFeatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNNewFeatureView.swift; sourceTree = "<group>"; };
 		A7D736332427308400CD3A04 /* MNTitleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNTitleButton.swift; sourceTree = "<group>"; };
 		A7E684EB24210C8A00A58E9E /* MNWeiboCommon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNWeiboCommon.swift; sourceTree = "<group>"; };
 		A7E684EE24210E2300A58E9E /* MNOAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNOAuthViewController.swift; sourceTree = "<group>"; };
@@ -281,6 +285,8 @@
 		A79836122427AFB30095586A /* NewFeature */ = {
 			isa = PBXGroup;
 			children = (
+				A79836132427B0750095586A /* MNWelcomeView.swift */,
+				A79836152427B0BB0095586A /* MNNewFeatureView.swift */,
 			);
 			path = NewFeature;
 			sourceTree = "<group>";
@@ -389,10 +395,10 @@
 			children = (
 				A79836122427AFB30095586A /* NewFeature */,
 				A7E684ED24210E0200A58E9E /* OAuth */,
-				A700BE2E241A8ED8000E2A1A /* main.json */,
 				A700BE2B241A73A0000E2A1A /* VisitorView */,
 				A745A59C2419327500F9E138 /* MainController */,
 				A7FFE68A2417D1070082F464 /* MNBaseViewController.swift */,
+				A700BE2E241A8ED8000E2A1A /* main.json */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -674,6 +680,7 @@
 				A7FFE71F2417DA160082F464 /* Bundle+Extensions.swift in Sources */,
 				A7FFE6E62417D68D0082F464 /* NSString+CZPath.m in Sources */,
 				A7E684EC24210C8A00A58E9E /* MNWeiboCommon.swift in Sources */,
+				A79836142427B0750095586A /* MNWelcomeView.swift in Sources */,
 				A7FFE6E12417D68D0082F464 /* UIColor+CZAddition.m in Sources */,
 				A7FFE68E2417D1440082F464 /* MNHomeViewController.swift in Sources */,
 				A7FFE6E52417D68D0082F464 /* NSString+CZBase64.m in Sources */,
@@ -691,6 +698,7 @@
 				A7E684F42422766C00A58E9E /* MNUserAccount.swift in Sources */,
 				A7FFE6892417D0E00082F464 /* MNNavigationController.swift in Sources */,
 				A7E684EF24210E2300A58E9E /* MNOAuthViewController.swift in Sources */,
+				A79836162427B0BB0095586A /* MNNewFeatureView.swift in Sources */,
 				A7FFE6EB2417D68D0082F464 /* NSAttributedString+CZAdditon.m in Sources */,
 				A700BE2D241A73BD000E2A1A /* MNVisitorView.swift in Sources */,
 				A7383AF9241682A90099822E /* SceneDelegate.swift in Sources */,
@@ -865,6 +873,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.-miniLV.MNWeibo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "MNWeibo/MNWeibo-Bridge.h";
@@ -884,6 +893,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.-miniLV.MNWeibo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "MNWeibo/MNWeibo-Bridge.h";

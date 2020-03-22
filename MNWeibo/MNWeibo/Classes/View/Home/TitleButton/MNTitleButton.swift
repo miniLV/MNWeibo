@@ -37,8 +37,6 @@ class MNTitleButton: UIButton {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        print("layoutSubviews")
-        
         guard let titleLabel = titleLabel, let imageView = imageView else {
             return
         }

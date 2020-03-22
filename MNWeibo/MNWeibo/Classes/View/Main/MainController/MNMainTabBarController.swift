@@ -19,6 +19,9 @@ class MNMainTabBarController: UITabBarController {
         setupChildrenControllers()
         setupCenterButton()
         setupTimer()
+        //新特性
+        setupNewFeatureViews()
+        
         delegate = self
         
         NotificationCenter.default.addObserver(self, selector: #selector(userLogin(noti:)), name: NSNotification.Name(MNUserShouldLoginNotification), object: nil)
@@ -198,3 +201,34 @@ extension MNMainTabBarController : UITabBarControllerDelegate{
     }
 }
 
+extension MNMainTabBarController{
+    
+    private func setupNewFeatureViews(){
+       
+        if !MNNetworkManager.shared.isLogin{
+            return
+        }
+        
+        let tempView = isNewVersion ? MNNewFeatureView() : MNWelcomeView()
+        
+        tempView.frame = view.bounds
+        
+        view.addSubview(tempView)
+    }
+    
+    private var isNewVersion: Bool{
+        
+        let saveVersionKey = "version"
+         let defaults = UserDefaults.standard
+        
+        let currentVersion:String = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
+        
+        let saveVersion:String = defaults.value(forKey: saveVersionKey) as? String ?? ""
+        
+        //save version
+        defaults.set(currentVersion, forKey: saveVersionKey)
+        
+        //版本号是递增的，只要不等，就是新版本
+        return currentVersion != saveVersion
+    }
+}
