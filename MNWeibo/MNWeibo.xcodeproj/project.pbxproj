@@ -24,6 +24,7 @@
 		A745A59B241923F600F9E138 /* DemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A745A59A241923F600F9E138 /* DemoViewController.swift */; };
 		A79836142427B0750095586A /* MNWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79836132427B0750095586A /* MNWelcomeView.swift */; };
 		A79836162427B0BB0095586A /* MNNewFeatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79836152427B0BB0095586A /* MNNewFeatureView.swift */; };
+		A79ABD822427BAC300EF602F /* MNLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79ABD812427BAC300EF602F /* MNLayout.swift */; };
 		A7D736342427308400CD3A04 /* MNTitleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D736332427308400CD3A04 /* MNTitleButton.swift */; };
 		A7E684EC24210C8A00A58E9E /* MNWeiboCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E684EB24210C8A00A58E9E /* MNWeiboCommon.swift */; };
 		A7E684EF24210E2300A58E9E /* MNOAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E684EE24210E2300A58E9E /* MNOAuthViewController.swift */; };
@@ -98,6 +99,7 @@
 		A745A59A241923F600F9E138 /* DemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoViewController.swift; sourceTree = "<group>"; };
 		A79836132427B0750095586A /* MNWelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNWelcomeView.swift; sourceTree = "<group>"; };
 		A79836152427B0BB0095586A /* MNNewFeatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNNewFeatureView.swift; sourceTree = "<group>"; };
+		A79ABD812427BAC300EF602F /* MNLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNLayout.swift; sourceTree = "<group>"; };
 		A7D736332427308400CD3A04 /* MNTitleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNTitleButton.swift; sourceTree = "<group>"; };
 		A7E684EB24210C8A00A58E9E /* MNWeiboCommon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNWeiboCommon.swift; sourceTree = "<group>"; };
 		A7E684EE24210E2300A58E9E /* MNOAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNOAuthViewController.swift; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 				A7383AF6241682A90099822E /* AppDelegate.swift */,
 				A7FFE7132417D7120082F464 /* MNWeibo-Bridge.h */,
 				A7383AF8241682A90099822E /* SceneDelegate.swift */,
+				A79ABD812427BAC300EF602F /* MNLayout.swift */,
 				A7383AFF241682AA0099822E /* Assets.xcassets */,
 				A7383B04241682AA0099822E /* Info.plist */,
 			);
@@ -692,6 +695,7 @@
 				A7FFE7202417DA160082F464 /* Date+Extensions.swift in Sources */,
 				A7D736342427308400CD3A04 /* MNTitleButton.swift in Sources */,
 				A7383AF7241682A90099822E /* AppDelegate.swift in Sources */,
+				A79ABD822427BAC300EF602F /* MNLayout.swift in Sources */,
 				A7FFE6E92417D68D0082F464 /* UIViewController+CZAddition.m in Sources */,
 				A7FFE6872417D0B60082F464 /* MNMainTabBarController.swift in Sources */,
 				A700BE34241E00D2000E2A1A /* MNNetworkManager+Extension.swift in Sources */,

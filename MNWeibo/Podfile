@@ -13,6 +13,7 @@ pod "FMDB"
 pod 'SVProgressHUD', :git => 'https://github.com/SVProgressHUD/SVProgressHUD.git'
 pod "pop"
 pod "SwiftyJSON"
+pod 'SnapKit', '~> 5.0.0'
 
   target 'MNWeiboTests' do
     inherit! :search_paths
