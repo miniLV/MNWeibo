@@ -73,7 +73,7 @@ extension MNBaseViewController:LoginDelegate{
         view.backgroundColor = UIColor.cz_random()
         setupNavigationBar()
         
-        MNNetworkManager.shared.isLogin ? setupTableView() : setupVisitorView()
+        MNNetworkManager.shared.isLogin ? setupLoginSuccessUI() : setupVisitorView()
         
         //取消自动缩进
         automaticallyAdjustsScrollViewInsets = false
@@ -84,6 +84,11 @@ extension MNBaseViewController:LoginDelegate{
     }
     
     //user login success, override this func to setup UI.
+    func setupLoginSuccessUI(){
+        setupTableView()
+        setupNaviTitle()
+    }
+    
     @objc func setupTableView(){
         tableView = UITableView(frame: view.bounds, style: .plain)
         view.insertSubview(tableView!, belowSubview: navigationBar)
@@ -96,6 +101,18 @@ extension MNBaseViewController:LoginDelegate{
         let tabBarHeight:CGFloat = 0
         tableView?.contentInset = UIEdgeInsets(top: toolHeight, left: 0, bottom: tabBarHeight, right: 0)
         tableView?.scrollIndicatorInsets = tableView!.contentInset
+    }
+    
+    func setupNaviTitle(){
+         print("111111111111111111")
+        
+        let title = MNNetworkManager.shared.userAccount.screen_name
+        let button = MNTitleButton(title: title, target: self, action: #selector(clickTitleButton(button:)))
+        naviItem.titleView = button
+    }
+    
+    @objc func clickTitleButton(button: UIButton){
+        button.isSelected = !button.isSelected
     }
     
     private func setupVisitorView(){

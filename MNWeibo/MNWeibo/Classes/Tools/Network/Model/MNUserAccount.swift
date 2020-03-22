@@ -16,7 +16,7 @@ class MNUserAccount: NSObject {
     //访问令牌("2.00xo2AICPKBYGDa1010f10b80BrjTU")
     @objc var access_token: String?
     //用户id
-    @objc var uid:String?
+    @objc var uid: String?
     //过期日期戳
     @objc var expires_in: TimeInterval = 0.0{
         didSet{
@@ -24,7 +24,11 @@ class MNUserAccount: NSObject {
         }
     }
     //过期日期
-    @objc var expiresDate : Date?
+    @objc var expiresDate: Date?
+    
+    @objc var screen_name: String?
+    
+    @objc var avatar_large: String?
     
     override init() {
         super.init()
@@ -49,7 +53,7 @@ class MNUserAccount: NSObject {
             //remove save userinfo
             try? FileManager.default.removeItem(atPath: filePath)
         }
-        print("load user info form sandbox -> \(self)")
+        //load user info form sandbox
     }
     
     override var description: String{

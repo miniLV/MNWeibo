@@ -81,7 +81,6 @@ extension MNMainTabBarController{
         // request unreadCount data
         MNNetworkManager.shared.unreadCount { (count) in
             
-            print("badgeValue = \(count)")
             //设置首页的badge
             self.tabBar.items?[0].badgeValue = count > 0 ? "\(count)" : nil
             //set app badgeValue
@@ -99,7 +98,6 @@ extension MNMainTabBarController{
         let width = tabBar.bounds.width / count
         let leftItemCount:CGFloat = 2
         tabBarCenterButtion.frame = tabBar.bounds.insetBy(dx: leftItemCount * width, dy: 0)
-        print("frame = \(tabBarCenterButtion.frame)")
         tabBarCenterButtion.addTarget(self, action: #selector(centerBtnClick), for: .touchUpInside)
         
     }
