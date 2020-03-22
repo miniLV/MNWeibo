@@ -104,8 +104,7 @@ extension MNBaseViewController:LoginDelegate{
     }
     
     func setupNaviTitle(){
-         print("111111111111111111")
-        
+
         let title = MNNetworkManager.shared.userAccount.screen_name
         let button = MNTitleButton(title: title, target: self, action: #selector(clickTitleButton(button:)))
         naviItem.titleView = button

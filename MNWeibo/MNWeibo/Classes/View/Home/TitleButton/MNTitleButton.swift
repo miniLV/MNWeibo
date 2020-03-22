@@ -14,7 +14,7 @@ class MNTitleButton: UIButton {
     //title isn't nil ==> display userName & arrow image
     init(title: String?, target: Any?, action: Selector) {
         super.init(frame: CGRect())
- 
+
         if title == nil{
             setTitle("首页", for: .normal)
         }else{
@@ -37,18 +37,23 @@ class MNTitleButton: UIButton {
     override func layoutSubviews() {
         super.layoutSubviews()
         
+        print("layoutSubviews")
+        
         guard let titleLabel = titleLabel, let imageView = imageView else {
             return
         }
+
+        //FIXME: call layoutSubviews twice
         
-        print("11111 titleLabel = \(titleLabel),imageView = \(imageView) ")
         //设置文字在做，图片在右
         //1.将titlelabel 的 x, 向左移动 imageView的宽度
-        titleLabel.frame = titleLabel.frame.offsetBy(dx: -imageView.frame.width, dy: 0)
-        
-        print("22222 titleLabel = \(titleLabel),imageView = \(imageView) ")
-        
+        if titleLabel.frame.origin.x > 0 {
+            titleLabel.frame = titleLabel.frame.offsetBy(dx: -imageView.frame.width, dy: 0)
+        }
+
         //2.将imageView 的 x, 向右移动 titleLabel的宽度
-        imageView.frame = imageView.frame.offsetBy(dx: titleLabel.frame.width, dy: 0)
+        if imageView.frame.origin.x == 0 {
+            imageView.frame = imageView.frame.offsetBy(dx: titleLabel.frame.width, dy: 0)
+        }
     }
 }

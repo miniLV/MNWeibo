@@ -278,6 +278,13 @@
 			path = MainController;
 			sourceTree = "<group>";
 		};
+		A79836122427AFB30095586A /* NewFeature */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = NewFeature;
+			sourceTree = "<group>";
+		};
 		A7D736322427304100CD3A04 /* TitleButton */ = {
 			isa = PBXGroup;
 			children = (
@@ -380,6 +387,7 @@
 		A7FFE6852417D05E0082F464 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				A79836122427AFB30095586A /* NewFeature */,
 				A7E684ED24210E0200A58E9E /* OAuth */,
 				A700BE2E241A8ED8000E2A1A /* main.json */,
 				A700BE2B241A73A0000E2A1A /* VisitorView */,
