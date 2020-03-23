@@ -39,8 +39,12 @@ import UIKit
 struct MNLayout {
 
     static let ratio:CGFloat = UIScreen.main.bounds.width / 375.0
-    
     static func Layout(_ number: CGFloat) -> CGFloat {
         return number * ratio
     }
+}
+
+struct MNScreen {
+    static let screenW:CGFloat = UIScreen.main.bounds.width
+    static let screenH:CGFloat = UIScreen.main.bounds.height
 }

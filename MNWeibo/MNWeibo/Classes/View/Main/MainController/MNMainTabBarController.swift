@@ -55,7 +55,6 @@ class MNMainTabBarController: UITabBarController {
     //center click action
     //@objc: 可以用OC的消息机制调用
     @objc private func centerBtnClick() {
-        print("123")
         
         let vc = UIViewController()
         let navi = UINavigationController(rootViewController: vc)
@@ -210,19 +209,15 @@ extension MNMainTabBarController{
         }
         
         let tempView = isNewVersion ? MNNewFeatureView() : MNWelcomeView()
-        
         tempView.frame = view.bounds
-        
         view.addSubview(tempView)
     }
     
     private var isNewVersion: Bool{
         
         let saveVersionKey = "version"
-         let defaults = UserDefaults.standard
-        
+        let defaults = UserDefaults.standard
         let currentVersion:String = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
-        
         let saveVersion:String = defaults.value(forKey: saveVersionKey) as? String ?? ""
         
         //save version
