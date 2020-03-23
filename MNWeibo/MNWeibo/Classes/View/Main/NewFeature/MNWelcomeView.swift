@@ -8,17 +8,19 @@
 
 import UIKit
 import SnapKit
-
-
+import SDWebImage
 
 class MNWelcomeView: UIView {
+    
+    lazy var avatarImageView = UIImageView(image: UIImage(named: "avatar_default_big"))
+    lazy var label = UILabel()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         backgroundColor = UIColor.orange
-        
         setupSubviews()
+        updateAvatar()
     }
     
     required init?(coder: NSCoder) {
@@ -33,7 +35,6 @@ class MNWelcomeView: UIView {
             $0.left.right.bottom.top.equalToSuperview()
         }
         
-        let avatarImageView = UIImageView(image: UIImage(named: "avatar_default_big"))
         backgroundImageView.addSubview(avatarImageView)
         avatarImageView.snp.makeConstraints {
             $0.centerX.equalToSuperview()
@@ -41,13 +42,45 @@ class MNWelcomeView: UIView {
             $0.bottom.equalTo(-MNLayout.Layout(160))
         }
         
-        let label = UILabel()
         label.text = "欢迎归来"
+        label.alpha = 0
         backgroundImageView.addSubview(label)
         label.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.top.equalTo((avatarImageView.snp_bottomMargin)).offset(MNLayout.Layout(15))
         }
+    }
+    
+    private func updateAvatar(){
+        guard let urlString = MNNetworkManager.shared.userAccount.avatar_large,
+        let url = URL(string: urlString) else {
+            return
+        }
+
+        avatarImageView.sd_setImage(with: url, placeholderImage: UIImage(named: "avatar_default_big"))
+    }
+    
+    //表示试图已经显示
+    override func didMoveToWindow() {
+        super.didMoveToWindow()
+        // 按照当前约束 - 更新控件位置
+        self.layoutIfNeeded()
+        self.avatarImageView.snp.updateConstraints {
+            $0.bottom.equalTo(-MNLayout.Layout(360))
+        }
         
+        UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0, options: [], animations: {
+            
+            //更新变化的约束 - avatarImageView上移
+            self.layoutIfNeeded()
+            
+        }) { (_) in
+
+            UIView.animate(withDuration: 1, animations: {
+                self.label.alpha = 1
+            }) { (_) in
+                self.removeFromSuperview()
+            }
+        }
     }
 }
