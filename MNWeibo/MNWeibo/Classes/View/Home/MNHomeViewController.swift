@@ -47,8 +47,9 @@ extension MNHomeViewController{
 //            cell = MNHomeNormalCell(style: .default, reuseIdentifier: cellID)
 //        }
         
-        let model = listViewModel.statusList[indexPath.row]
-        cell.contentLabel.text = model.text
+        let viewModel = listViewModel.statusList[indexPath.row]
+        cell.contentLabel.text = viewModel.status.text
+        cell.nameLabel.text = viewModel.status.user?.screen_name
         return cell
     }
 }
@@ -59,6 +60,7 @@ extension MNHomeViewController{
         super.setupTableView()
         tableView?.rowHeight = UITableView.automaticDimension
         tableView?.estimatedRowHeight = 250
+        tableView?.separatorStyle = .none
         naviItem.leftBarButtonItem = UIBarButtonItem(title: "好友", fontSize: 16, target: self, action: #selector(showFridends))
         
         tableView?.register(UITableViewCell.self, forCellReuseIdentifier: cellID)

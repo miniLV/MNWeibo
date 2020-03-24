@@ -21,6 +21,8 @@
 		A7383B0E241682AB0099822E /* MNWeiboTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7383B0D241682AB0099822E /* MNWeiboTests.swift */; };
 		A7383B19241682AB0099822E /* MNWeiboUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7383B18241682AB0099822E /* MNWeiboUITests.swift */; };
 		A73B4447242A548200033F5B /* MNHomeNormalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73B4446242A548200033F5B /* MNHomeNormalCell.swift */; };
+		A73B4449242A5EE500033F5B /* MNUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73B4448242A5EE500033F5B /* MNUserModel.swift */; };
+		A73B444B242A61CE00033F5B /* MNStatusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73B444A242A61CE00033F5B /* MNStatusViewModel.swift */; };
 		A745A5982419206F00F9E138 /* UIBarButtonItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A745A5972419206F00F9E138 /* UIBarButtonItem+Extension.swift */; };
 		A745A59B241923F600F9E138 /* DemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A745A59A241923F600F9E138 /* DemoViewController.swift */; };
 		A79836142427B0750095586A /* MNWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79836132427B0750095586A /* MNWelcomeView.swift */; };
@@ -97,6 +99,8 @@
 		A7383B18241682AB0099822E /* MNWeiboUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNWeiboUITests.swift; sourceTree = "<group>"; };
 		A7383B1A241682AB0099822E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A73B4446242A548200033F5B /* MNHomeNormalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNHomeNormalCell.swift; sourceTree = "<group>"; };
+		A73B4448242A5EE500033F5B /* MNUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNUserModel.swift; sourceTree = "<group>"; };
+		A73B444A242A61CE00033F5B /* MNStatusViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNStatusViewModel.swift; sourceTree = "<group>"; };
 		A745A5972419206F00F9E138 /* UIBarButtonItem+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Extension.swift"; sourceTree = "<group>"; };
 		A745A59A241923F600F9E138 /* DemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoViewController.swift; sourceTree = "<group>"; };
 		A79836132427B0750095586A /* MNWelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNWelcomeView.swift; sourceTree = "<group>"; };
@@ -343,6 +347,7 @@
 			isa = PBXGroup;
 			children = (
 				A700BE37241E1646000E2A1A /* MNStatusListViewModel.swift */,
+				A73B444A242A61CE00033F5B /* MNStatusViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -362,6 +367,7 @@
 			isa = PBXGroup;
 			children = (
 				A700BE35241E0ED4000E2A1A /* MNStatusModel.swift */,
+				A73B4448242A5EE500033F5B /* MNUserModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -697,7 +703,9 @@
 				A79836142427B0750095586A /* MNWelcomeView.swift in Sources */,
 				A7FFE6E12417D68D0082F464 /* UIColor+CZAddition.m in Sources */,
 				A7FFE68E2417D1440082F464 /* MNHomeViewController.swift in Sources */,
+				A73B4449242A5EE500033F5B /* MNUserModel.swift in Sources */,
 				A7FFE6E52417D68D0082F464 /* NSString+CZBase64.m in Sources */,
+				A73B444B242A61CE00033F5B /* MNStatusViewModel.swift in Sources */,
 				A7FFE68B2417D1070082F464 /* MNBaseViewController.swift in Sources */,
 				A73B4447242A548200033F5B /* MNHomeNormalCell.swift in Sources */,
 				A7FFE6E42417D68D0082F464 /* UILabel+CZAddition.m in Sources */,

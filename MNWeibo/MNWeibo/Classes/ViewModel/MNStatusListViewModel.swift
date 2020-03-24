@@ -14,7 +14,7 @@ private let maxPullupTimes = 5
 
 // weibo data handle
 class MNStatusListViewModel {
-    lazy var statusList = [MNStatusModel]()
+    lazy var statusList = [MNStatusViewModel]()
     
     private var pullupErrorTimes = 0
     /// 处理微博首页数据
@@ -30,19 +30,27 @@ class MNStatusListViewModel {
         }
         
         //取出当前最新的数据 -> 越上面越新
-        let since_id = pullup ? 0 : (statusList.first?.id ?? 0)
+        let since_id = pullup ? 0 : (statusList.first?.status.id ?? 0)
         // 上拉加载更多 -> 取最旧的一条(last)
-        let max_id = !pullup ? 0 : (statusList.last?.id ?? 0)
+        let max_id = !pullup ? 0 : (statusList.last?.status.id ?? 0)
         
         MNNetworkManager.shared.fetchHomePageList(since_id: since_id, max_id: max_id){ (isSuccess, list) in
             
-            //swift 版 字典转模型
-            guard let array = NSArray.yy_modelArray(with: MNStatusModel.self, json: list ?? []) as? [MNStatusModel] else{
-                completion(isSuccess, false)
+            if !isSuccess{
+                completion(false, false)
                 return
             }
             
-            print("刷新了 -- \(array.count) 条")
+            var array = [MNStatusViewModel]()
+            for dic in list ?? []{
+
+                guard let model = MNStatusModel.yy_model(with: dic) else{
+                    continue
+                }
+                //转换成 model -> MNStatusViewModel
+                array.append(MNStatusViewModel(model: model))
+            }
+            
             //data handle
             if pullup{
                 //上拉加载更多，拼接在数组最后

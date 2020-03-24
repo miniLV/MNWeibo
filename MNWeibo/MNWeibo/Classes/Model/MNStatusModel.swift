@@ -11,7 +11,10 @@ import YYModel
 
 class MNStatusModel: NSObject {
     @objc var id: Int64 = 0
+    
     @objc var text: String?
+    
+    @objc var user: MNUserModel?
     
     override var description: String{
         return yy_modelDescription()
