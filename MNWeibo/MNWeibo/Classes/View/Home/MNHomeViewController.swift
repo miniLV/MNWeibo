@@ -39,13 +39,16 @@ extension MNHomeViewController{
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath)
+//        let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! MNHomeNormalCell
         
-        if cell == nil {
-            cell = UITableViewCell(style: .default, reuseIdentifier: cellID)
-        }
+        let cell = MNHomeNormalCell(style: .default, reuseIdentifier: cellID)
+        
+//        if cell == nil {
+//            cell = MNHomeNormalCell(style: .default, reuseIdentifier: cellID)
+//        }
+        
         let model = listViewModel.statusList[indexPath.row]
-        cell.textLabel?.text = model.text
+        cell.contentLabel.text = model.text
         return cell
     }
 }
@@ -54,6 +57,8 @@ extension MNHomeViewController{
 
     override func setupTableView() {
         super.setupTableView()
+        tableView?.rowHeight = UITableView.automaticDimension
+        tableView?.estimatedRowHeight = 250
         naviItem.leftBarButtonItem = UIBarButtonItem(title: "好友", fontSize: 16, target: self, action: #selector(showFridends))
         
         tableView?.register(UITableViewCell.self, forCellReuseIdentifier: cellID)
