@@ -35,10 +35,13 @@ class MNWelcomeView: UIView {
             $0.left.right.bottom.top.equalToSuperview()
         }
         
+        let avatarImageViewWH = MNLayout.Layout(85)
+        avatarImageView.layer.cornerRadius = avatarImageViewWH * 0.5
+        avatarImageView.layer.masksToBounds = true
         backgroundImageView.addSubview(avatarImageView)
         avatarImageView.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.size.equalTo(MNLayout.Layout(85))
+            $0.size.equalTo(avatarImageViewWH)
             $0.bottom.equalTo(-MNLayout.Layout(160))
         }
         

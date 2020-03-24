@@ -39,6 +39,7 @@ class MNNewFeatureView: UIView {
         pageControl.currentPageIndicatorTintColor = UIColor.orange
         pageControl.pageIndicatorTintColor = UIColor.darkGray
         pageControl.numberOfPages = pageCount
+        pageControl.isUserInteractionEnabled = false
         addSubview(pageControl)
         pageControl.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()

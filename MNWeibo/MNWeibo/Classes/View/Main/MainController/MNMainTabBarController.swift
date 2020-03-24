@@ -194,6 +194,10 @@ extension MNMainTabBarController : UITabBarControllerDelegate{
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                  vc.loadDatas()
             }
+            
+            //clear badgeNumber
+            vc.tabBarItem.badgeValue = nil
+            UIApplication.shared.applicationIconBadgeNumber = 0
         }
         
         return !viewController.isMember(of: UIViewController.self)
