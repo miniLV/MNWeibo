@@ -48,8 +48,7 @@ extension MNHomeViewController{
 //        }
         
         let viewModel = listViewModel.statusList[indexPath.row]
-        cell.contentLabel.text = viewModel.status.text
-        cell.nameLabel.text = viewModel.status.user?.screen_name
+        cell.viewModel = viewModel
         return cell
     }
 }

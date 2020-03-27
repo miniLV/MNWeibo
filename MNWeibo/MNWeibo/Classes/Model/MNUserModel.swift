@@ -20,7 +20,7 @@ class MNUserModel: NSObject {
     @objc var verified_type: Int = 0
     
     // 会员等级 0~6
-    @objc var mnrank: Int = 0
+    @objc var mbrank: Int = 0
     
     override var description: String{
         return yy_modelDescription()

@@ -33,6 +33,8 @@
 		A7E684EF24210E2300A58E9E /* MNOAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E684EE24210E2300A58E9E /* MNOAuthViewController.swift */; };
 		A7E684F124226AD800A58E9E /* String+Substring.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E684F024226AD800A58E9E /* String+Substring.swift */; };
 		A7E684F42422766C00A58E9E /* MNUserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E684F32422766C00A58E9E /* MNUserAccount.swift */; };
+		A7EFF4A8242E412A001AB430 /* UIImageView+MNWebImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7EFF4A7242E412A001AB430 /* UIImageView+MNWebImage.swift */; };
+		A7EFF4AC242E439A001AB430 /* UIImage+MNExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7EFF4AB242E439A001AB430 /* UIImage+MNExtensions.swift */; };
 		A7FFE6872417D0B60082F464 /* MNMainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FFE6862417D0B60082F464 /* MNMainTabBarController.swift */; };
 		A7FFE6892417D0E00082F464 /* MNNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FFE6882417D0E00082F464 /* MNNavigationController.swift */; };
 		A7FFE68B2417D1070082F464 /* MNBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FFE68A2417D1070082F464 /* MNBaseViewController.swift */; };
@@ -111,6 +113,8 @@
 		A7E684EE24210E2300A58E9E /* MNOAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNOAuthViewController.swift; sourceTree = "<group>"; };
 		A7E684F024226AD800A58E9E /* String+Substring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Substring.swift"; sourceTree = "<group>"; };
 		A7E684F32422766C00A58E9E /* MNUserAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNUserAccount.swift; sourceTree = "<group>"; };
+		A7EFF4A7242E412A001AB430 /* UIImageView+MNWebImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+MNWebImage.swift"; sourceTree = "<group>"; };
+		A7EFF4AB242E439A001AB430 /* UIImage+MNExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+MNExtensions.swift"; sourceTree = "<group>"; };
 		A7FFE6862417D0B60082F464 /* MNMainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNMainTabBarController.swift; sourceTree = "<group>"; };
 		A7FFE6882417D0E00082F464 /* MNNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNNavigationController.swift; sourceTree = "<group>"; };
 		A7FFE68A2417D1070082F464 /* MNBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNBaseViewController.swift; sourceTree = "<group>"; };
@@ -471,6 +475,8 @@
 				A7FFE71A2417DA160082F464 /* Date+Extensions.swift */,
 				A745A5972419206F00F9E138 /* UIBarButtonItem+Extension.swift */,
 				A7E684F024226AD800A58E9E /* String+Substring.swift */,
+				A7EFF4A7242E412A001AB430 /* UIImageView+MNWebImage.swift */,
+				A7EFF4AB242E439A001AB430 /* UIImage+MNExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -708,6 +714,7 @@
 				A73B444B242A61CE00033F5B /* MNStatusViewModel.swift in Sources */,
 				A7FFE68B2417D1070082F464 /* MNBaseViewController.swift in Sources */,
 				A73B4447242A548200033F5B /* MNHomeNormalCell.swift in Sources */,
+				A7EFF4AC242E439A001AB430 /* UIImage+MNExtensions.swift in Sources */,
 				A7FFE6E42417D68D0082F464 /* UILabel+CZAddition.m in Sources */,
 				A7FFE6E82417D68D0082F464 /* NSObject+CZRuntime.m in Sources */,
 				A7E684F124226AD800A58E9E /* String+Substring.swift in Sources */,
@@ -718,6 +725,7 @@
 				A79ABD822427BAC300EF602F /* MNLayout.swift in Sources */,
 				A7FFE6E92417D68D0082F464 /* UIViewController+CZAddition.m in Sources */,
 				A7FFE6872417D0B60082F464 /* MNMainTabBarController.swift in Sources */,
+				A7EFF4A8242E412A001AB430 /* UIImageView+MNWebImage.swift in Sources */,
 				A700BE34241E00D2000E2A1A /* MNNetworkManager+Extension.swift in Sources */,
 				A7E684F42422766C00A58E9E /* MNUserAccount.swift in Sources */,
 				A7FFE6892417D0E00082F464 /* MNNavigationController.swift in Sources */,

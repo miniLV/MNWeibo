@@ -10,6 +10,19 @@ import UIKit
 
 class MNHomeNormalCell: UITableViewCell {
 
+    var viewModel: MNStatusViewModel?{
+        didSet{
+            contentLabel.text = viewModel?.status.text
+            nameLabel.text = viewModel?.status.user?.screen_name
+            //提前计算好
+            levelIconView.image = viewModel?.levelIcon
+            vipIconView.image = viewModel?.vipIcon
+            
+            avatarImage.mn_setImage(urlString: viewModel?.status.user?.profile_image_url,
+                                    placeholderImage: UIImage(named: "avatar_default_big"),
+                                    isAvatar: true)
+        }
+    }
     var avatarImage = UIImageView()
     var nameLabel = UILabel()
     var levelIconView = UIImageView(image: UIImage(named: "common_icon_membership"))
@@ -65,7 +78,7 @@ class MNHomeNormalCell: UITableViewCell {
         addSubview(levelIconView)
         levelIconView.snp.makeConstraints { (make) in
             make.centerY.equalTo(nameLabel)
-            make.left.equalTo(nameLabel.snp_rightMargin).offset(MNLayout.Layout(4))
+            make.left.equalTo(nameLabel.snp_rightMargin).offset(MNLayout.Layout(10))
             make.size.equalTo(MNLayout.Layout(14))
         }
         
@@ -88,8 +101,8 @@ class MNHomeNormalCell: UITableViewCell {
         addSubview(vipIconView)
         vipIconView.snp.makeConstraints { (make) in
             make.size.equalTo(MNLayout.Layout(14))
-            make.centerX.equalTo(avatarImage.snp_rightMargin)
-            make.centerY.equalTo(avatarImage.snp_bottomMargin)
+            make.centerX.equalTo(avatarImage.snp_rightMargin).offset(MNLayout.Layout(5))
+            make.centerY.equalTo(avatarImage.snp_bottomMargin).offset(MNLayout.Layout(5))
         }
         
         contentLabel.numberOfLines = 0
