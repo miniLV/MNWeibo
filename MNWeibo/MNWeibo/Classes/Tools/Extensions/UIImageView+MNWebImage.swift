@@ -19,7 +19,10 @@ extension UIImageView{
             return
         }
         
-        sd_setImage(with: url, placeholderImage: placeholderImage, options: [], context: nil, progress: nil) { [weak self] (image, _, _, _) in
+        sd_setImage(with: url, placeholderImage: placeholderImage, options: [], context: nil, progress: nil) { [weak self] (image, error, _, _) in
+            if (error != nil){
+                print("url = \(url), error = \(String(describing: error))")
+            }
             
             if isAvatar {
                 let avatarImage = image?.mn_avatarImage(size: self?.bounds.size)

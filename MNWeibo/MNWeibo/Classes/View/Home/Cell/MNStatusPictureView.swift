@@ -19,13 +19,19 @@ class MNStatusPictureView: UIView {
                 print("MNStatusPictureView - urls is empty.")
                 return
             }
-            for (index, url) in urls.enumerated(){
+            
+            var index = 0
+            for url in urls{
                 let iv:UIImageView = subviews[index] as! UIImageView
-//                iv.mn_setImage(urlString: url.thumbnail_pic, placeholderImage: nil)
-                iv.mn_setImage(urlString: viewModel?.status.user?.profile_image_url,
-                                                   placeholderImage: UIImage(named: "avatar_default_big"),
-                                                   isAvatar: true)
+                
+                //特殊处理4张图片的情况
+                if index == 1 && urls.count == 4{
+                    index += 1
+                }
+                
+                iv.mn_setImage(urlString: url.thumbnail_pic, placeholderImage: nil)
                 iv.isHidden = false
+                index += 1
             }
         }
     }
@@ -33,7 +39,6 @@ class MNStatusPictureView: UIView {
     var viewModel: MNStatusViewModel?{
         didSet{
             urls = viewModel?.status.pic_urls
-            print("set urls = \(String(describing: urls))")
             self.snp.updateConstraints { (make) in
                 make.height.equalTo(viewModel?.pictureViewSize.height ?? 0)
             }
@@ -42,8 +47,9 @@ class MNStatusPictureView: UIView {
 
     init(parentView: UIView?, topView: UIView?, bottomView: UIView?) {
         super.init(frame: CGRect())
+        self.backgroundColor = superview?.backgroundColor
+        
         let margin = MNLayout.Layout(12)
-        self.backgroundColor = UIColor.orange
         guard let parentView = parentView, let topView = topView, let bottomView = bottomView else {
             return
         }
@@ -68,14 +74,15 @@ class MNStatusPictureView: UIView {
         for i in 0..<maxCount{
             
             let iv = UIImageView()
-//            iv.backgroundColor = UIColor.red
+            iv.contentMode = .scaleAspectFill
+            iv.clipsToBounds = true
             iv.image = UIImage(named: "timeline_icon_ip")
             let row = CGFloat(i / Int(MNPictureMaxPerLine))
             let column = CGFloat(i % Int(MNPictureMaxPerLine))
             let x = column * (MNPictureItemWidth + MNStatusPictureInnerMargin)
             let y = row * (MNPictureItemWidth + MNStatusPictureInnerMargin)
             iv.frame = CGRect(x: x, y: y, width: MNPictureItemWidth, height: MNPictureItemWidth)
-            
+        
             addSubview(iv)
         }
     }
