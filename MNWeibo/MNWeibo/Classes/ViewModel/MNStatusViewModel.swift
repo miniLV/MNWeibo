@@ -18,11 +18,18 @@ class MNStatusViewModel: CustomStringConvertible {
     
     var vipIcon: UIImage?
     
+    var repostStr: String?
+    
+    var commentStr: String?
+    
+    var likeStr: String?
+    
     init(model:MNStatusModel) {
         self.status = model
         
         getLevelIcon(model: model)
         getVipIcon(model: model)
+        getToolCountString(model:model)
     }
     
     private func getLevelIcon(model: MNStatusModel){
@@ -49,6 +56,24 @@ class MNStatusViewModel: CustomStringConvertible {
         default:
             print("没有认证")
         }
+    }
+    
+    private func getToolCountString(model: MNStatusModel){
+        repostStr = countSting(count: model.reposts_count, defaultStr: " 转发")
+        commentStr = countSting(count: model.comments_count, defaultStr: " 评论")
+        likeStr = countSting(count: model.attitudes_count, defaultStr: " 点赞")
+    }
+    
+    private func countSting(count:Int, defaultStr: String) -> String{
+        
+        if count == 0{
+            return defaultStr
+        }
+        if count < 10000{
+            return count.description
+        }
+        
+        return String(format: "%.02f万", Double(count) / 10000)
     }
     
     var description: String{

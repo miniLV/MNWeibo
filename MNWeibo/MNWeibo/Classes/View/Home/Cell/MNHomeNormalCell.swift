@@ -21,6 +21,7 @@ class MNHomeNormalCell: UITableViewCell {
             avatarImage.mn_setImage(urlString: viewModel?.status.user?.profile_image_url,
                                     placeholderImage: UIImage(named: "avatar_default_big"),
                                     isAvatar: true)
+            bottomView.viewModel = viewModel
         }
     }
     var avatarImage = UIImageView()
@@ -32,7 +33,7 @@ class MNHomeNormalCell: UITableViewCell {
     var contentLabel = UILabel()
     
     //toolButton
-    var bottomView = MNStatusToolView()
+    var bottomView:MNStatusToolView = MNStatusToolView(parentView: nil)
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -108,19 +109,17 @@ class MNHomeNormalCell: UITableViewCell {
             make.centerY.equalTo(avatarImage.snp_bottomMargin).offset(MNLayout.Layout(5))
         }
         
-        
-//        let bottomToolView = setupBottomToolView()
-        
-//        contentLabel.numberOfLines = 0
-//        contentLabel.textAlignment = .left
-//        contentLabel.font = UIFont.systemFont(ofSize: MNLayout.Layout(15))
-//        addSubview(contentLabel)
-//        contentLabel.snp.makeConstraints { (make) in
-//            make.left.equalTo(avatarImage)
-//            make.top.equalTo(avatarImage.snp_bottomMargin).offset(MNLayout.Layout(11))
-//            make.right.equalToSuperview().offset(-MNLayout.Layout(11))
-//            make.bottom.equalTo(bottomToolView.snp_topMargin).offset(-MNLayout.Layout(12))
-//        }
+        bottomView = MNStatusToolView(parentView: self)
+        contentLabel.numberOfLines = 0
+        contentLabel.textAlignment = .left
+        contentLabel.font = UIFont.systemFont(ofSize: MNLayout.Layout(15))
+        addSubview(contentLabel)
+        contentLabel.snp.makeConstraints { (make) in
+            make.left.equalTo(avatarImage)
+            make.top.equalTo(avatarImage.snp_bottomMargin).offset(MNLayout.Layout(11))
+            make.right.equalToSuperview().offset(-MNLayout.Layout(11))
+            make.bottom.equalTo(bottomView.snp_topMargin).offset(-MNLayout.Layout(12))
+        }
         
     }
     

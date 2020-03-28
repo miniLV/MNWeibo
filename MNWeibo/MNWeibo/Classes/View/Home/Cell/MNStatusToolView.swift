@@ -16,53 +16,50 @@ class MNStatusToolView: UIView {
     
     var viewModel:MNStatusViewModel?{
         didSet{
-            repostButton.setTitle("\(String(describing: viewModel?.status.reposts_count))", for: .normal)
-            commentsButton.setTitle("\(String(describing: viewModel?.status.comments_count))", for: .normal)
-            likeButton.setTitle("\(String(describing: viewModel?.status.attitudes_count))", for: .normal)
+            repostButton.setTitle(viewModel?.repostStr, for: .normal)
+            commentsButton.setTitle(viewModel?.commentStr, for: .normal)
+            likeButton.setTitle(viewModel?.likeStr, for: .normal)
         }
     }
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(parentView: UIView?) {
+        super.init(frame: CGRect())
         
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func setupBottomToolView() -> UIView{
+        if parentView == nil{
+            return
+        }
         
-        let bottomView = UIView()
-        addSubview(bottomView)
-        bottomView.backgroundColor = UIColor.orange
-        bottomView.snp.makeConstraints { (make) in
+        parentView?.addSubview(self)
+        self.snp.makeConstraints { (make) in
             make.left.right.bottom.equalToSuperview()
             make.height.equalTo(MNLayout.Layout(28))
         }
         
         let bottomToolView = UIStackView()
-        bottomView.addSubview(bottomToolView)
+        self.addSubview(bottomToolView)
         bottomToolView.translatesAutoresizingMaskIntoConstraints = false
         bottomToolView.alignment = .fill
         bottomToolView.distribution = .fillEqually
         bottomToolView.spacing = 0
         bottomToolView.axis = .horizontal
         NSLayoutConstraint.activate([
-            bottomToolView.leftAnchor.constraint(equalTo: bottomView.leftAnchor),
-            bottomToolView.rightAnchor.constraint(equalTo: bottomView.rightAnchor),
-            bottomToolView.topAnchor.constraint(equalTo: bottomView.topAnchor),
-            bottomToolView.bottomAnchor.constraint(equalTo: bottomView.bottomAnchor)
+            bottomToolView.leftAnchor.constraint(equalTo: self.leftAnchor),
+            bottomToolView.rightAnchor.constraint(equalTo: self.rightAnchor),
+            bottomToolView.topAnchor.constraint(equalTo: self.topAnchor),
+            bottomToolView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
         
         repostButton.mn_toolButton(type: .repost)
-        commentsButton.mn_toolButton(type: .comments)
-        likeButton.mn_toolButton(type: .like)
-        
         bottomToolView.addArrangedSubview(repostButton)
-        bottomToolView.addArrangedSubview(commentsButton)
-        bottomToolView.addArrangedSubview(likeButton)
         
-        return bottomView
+        commentsButton.mn_toolButton(type: .comments)
+        bottomToolView.addArrangedSubview(commentsButton)
+        
+        likeButton.mn_toolButton(type: .like)
+        bottomToolView.addArrangedSubview(likeButton)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
