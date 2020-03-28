@@ -44,6 +44,8 @@ class MNStatusListViewModel {
             var array = [MNStatusViewModel]()
             for dic in list ?? []{
 
+                
+                
                 guard let model = MNStatusModel.yy_model(with: dic) else{
                     continue
                 }
@@ -51,6 +53,7 @@ class MNStatusListViewModel {
                 array.append(MNStatusViewModel(model: model))
             }
             
+            print("==> \(array)")
             //data handle
             if pullup{
                 //上拉加载更多，拼接在数组最后

@@ -24,12 +24,15 @@ class MNStatusViewModel: CustomStringConvertible {
     
     var likeStr: String?
     
+    var pictureViewSize = CGSize()
+    
     init(model:MNStatusModel) {
         self.status = model
         
         getLevelIcon(model: model)
         getVipIcon(model: model)
         getToolCountString(model:model)
+        getPictureViewSize(model: model)
     }
     
     private func getLevelIcon(model: MNStatusModel){
@@ -74,6 +77,29 @@ class MNStatusViewModel: CustomStringConvertible {
         }
         
         return String(format: "%.02f万", Double(count) / 10000)
+    }
+    
+    private func getPictureViewSize(model: MNStatusModel){
+        pictureViewSize = calPicturesSize(count: model.pic_urls?.count ?? 0)
+    }
+    
+    private func calPicturesSize(count: Int) -> CGSize{
+        
+        if count == 0{
+            return CGSize()
+        }
+        
+        //calcalate height
+        let row = (count - 1) / Int(MNPictureMaxPerLine) + 1
+        
+        //顶部间距
+        var height = MNStatusPictureOutterMargin
+        //item总和的高度
+        height += CGFloat(row) * MNPictureItemWidth
+        //item之间的内边距
+        height += CGFloat(row - 1) * MNStatusPictureInnerMargin
+        
+        return CGSize(width: MNPictureItemWidth, height: height)
     }
     
     var description: String{

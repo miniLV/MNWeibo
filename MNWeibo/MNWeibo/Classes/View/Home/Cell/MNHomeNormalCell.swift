@@ -22,6 +22,7 @@ class MNHomeNormalCell: UITableViewCell {
                                     placeholderImage: UIImage(named: "avatar_default_big"),
                                     isAvatar: true)
             bottomView.viewModel = viewModel
+            contentPictureView.viewModel = viewModel
         }
     }
     var avatarImage = UIImageView()
@@ -34,6 +35,8 @@ class MNHomeNormalCell: UITableViewCell {
     
     //toolButton
     var bottomView:MNStatusToolView = MNStatusToolView(parentView: nil)
+    
+    var contentPictureView = MNStatusPictureView(parentView: nil, topView: nil, bottomView: nil)
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -110,6 +113,8 @@ class MNHomeNormalCell: UITableViewCell {
         }
         
         bottomView = MNStatusToolView(parentView: self)
+        
+
         contentLabel.numberOfLines = 0
         contentLabel.textAlignment = .left
         contentLabel.font = UIFont.systemFont(ofSize: MNLayout.Layout(15))
@@ -118,12 +123,13 @@ class MNHomeNormalCell: UITableViewCell {
             make.left.equalTo(avatarImage)
             make.top.equalTo(avatarImage.snp_bottomMargin).offset(MNLayout.Layout(11))
             make.right.equalToSuperview().offset(-MNLayout.Layout(11))
-            make.bottom.equalTo(bottomView.snp_topMargin).offset(-MNLayout.Layout(12))
         }
         
+        contentPictureView = MNStatusPictureView(parentView: self,
+                                                 topView: contentLabel,
+                                                 bottomView: bottomView)
+        
     }
-    
- 
 }
 
 

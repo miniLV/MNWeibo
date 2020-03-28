@@ -22,7 +22,13 @@ class MNStatusModel: NSObject {
     //点赞数
     @objc var attitudes_count = 0
     
+    @objc var pic_urls: [MNStatusPicture]?
+    
     override var description: String{
         return yy_modelDescription()
+    }
+    
+    @objc class func modelContainerPropertyGenericClass() -> [String:AnyClass]{
+        return ["pic_urls":MNStatusPicture.self]
     }
 }

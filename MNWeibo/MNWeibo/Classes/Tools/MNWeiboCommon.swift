@@ -21,3 +21,16 @@ let MNUserShouldLoginNotification = "MNUserShouldLoginNotification"
 
 let MNUserLoginSuccessNotification = "MNUserLoginSuccessNotification"
 
+
+//MARK: - 微博配图视图常亮
+//内部间距
+let MNStatusPictureOutterMargin = MNLayout.Layout(12)
+//外部间距
+let MNStatusPictureInnerMargin = MNLayout.Layout(12)
+
+let MNPictureMaxPerLine:CGFloat = 3
+
+//1.calculate width
+let MNPictureViewWidth = MNScreen.screenW - (2 * MNStatusPictureOutterMargin)
+
+let MNPictureItemWidth = (MNPictureViewWidth - (2 * MNStatusPictureInnerMargin)) / MNPictureMaxPerLine
