@@ -31,6 +31,9 @@ class MNHomeNormalCell: UITableViewCell {
     var vipIconView = UIImageView(image: UIImage(named: "avatar_enterprise_vip"))
     var contentLabel = UILabel()
     
+    //toolButton
+    var bottomView = MNStatusToolView()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupSubviews()
@@ -105,14 +108,23 @@ class MNHomeNormalCell: UITableViewCell {
             make.centerY.equalTo(avatarImage.snp_bottomMargin).offset(MNLayout.Layout(5))
         }
         
-        contentLabel.numberOfLines = 0
-        contentLabel.textAlignment = .left
-        addSubview(contentLabel)
-        contentLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(avatarImage)
-            make.top.equalTo(avatarImage.snp_bottomMargin).offset(MNLayout.Layout(11))
-            make.right.equalToSuperview().offset(-MNLayout.Layout(11))
-            make.bottom.lessThanOrEqualTo(-MNLayout.Layout(12))
-        }
+        
+//        let bottomToolView = setupBottomToolView()
+        
+//        contentLabel.numberOfLines = 0
+//        contentLabel.textAlignment = .left
+//        contentLabel.font = UIFont.systemFont(ofSize: MNLayout.Layout(15))
+//        addSubview(contentLabel)
+//        contentLabel.snp.makeConstraints { (make) in
+//            make.left.equalTo(avatarImage)
+//            make.top.equalTo(avatarImage.snp_bottomMargin).offset(MNLayout.Layout(11))
+//            make.right.equalToSuperview().offset(-MNLayout.Layout(11))
+//            make.bottom.equalTo(bottomToolView.snp_topMargin).offset(-MNLayout.Layout(12))
+//        }
+        
     }
+    
+ 
 }
+
+

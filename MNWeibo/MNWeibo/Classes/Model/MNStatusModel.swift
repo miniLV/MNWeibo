@@ -16,6 +16,12 @@ class MNStatusModel: NSObject {
     
     @objc var user: MNUserModel?
     
+    @objc var reposts_count = 0
+    
+    @objc var comments_count = 0
+    //点赞数
+    @objc var attitudes_count = 0
+    
     override var description: String{
         return yy_modelDescription()
     }

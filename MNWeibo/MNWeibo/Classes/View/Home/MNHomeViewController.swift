@@ -42,7 +42,7 @@ extension MNHomeViewController{
 //        let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! MNHomeNormalCell
         
         let cell = MNHomeNormalCell(style: .default, reuseIdentifier: cellID)
-        
+        cell.selectionStyle = .none
 //        if cell == nil {
 //            cell = MNHomeNormalCell(style: .default, reuseIdentifier: cellID)
 //        }
