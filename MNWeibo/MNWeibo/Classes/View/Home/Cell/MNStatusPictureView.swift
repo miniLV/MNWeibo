@@ -51,19 +51,37 @@ class MNStatusPictureView: UIView {
         self.backgroundColor = UIColor.orange
         
         let margin = MNLayout.Layout(12)
-        guard let parentView = parentView, let topView = topView, let bottomView = bottomView else {
+        guard let parentView = parentView, let topView = topView else {
             return
         }
         
         parentView.addSubview(self)
         
-        self.snp.makeConstraints { (make) in
-            make.left.equalTo(margin)
-            make.right.equalTo(-margin)
-            make.top.equalTo(topView.snp.bottom)
-            make.bottom.lessThanOrEqualTo(bottomView.snp.top).offset(-margin)
-            make.height.equalTo(MNLayout.Layout(200))
+        if bottomView == nil{
+            self.snp.makeConstraints { (make) in
+                      make.left.equalTo(margin)
+                      make.right.equalTo(-margin)
+                      make.top.equalTo(topView.snp.bottom)
+                      make.bottom.equalToSuperview()
+                      make.height.equalTo(MNLayout.Layout(200))
+                  }
+        }else{
+            self.snp.makeConstraints { (make) in
+                      make.left.equalTo(margin)
+                      make.right.equalTo(-margin)
+                      make.top.equalTo(topView.snp.bottom)
+                      make.bottom.lessThanOrEqualTo(bottomView!.snp.top).offset(-margin)
+                      make.height.equalTo(MNLayout.Layout(200))
+                  }
         }
+        
+//        self.snp.makeConstraints { (make) in
+//            make.left.equalTo(margin)
+//            make.right.equalTo(-margin)
+//            make.top.equalTo(topView.snp.bottom)
+//            make.bottom.lessThanOrEqualTo(bottomView.snp.top).offset(-margin)
+//            make.height.equalTo(MNLayout.Layout(200))
+//        }
         
         setupPictures()
     }

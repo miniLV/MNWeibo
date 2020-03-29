@@ -39,6 +39,7 @@
 		A7EFF4B2242F2904001AB430 /* MNStatusToolView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7EFF4B1242F2904001AB430 /* MNStatusToolView.swift */; };
 		A7EFF4B4242F34E2001AB430 /* MNStatusPictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7EFF4B3242F34E2001AB430 /* MNStatusPictureView.swift */; };
 		A7EFF4B6242F3AAE001AB430 /* MNStatusPicture.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7EFF4B5242F3AAE001AB430 /* MNStatusPicture.swift */; };
+		A7EFF4B82430D99C001AB430 /* MNHomeRepostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7EFF4B72430D99C001AB430 /* MNHomeRepostCell.swift */; };
 		A7FFE6872417D0B60082F464 /* MNMainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FFE6862417D0B60082F464 /* MNMainTabBarController.swift */; };
 		A7FFE6892417D0E00082F464 /* MNNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FFE6882417D0E00082F464 /* MNNavigationController.swift */; };
 		A7FFE68B2417D1070082F464 /* MNBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FFE68A2417D1070082F464 /* MNBaseViewController.swift */; };
@@ -123,6 +124,7 @@
 		A7EFF4B1242F2904001AB430 /* MNStatusToolView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNStatusToolView.swift; sourceTree = "<group>"; };
 		A7EFF4B3242F34E2001AB430 /* MNStatusPictureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNStatusPictureView.swift; sourceTree = "<group>"; };
 		A7EFF4B5242F3AAE001AB430 /* MNStatusPicture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNStatusPicture.swift; sourceTree = "<group>"; };
+		A7EFF4B72430D99C001AB430 /* MNHomeRepostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNHomeRepostCell.swift; sourceTree = "<group>"; };
 		A7FFE6862417D0B60082F464 /* MNMainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNMainTabBarController.swift; sourceTree = "<group>"; };
 		A7FFE6882417D0E00082F464 /* MNNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNNavigationController.swift; sourceTree = "<group>"; };
 		A7FFE68A2417D1070082F464 /* MNBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNBaseViewController.swift; sourceTree = "<group>"; };
@@ -292,6 +294,7 @@
 				A73B4446242A548200033F5B /* MNHomeNormalCell.swift */,
 				A7EFF4B1242F2904001AB430 /* MNStatusToolView.swift */,
 				A7EFF4B3242F34E2001AB430 /* MNStatusPictureView.swift */,
+				A7EFF4B72430D99C001AB430 /* MNHomeRepostCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -748,6 +751,7 @@
 				A7383AF9241682A90099822E /* SceneDelegate.swift in Sources */,
 				A7EFF4B2242F2904001AB430 /* MNStatusToolView.swift in Sources */,
 				A745A5982419206F00F9E138 /* UIBarButtonItem+Extension.swift in Sources */,
+				A7EFF4B82430D99C001AB430 /* MNHomeRepostCell.swift in Sources */,
 				A7FFE6902417D1510082F464 /* MNDiscoverViewController.swift in Sources */,
 				A7FFE6EC2417D68D0082F464 /* NSArray+Log.m in Sources */,
 				A7FFE6922417D1570082F464 /* MNMessageViewController.swift in Sources */,

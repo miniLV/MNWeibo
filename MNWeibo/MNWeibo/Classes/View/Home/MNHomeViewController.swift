@@ -8,7 +8,10 @@
 
 import UIKit
 
-private let cellID = "cellID"
+//原创微博
+private let originCellID = "originCellID"
+//转发微博
+private let repostCellID = "repostCellID"
 
 class MNHomeViewController: MNBaseViewController {
 
@@ -41,7 +44,9 @@ extension MNHomeViewController{
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 //        let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! MNHomeNormalCell
         
-        let cell = MNHomeNormalCell(style: .default, reuseIdentifier: cellID)
+        //FIXME:
+//        let cell = MNHomeNormalCell(style: .default, reuseIdentifier: originCellID)
+        let cell = MNHomeRepostCell(style: .default, reuseIdentifier: repostCellID)
         cell.selectionStyle = .none
 //        if cell == nil {
 //            cell = MNHomeNormalCell(style: .default, reuseIdentifier: cellID)
@@ -62,6 +67,6 @@ extension MNHomeViewController{
         tableView?.separatorStyle = .none
         naviItem.leftBarButtonItem = UIBarButtonItem(title: "好友", fontSize: 16, target: self, action: #selector(showFridends))
         
-        tableView?.register(UITableViewCell.self, forCellReuseIdentifier: cellID)
+//        tableView?.register(UITableViewCell.self, forCellReuseIdentifier: originCellID)
     }
 }
