@@ -64,28 +64,28 @@ class MNHomeNormalCell: UITableViewCell {
         addSubview(topLineView)
         topLineView.snp.makeConstraints { (make) in
             make.left.top.right.equalToSuperview()
-            make.height.equalTo(MNLayout.Layout(8))
+            make.height.equalTo(MNLayout.Layout(12))
         }
         
         addSubview(avatarImage)
         avatarImage.snp.makeConstraints { (make) in
-            make.left.equalTo(MNLayout.Layout(11))
-            make.top.equalTo(MNLayout.Layout(12))
+            make.left.equalTo(MNLayout.Layout(12))
+            make.top.equalTo(topLineView.snp.bottom).offset(MNLayout.Layout(12))
             make.size.equalTo(MNLayout.Layout(34))
         }
         
         nameLabel.textColor =  UIColor.cz_color(withHex: 0xfc3e00)
-        nameLabel.font = UIFont.systemFont(ofSize: MNLayout.Layout(13))
+        nameLabel.font = UIFont.systemFont(ofSize: MNLayout.Layout(15))
         addSubview(nameLabel)
         nameLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(avatarImage.snp_topMargin).offset(MNLayout.Layout(4))
-            make.left.equalTo(avatarImage.snp_rightMargin).offset(MNLayout.Layout(11))
+            make.top.equalTo(avatarImage.snp.top).offset(MNLayout.Layout(4))
+            make.left.equalTo(avatarImage.snp.right).offset(MNLayout.Layout(12))
         }
         
         addSubview(levelIconView)
         levelIconView.snp.makeConstraints { (make) in
             make.centerY.equalTo(nameLabel)
-            make.left.equalTo(nameLabel.snp_rightMargin).offset(MNLayout.Layout(10))
+            make.left.equalTo(nameLabel.snp.right).offset(MNLayout.Layout(3))
             make.size.equalTo(MNLayout.Layout(14))
         }
         
@@ -94,7 +94,7 @@ class MNHomeNormalCell: UITableViewCell {
         addSubview(timeLabel)
         timeLabel.snp.makeConstraints { (make) in
             make.left.equalTo(nameLabel)
-            make.bottom.equalTo(avatarImage.snp_bottomMargin)
+            make.bottom.equalTo(avatarImage.snp.bottom)
         }
         
         sourceLabel.textColor = UIColor.cz_color(withHex: 0x828282)
@@ -102,14 +102,14 @@ class MNHomeNormalCell: UITableViewCell {
         addSubview(sourceLabel)
         sourceLabel.snp.makeConstraints { (make) in
             make.centerY.equalTo(timeLabel)
-            make.left.equalTo(timeLabel.snp_rightMargin).offset(MNLayout.Layout(8))
+            make.left.equalTo(timeLabel.snp.right).offset(MNLayout.Layout(8))
         }
         
         addSubview(vipIconView)
         vipIconView.snp.makeConstraints { (make) in
             make.size.equalTo(MNLayout.Layout(14))
-            make.centerX.equalTo(avatarImage.snp_rightMargin).offset(MNLayout.Layout(5))
-            make.centerY.equalTo(avatarImage.snp_bottomMargin).offset(MNLayout.Layout(5))
+            make.centerX.equalTo(avatarImage.snp.right).offset(-MNLayout.Layout(2))
+            make.centerY.equalTo(avatarImage.snp.bottom).offset(-MNLayout.Layout(2))
         }
         
         bottomView = MNStatusToolView(parentView: self)
@@ -118,11 +118,12 @@ class MNHomeNormalCell: UITableViewCell {
         contentLabel.numberOfLines = 0
         contentLabel.textAlignment = .left
         contentLabel.font = UIFont.systemFont(ofSize: MNLayout.Layout(15))
+        contentLabel.textColor = UIColor.darkGray
         addSubview(contentLabel)
         contentLabel.snp.makeConstraints { (make) in
             make.left.equalTo(avatarImage)
-            make.top.equalTo(avatarImage.snp_bottomMargin).offset(MNLayout.Layout(11))
-            make.right.equalToSuperview().offset(-MNLayout.Layout(11))
+            make.top.equalTo(avatarImage.snp.bottom).offset(MNLayout.Layout(12))
+            make.right.equalToSuperview().offset(-MNLayout.Layout(12))
         }
         
         contentPictureView = MNStatusPictureView(parentView: self,

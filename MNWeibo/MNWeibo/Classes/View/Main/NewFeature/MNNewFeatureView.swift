@@ -54,7 +54,7 @@ class MNNewFeatureView: UIView {
         addSubview(enterHomeButton)
         enterHomeButton.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
-            make.bottom.equalTo(pageControl.snp_topMargin).offset(-MNLayout.Layout(40))
+            make.bottom.equalTo(pageControl.snp.top).offset(-MNLayout.Layout(40))
             make.width.equalTo(MNLayout.Layout(105))
             make.height.equalTo(MNLayout.Layout(36))
         }

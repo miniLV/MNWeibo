@@ -47,7 +47,8 @@ class MNStatusPictureView: UIView {
 
     init(parentView: UIView?, topView: UIView?, bottomView: UIView?) {
         super.init(frame: CGRect())
-        self.backgroundColor = superview?.backgroundColor
+//        self.backgroundColor = superview?.backgroundColor
+        self.backgroundColor = UIColor.orange
         
         let margin = MNLayout.Layout(12)
         guard let parentView = parentView, let topView = topView, let bottomView = bottomView else {
@@ -59,8 +60,8 @@ class MNStatusPictureView: UIView {
         self.snp.makeConstraints { (make) in
             make.left.equalTo(margin)
             make.right.equalTo(-margin)
-            make.top.equalTo(topView.snp_bottomMargin).offset(margin)
-            make.bottom.lessThanOrEqualTo(bottomView.snp_topMargin).offset(-margin)
+            make.top.equalTo(topView.snp.bottom)
+            make.bottom.lessThanOrEqualTo(bottomView.snp.top).offset(-margin)
             make.height.equalTo(MNLayout.Layout(200))
         }
         
@@ -80,7 +81,7 @@ class MNStatusPictureView: UIView {
             let row = CGFloat(i / Int(MNPictureMaxPerLine))
             let column = CGFloat(i % Int(MNPictureMaxPerLine))
             let x = column * (MNPictureItemWidth + MNStatusPictureInnerMargin)
-            let y = row * (MNPictureItemWidth + MNStatusPictureInnerMargin)
+            let y = MNStatusPictureOutterMargin + row * (MNPictureItemWidth + MNStatusPictureInnerMargin)
             iv.frame = CGRect(x: x, y: y, width: MNPictureItemWidth, height: MNPictureItemWidth)
         
             addSubview(iv)

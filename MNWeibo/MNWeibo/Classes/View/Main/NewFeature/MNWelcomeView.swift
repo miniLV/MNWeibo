@@ -50,7 +50,7 @@ class MNWelcomeView: UIView {
         backgroundImageView.addSubview(label)
         label.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.top.equalTo((avatarImageView.snp_bottomMargin)).offset(MNLayout.Layout(15))
+            $0.top.equalTo((avatarImageView.snp.bottom)).offset(MNLayout.Layout(15))
         }
     }
     

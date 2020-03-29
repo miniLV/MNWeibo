@@ -32,7 +32,7 @@ class MNStatusToolView: UIView {
         parentView?.addSubview(self)
         self.snp.makeConstraints { (make) in
             make.left.right.bottom.equalToSuperview()
-            make.height.equalTo(MNLayout.Layout(28))
+            make.height.equalTo(MNLayout.Layout(35))
         }
         
         let bottomToolView = UIStackView()
@@ -57,6 +57,17 @@ class MNStatusToolView: UIView {
         
         likeButton.mn_toolButton(type: .like)
         bottomToolView.addArrangedSubview(likeButton)
+        
+        //line
+        let line = UIView()
+        line.backgroundColor = UIColor.cz_color(withHex: 0xf2f2f2)
+        addSubview(line)
+        line.snp.makeConstraints { (make) in
+            make.left.equalTo(MNDefaultMargin)
+            make.right.equalTo(-MNDefaultMargin)
+            make.top.equalToSuperview()
+            make.height.equalTo(MNLayout.Layout(1))
+        }
     }
     
     required init?(coder: NSCoder) {

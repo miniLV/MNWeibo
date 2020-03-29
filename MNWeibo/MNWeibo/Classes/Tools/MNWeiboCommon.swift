@@ -23,10 +23,11 @@ let MNUserLoginSuccessNotification = "MNUserLoginSuccessNotification"
 
 
 //MARK: - 微博配图视图常亮
-//内部间距
-let MNStatusPictureOutterMargin = MNLayout.Layout(12)
+let MNDefaultMargin = MNLayout.Layout(12)
 //外部间距
-let MNStatusPictureInnerMargin = MNLayout.Layout(12)
+let MNStatusPictureOutterMargin = MNLayout.Layout(12)
+//内部间距
+let MNStatusPictureInnerMargin = MNLayout.Layout(5)
 
 let MNPictureMaxPerLine:CGFloat = 3
 
