@@ -26,6 +26,13 @@ class MNStatusViewModel: CustomStringConvertible {
     
     var pictureViewSize = CGSize()
     
+    //原创&被转发微博
+    var picUrls:[MNStatusPicture]?{
+        //如果有被转发的微博 ==> 返回被转发的微博配图
+        //如果没有被转发的微博 ==> 返回原创微博配图
+        return status.retweeted_status?.pic_urls ?? status.pic_urls
+    }
+    
     init(model:MNStatusModel) {
         self.status = model
         
@@ -80,7 +87,8 @@ class MNStatusViewModel: CustomStringConvertible {
     }
     
     private func getPictureViewSize(model: MNStatusModel){
-        pictureViewSize = calPicturesSize(count: model.pic_urls?.count ?? 0)
+        //有转发的计算转发图片视图，有原创计算原创图片
+        pictureViewSize = calPicturesSize(count: picUrls?.count ?? 0)
     }
     
     private func calPicturesSize(count: Int) -> CGSize{

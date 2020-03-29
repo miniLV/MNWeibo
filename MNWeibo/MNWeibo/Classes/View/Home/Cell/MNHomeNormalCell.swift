@@ -8,9 +8,9 @@
 
 import UIKit
 
-class MNHomeNormalCell: UITableViewCell {
+class MNHomeNormalCell: MNHomeBaseCell {
 
-    var viewModel: MNStatusViewModel?{
+    override var viewModel: MNStatusViewModel?{
         didSet{
             contentLabel.text = viewModel?.status.text
             nameLabel.text = viewModel?.status.user?.screen_name

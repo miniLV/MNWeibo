@@ -24,6 +24,9 @@ class MNStatusModel: NSObject {
     
     @objc var pic_urls: [MNStatusPicture]?
     
+    //被转发微博
+    @objc var retweeted_status: MNStatusModel?
+    
     override var description: String{
         return yy_modelDescription()
     }

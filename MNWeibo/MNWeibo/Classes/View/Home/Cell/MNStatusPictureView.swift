@@ -38,7 +38,8 @@ class MNStatusPictureView: UIView {
     
     var viewModel: MNStatusViewModel?{
         didSet{
-            urls = viewModel?.status.pic_urls
+            //包含原创&被转发
+            urls = viewModel?.picUrls
             self.snp.updateConstraints { (make) in
                 make.height.equalTo(viewModel?.pictureViewSize.height ?? 0)
             }

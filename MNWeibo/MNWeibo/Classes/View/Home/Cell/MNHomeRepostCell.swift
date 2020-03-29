@@ -8,9 +8,9 @@
 
 import UIKit
 
-class MNHomeRepostCell: UITableViewCell {
+class MNHomeRepostCell: MNHomeBaseCell {
 
-    var viewModel: MNStatusViewModel?{
+    override var viewModel: MNStatusViewModel?{
         didSet{
             contentLabel.text = viewModel?.status.text
             nameLabel.text = viewModel?.status.user?.screen_name
@@ -138,8 +138,7 @@ class MNHomeRepostCell: UITableViewCell {
             make.top.equalTo(contentLabel.snp.bottom).offset(MNDefaultMargin)
             make.bottom.equalTo(bottomView.snp.top)
         }
-        
-        
+                
         repostLabel.numberOfLines = 0
         repostLabel.textAlignment = .left
         repostLabel.font = UIFont.systemFont(ofSize: MNLayout.Layout(14))

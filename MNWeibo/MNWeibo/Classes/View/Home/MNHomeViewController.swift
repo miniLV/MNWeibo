@@ -42,17 +42,23 @@ extension MNHomeViewController{
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! MNHomeNormalCell
+//        let cell = tableView.dequeueReusableCell(withIdentifier: repostCellID, for: indexPath) as! MNHomeRepostCell
+        let viewModel = listViewModel.statusList[indexPath.row]
+        let cellID = (viewModel.status.retweeted_status == nil) ? originCellID : repostCellID
         
         //FIXME:
-//        let cell = MNHomeNormalCell(style: .default, reuseIdentifier: originCellID)
-        let cell = MNHomeRepostCell(style: .default, reuseIdentifier: repostCellID)
+        var cell = MNHomeBaseCell()
+        if viewModel.status.retweeted_status == nil{
+            cell = MNHomeNormalCell(style: .default, reuseIdentifier: cellID)
+        }else{
+            if viewModel.status.retweeted_status?.pic_urls?.count ?? 0 > 0{
+                
+            }
+            cell = MNHomeRepostCell(style: .default, reuseIdentifier: cellID)
+        }
+
         cell.selectionStyle = .none
-//        if cell == nil {
-//            cell = MNHomeNormalCell(style: .default, reuseIdentifier: cellID)
-//        }
-        
-        let viewModel = listViewModel.statusList[indexPath.row]
+
         cell.viewModel = viewModel
         return cell
     }
