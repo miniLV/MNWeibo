@@ -114,7 +114,6 @@ class MNHomeNormalCell: MNHomeBaseCell {
         
         bottomView = MNStatusToolView(parentView: self)
         
-
         contentLabel.numberOfLines = 0
         contentLabel.textAlignment = .left
         contentLabel.font = UIFont.systemFont(ofSize: MNLayout.Layout(15))

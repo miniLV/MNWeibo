@@ -26,6 +26,8 @@ class MNStatusViewModel: CustomStringConvertible {
     
     var pictureViewSize = CGSize()
     
+    var rowHeight:CGFloat = 0
+    
     //原创&被转发微博
     var picUrls:[MNStatusPicture]?{
         //如果有被转发的微博 ==> 返回被转发的微博配图
@@ -46,6 +48,7 @@ class MNStatusViewModel: CustomStringConvertible {
         getVipIcon(model: model)
         getToolCountString(model:model)
         getPictureViewSize(model: model)
+        getRowHeigth()
     }
     
     private func getLevelIcon(model: MNStatusModel){
@@ -114,6 +117,66 @@ class MNStatusViewModel: CustomStringConvertible {
         height += CGFloat(row - 1) * MNStatusPictureInnerMargin
         
         return CGSize(width: MNPictureItemWidth, height: height)
+    }
+    
+    ///网络缓存的单张图片大小
+    func updateSingleImageSize(image:UIImage){
+        var size = image.size
+        
+        // 实际的cell，会有一个12的间距
+        size.height += MNStatusPictureOutterMargin
+        
+        pictureViewSize = size
+        
+        getRowHeigth()
+    }
+    
+    func getRowHeigth(){
+        let margin: CGFloat = MNStatusPictureOutterMargin
+        let avatarHeight = MNLayout.Layout(34)
+        let bottomViewHeight = MNLayout.Layout(35)
+        var height:CGFloat = 0
+        //原创微博 = 顶部分割线(12) + margin(12) + 头像图片(34) + margin(12) + 正文内容(计算) + 配图高度(计算) + margin(12) + 底部视图(35)
+        //转发微博 = 顶部分割线(12) + margin(12) + 头像图片(34) + margin(12) + 正文内容(计算) + margin(12) + margin(12) + 配图高度(计算) + margin(12) + 底部视图(35)
+        
+        //顶部视图
+        let width = margin * 2 + avatarHeight + margin
+        let textSize = CGSize(width:width, height: CGFloat.greatestFiniteMagnitude)
+        
+        let originFontSize = UIFont.systemFont(ofSize: MNLayout.Layout(15))
+        let repostFontSize = UIFont.systemFont(ofSize: MNLayout.Layout(14))
+        
+        //calcute content label size
+        if let text = status.text{
+            let attributes = [NSAttributedString.Key.font : originFontSize]
+            let textHeight = (text as NSString).boundingRect(with:textSize,
+                                                             options: [.usesLineFragmentOrigin],
+                                                             attributes: attributes,
+                                                             context: nil).height
+            height += textHeight
+        }
+        
+        //repost
+        if status.retweeted_status != nil{
+            height += margin * 2
+            
+            if let text = repostText{
+                let attributes = [NSAttributedString.Key.font : repostFontSize]
+                let textHeight = (text as NSString).boundingRect(with:textSize,
+                                                                 options: [.usesLineFragmentOrigin],
+                                                                 attributes: attributes,
+                                                                 context: nil).height
+                height += textHeight
+            }
+        }
+        
+        // pictureview
+        height += pictureViewSize.height
+        // bottom view
+        height += margin
+        height += bottomViewHeight
+        
+        rowHeight = height
     }
     
     var description: String{

@@ -62,6 +62,11 @@ extension MNHomeViewController{
         cell.viewModel = viewModel
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let viewModel = listViewModel.statusList[indexPath.row]
+        return viewModel.rowHeight
+    }
 }
 
 extension MNHomeViewController{

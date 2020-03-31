@@ -104,6 +104,8 @@ class MNStatusListViewModel {
                     let imageData = image.jpegData(compressionQuality:1.0){
                     
                     length += imageData.count
+                    
+                    viewModel.updateSingleImageSize(image: image)
                 }
                 //2.出组
                 group.leave()
