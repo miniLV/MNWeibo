@@ -8,6 +8,7 @@
 
 import Foundation
 import YYModel
+import SDWebImage
 
 // 超过5次上拉加载失败，就停止上拉刷新
 private let maxPullupTimes = 5
@@ -43,17 +44,13 @@ class MNStatusListViewModel {
             
             var array = [MNStatusViewModel]()
             for dic in list ?? []{
-
-                
-                
                 guard let model = MNStatusModel.yy_model(with: dic) else{
                     continue
                 }
                 //转换成 model -> MNStatusViewModel
                 array.append(MNStatusViewModel(model: model))
             }
-            
-            print("==> \(array)")
+ 
             //data handle
             if pullup{
                 //上拉加载更多，拼接在数组最后
@@ -67,9 +64,57 @@ class MNStatusListViewModel {
                 self.pullupErrorTimes += 1
                 completion(isSuccess,false)
             }else{
-                completion(isSuccess,true)
+                self.cacheSingleImage(list: array) {
+                    completion(isSuccess,true)
+                }
             }
         }
     }
     
+    //本次下载的单张图片 - 换成
+    private func cacheSingleImage(list: [MNStatusViewModel],
+                                  finish: @escaping()->()){
+        
+        
+        let group = DispatchGroup()
+        var length = 0
+        
+        //单张图像 - 特殊处理
+        for viewModel in list{
+            if viewModel.picUrls?.count != 1{
+                continue
+            }
+            
+            //get picture url
+            guard let picture = viewModel.picUrls?[0].thumbnail_pic ,
+            let url = URL(string: picture) else{
+                continue
+            }
+            print("url = \(url)")
+            
+            //SD下载图像
+            //图像下载完成，会自动p保存到沙盒, 路径 ==> url 的 md5
+            //如果该url的图像已经缓存 - 之后调用sd_xxx 不会在走下载.
+            //1.调度组入组
+            group.enter()
+            SDWebImageManager.shared.loadImage(with: url, options: [], progress: nil) { (image, _, _, _, _, _) in
+                
+                //图像转换成二进制数据
+                if let image = image,
+                    let imageData = image.jpegData(compressionQuality:1.0){
+                    
+                    length += imageData.count
+                }
+                //2.出组
+                group.leave()
+            }
+            
+        }
+        
+        //3. 调度组完成
+        group.notify(queue: DispatchQueue.main) {
+            print("down load finish ...")
+            finish()
+        }
+    }
 }

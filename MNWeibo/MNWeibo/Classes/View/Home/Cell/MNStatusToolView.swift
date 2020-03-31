@@ -16,9 +16,9 @@ class MNStatusToolView: UIView {
     
     var viewModel:MNStatusViewModel?{
         didSet{
-            repostButton.setTitle(viewModel?.repostStr, for: .normal)
-            commentsButton.setTitle(viewModel?.commentStr, for: .normal)
-            likeButton.setTitle(viewModel?.likeStr, for: .normal)
+            repostButton.setTitle(viewModel?.repostTitle, for: .normal)
+            commentsButton.setTitle(viewModel?.commentTitle, for: .normal)
+            likeButton.setTitle(viewModel?.likeTitle, for: .normal)
         }
     }
     

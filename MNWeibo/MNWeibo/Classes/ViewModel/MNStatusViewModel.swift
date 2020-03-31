@@ -18,11 +18,11 @@ class MNStatusViewModel: CustomStringConvertible {
     
     var vipIcon: UIImage?
     
-    var repostStr: String?
+    var repostTitle: String?
     
-    var commentStr: String?
+    var commentTitle: String?
     
-    var likeStr: String?
+    var likeTitle: String?
     
     var pictureViewSize = CGSize()
     
@@ -31,6 +31,12 @@ class MNStatusViewModel: CustomStringConvertible {
         //如果有被转发的微博 ==> 返回被转发的微博配图
         //如果没有被转发的微博 ==> 返回原创微博配图
         return status.retweeted_status?.pic_urls ?? status.pic_urls
+    }
+    
+    var repostText:String?{
+        let str1 = "@" + (status.retweeted_status?.user?.screen_name ?? "")
+        let str2 = ":" + (status.retweeted_status?.text ?? "")
+        return str1 + str2
     }
     
     init(model:MNStatusModel) {
@@ -69,9 +75,9 @@ class MNStatusViewModel: CustomStringConvertible {
     }
     
     private func getToolCountString(model: MNStatusModel){
-        repostStr = countSting(count: model.reposts_count, defaultStr: " 转发")
-        commentStr = countSting(count: model.comments_count, defaultStr: " 评论")
-        likeStr = countSting(count: model.attitudes_count, defaultStr: " 点赞")
+        repostTitle = countSting(count: model.reposts_count, defaultStr: " 转发")
+        commentTitle = countSting(count: model.comments_count, defaultStr: " 评论")
+        likeTitle = countSting(count: model.attitudes_count, defaultStr: " 点赞")
     }
     
     private func countSting(count:Int, defaultStr: String) -> String{

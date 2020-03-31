@@ -12,7 +12,7 @@ class MNHomeBaseCell: UITableViewCell {
 
     var viewModel: MNStatusViewModel?{
         didSet{
-            
+
         }
     }
     

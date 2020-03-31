@@ -23,6 +23,7 @@ class MNHomeRepostCell: MNHomeBaseCell {
                                     isAvatar: true)
             bottomView.viewModel = viewModel
             contentPictureView.viewModel = viewModel
+            repostLabel.text = viewModel?.repostText
         }
     }
     var avatarImage = UIImageView()
