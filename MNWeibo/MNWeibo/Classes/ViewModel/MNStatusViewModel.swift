@@ -136,11 +136,12 @@ class MNStatusViewModel: CustomStringConvertible {
         let avatarHeight = MNLayout.Layout(34)
         let bottomViewHeight = MNLayout.Layout(35)
         var height:CGFloat = 0
+        let width = MNScreen.screenW - 2 * margin
         //原创微博 = 顶部分割线(12) + margin(12) + 头像图片(34) + margin(12) + 正文内容(计算) + 配图高度(计算) + margin(12) + 底部视图(35)
         //转发微博 = 顶部分割线(12) + margin(12) + 头像图片(34) + margin(12) + 正文内容(计算) + margin(12) + margin(12) + 配图高度(计算) + margin(12) + 底部视图(35)
         
         //顶部视图
-        let width = margin * 2 + avatarHeight + margin
+        height = margin * 2 + avatarHeight + margin
         let textSize = CGSize(width:width, height: CGFloat.greatestFiniteMagnitude)
         
         let originFontSize = UIFont.systemFont(ofSize: MNLayout.Layout(15))
@@ -158,7 +159,7 @@ class MNStatusViewModel: CustomStringConvertible {
         
         //repost
         if status.retweeted_status != nil{
-            height += margin * 2
+            height += (margin * 2)
             
             if let text = repostText{
                 let attributes = [NSAttributedString.Key.font : repostFontSize]
