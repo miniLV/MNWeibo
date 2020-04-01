@@ -41,6 +41,12 @@ class MNHomeNormalCell: MNHomeBaseCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupSubviews()
+        // 异步绘制
+        self.layer.drawsAsynchronously = true
+        //栅格化 - 绘制之后生产独立的图像, 停止滚动可以交互
+        self.layer.shouldRasterize = true
+        //指定分辨率
+        self.layer.rasterizationScale = UIScreen.main.scale
     }
     
     required init?(coder: NSCoder) {
