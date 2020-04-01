@@ -17,7 +17,7 @@ class MNBaseViewController: UIViewController{
     
     var tableView: UITableView?
     
-    var refreshControl: UIRefreshControl?
+    var refreshControl: MNRefreshControl?
     
     var isPull: Bool = false
     
@@ -78,7 +78,7 @@ extension MNBaseViewController:LoginDelegate{
         //取消自动缩进
         automaticallyAdjustsScrollViewInsets = false
         
-        refreshControl = UIRefreshControl()
+        refreshControl = MNRefreshControl()
         refreshControl?.addTarget(self, action: #selector(loadDatas), for: .valueChanged)
         tableView?.addSubview(refreshControl!)
     }

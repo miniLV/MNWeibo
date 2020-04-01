@@ -123,6 +123,29 @@ class MNStatusViewModel: CustomStringConvertible {
     func updateSingleImageSize(image:UIImage){
         var size = image.size
         
+        //handle width image
+        let maxImageWidth:CGFloat = MNLayout.Layout(350)
+        if size.width > maxImageWidth{
+            size.width = maxImageWidth
+            size.height = size.width * image.size.height / image.size.width
+        }
+        
+        //太窄图片处理
+        let minImageWidth:CGFloat = MNLayout.Layout(40)
+        //如果宽高比过大，可能图片会特别长，所以这里除以一个缩放倍数
+        let zoomFactor:CGFloat = 4.0
+        if size.width < minImageWidth{
+            size.width = minImageWidth
+            size.height = size.width * image.size.height / image.size.width / zoomFactor
+        }
+        
+        //handle long image(超长图片的处理)
+        let maxImageHeight:CGFloat = MNLayout.Layout(700)
+        if size.height > maxImageHeight{
+            size.height = maxImageWidth
+            size.width = size.height * image.size.width / image.size.height
+        }
+        
         // 实际的cell，会有一个12的间距
         size.height += MNStatusPictureOutterMargin
         
