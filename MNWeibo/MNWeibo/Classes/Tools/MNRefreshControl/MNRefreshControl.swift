@@ -73,8 +73,6 @@ class MNRefreshControl: UIControl {
         
         self.frame = CGRect(x: 0, y: -height, width: scrollView.bounds.width, height: height)
         
-//        print(height)
-        
         //判断临界点
         if scrollView.isDragging{
             if height > MNRefreshOffsetY && (refreshView.refreshState == .normal){
@@ -87,18 +85,45 @@ class MNRefreshControl: UIControl {
         }else{
             if refreshView.refreshState == .pulling{
                 print("准备开始刷新")
-                refreshView.refreshState = .refreshing
+
+                beginRefreshing()
+                
+                sendActions(for: .valueChanged)
             }
         }
     }
     
     /// 开始刷新
     func beginRefreshing() {
+        guard let scrollView = scrollView else {
+            print("scrollView is nil")
+            return
+        }
         
+        if refreshView.refreshState == .refreshing{
+            print("is refreshing.")
+            return
+        }
+        refreshView.refreshState = .refreshing
+        var inset = scrollView.contentInset
+        inset.top += MNRefreshOffsetY
+        scrollView.contentInset = inset
     }
 
     func endRefreshing() {
+        if refreshView.refreshState != .refreshing{
+            return
+        }
         
+        guard let scrollView = scrollView else {
+            print("scrollView is nil")
+            return
+        }
+        
+        refreshView.refreshState = .normal
+        var inset = scrollView.contentInset
+        inset.top -= MNRefreshOffsetY
+        scrollView.contentInset = inset
     }
 }
 
@@ -106,7 +131,7 @@ class MNRefreshControl: UIControl {
 extension MNRefreshControl{
     private func setupUI(){
         addSubview(refreshView)
-        clipsToBounds = true
+        //clipsToBounds = true
         refreshView.translatesAutoresizingMaskIntoConstraints = false
         addConstraint(NSLayoutConstraint(item: refreshView,
                                          attribute: .centerX,

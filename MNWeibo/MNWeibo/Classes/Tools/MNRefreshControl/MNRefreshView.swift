@@ -22,16 +22,20 @@ class MNRefreshView: UIView {
             switch refreshState {
             case .normal:
                 contentLabel.text = "继续使劲拉..."
+                arrowImageView.isHidden = false
+                activityIndicator.stopAnimating()
                 UIView.animate(withDuration: 0.2) {
                     self.arrowImageView.transform = CGAffineTransform.identity
                 }
             case .pulling:
                 contentLabel.text = "松手刷新..."
                 UIView.animate(withDuration: 0.2) {
-                    self.arrowImageView.transform = CGAffineTransform(rotationAngle: CGFloat.pi)
+                    self.arrowImageView.transform = CGAffineTransform(rotationAngle: CGFloat.pi + 0.0001)
                 }
             case .refreshing:
                 contentLabel.text = "正在刷新..."
+                arrowImageView.isHidden = true
+                activityIndicator.startAnimating()
             }
         }
     }

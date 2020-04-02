@@ -29,6 +29,8 @@ class MNBaseViewController: UIViewController{
         MNNetworkManager.shared.isLogin ? loadDatas() : ()
         
         registNotification()
+        
+        refreshControl?.beginRefreshing()
     }
     
     deinit {
