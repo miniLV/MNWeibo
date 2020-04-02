@@ -8,6 +8,19 @@
 
 import UIKit
 
+/// 刷新控件状态变化的临界值
+private let MNRefreshOffsetY:CGFloat = 60
+
+/// 刷新状态
+/// normal : 默认状态
+/// 超过临界点
+/// 正在刷新
+enum MNRefreshState{
+    case normal
+    case pulling
+    case refreshing
+}
+
 class MNRefreshControl: UIControl {
 
     let MNRefreshControlKey = "contentOffset"
@@ -19,7 +32,7 @@ class MNRefreshControl: UIControl {
     
     init() {
         super.init(frame: CGRect())
-        self.backgroundColor = UIColor.orange
+        self.backgroundColor = superview?.backgroundColor
         setupUI()
     }
     
@@ -48,15 +61,35 @@ class MNRefreshControl: UIControl {
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         
-        print("contentOffset = \(scrollView?.contentOffset)")
-        
         guard let scrollView = scrollView else{
             print("scrollView is nil")
             return
         }
-        let height = abs(scrollView.contentInset.top + scrollView.contentOffset.y)
-        print("height = \(height)")
+        let height = -(scrollView.contentInset.top + scrollView.contentOffset.y)
+        if height < 0{
+            //scroll to top
+            return
+        }
+        
         self.frame = CGRect(x: 0, y: -height, width: scrollView.bounds.width, height: height)
+        
+//        print(height)
+        
+        //判断临界点
+        if scrollView.isDragging{
+            if height > MNRefreshOffsetY && (refreshView.refreshState == .normal){
+                print("放手刷新")
+                refreshView.refreshState = .pulling
+            }else if height <= MNRefreshOffsetY && (refreshView.refreshState == .pulling){
+                print("再使劲")
+                refreshView.refreshState = .normal
+            }
+        }else{
+            if refreshView.refreshState == .pulling{
+                print("准备开始刷新")
+                refreshView.refreshState = .refreshing
+            }
+        }
     }
     
     /// 开始刷新

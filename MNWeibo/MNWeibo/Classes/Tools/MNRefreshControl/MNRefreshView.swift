@@ -17,10 +17,29 @@ class MNRefreshView: UIView {
     // 指示器(菊花)
     lazy var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
     
+    var refreshState:MNRefreshState = .normal{
+        didSet{
+            switch refreshState {
+            case .normal:
+                contentLabel.text = "继续使劲拉..."
+                UIView.animate(withDuration: 0.2) {
+                    self.arrowImageView.transform = CGAffineTransform.identity
+                }
+            case .pulling:
+                contentLabel.text = "松手刷新..."
+                UIView.animate(withDuration: 0.2) {
+                    self.arrowImageView.transform = CGAffineTransform(rotationAngle: CGFloat.pi)
+                }
+            case .refreshing:
+                contentLabel.text = "正在刷新..."
+            }
+        }
+    }
+    
     init() {
         super.init(frame: CGRect())
         self.frame = CGRect(x: 0, y: 0, width: 200, height: 40)
-        self.backgroundColor = UIColor.white
+        self.backgroundColor = UIColor.clear
         setupUI()
     }
     
@@ -46,7 +65,7 @@ class MNRefreshView: UIView {
         
         activityIndicator.frame = CGRect(x: 0, y: 0, width: arrowWidth, height: arrowWidth)
         activityIndicator.center.y = self.center.y
-        activityIndicator.backgroundColor = UIColor.blue
+        activityIndicator.backgroundColor = UIColor.clear
         addSubview(activityIndicator)
         
         contentLabel.frame = CGRect(x: arrowWidth, y: 0, width: 100, height: 30)
