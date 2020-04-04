@@ -12,8 +12,16 @@ class MNMTRefreshView: MNRefreshView {
 
     override var parentViewHeight:CGFloat{
         didSet{
-            print("parentViewHeight = \(parentViewHeight)")
+            
             // 缩放比例计算
+            
+            if parentViewHeight < earthIconDisplayHeight{
+                return
+            }
+            
+            if refreshState == .refreshing{
+                return
+            }
             
             var scale:CGFloat = 0
             if parentViewHeight > backgroudIconHeight{
