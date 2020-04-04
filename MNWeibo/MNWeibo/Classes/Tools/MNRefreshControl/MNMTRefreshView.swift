@@ -10,6 +10,24 @@ import UIKit
 
 class MNMTRefreshView: MNRefreshView {
 
+    override var parentViewHeight:CGFloat{
+        didSet{
+            print("parentViewHeight = \(parentViewHeight)")
+            // 缩放比例计算
+            
+            var scale:CGFloat = 0
+            if parentViewHeight > backgroudIconHeight{
+                scale = 1
+            }else{
+                let diffCurrentHeight = backgroudIconHeight - parentViewHeight
+                let diffMaxHeight = backgroudIconHeight - earthIconDisplayHeight
+                scale = 1 - (diffCurrentHeight / diffMaxHeight)
+            }
+            scale = min(scale, 0.8)
+            kangarooIconView.transform = CGAffineTransform(scaleX: scale, y: scale)
+        }
+    }
+    
     var backgroudIconView = { () -> UIImageView in
         
         let buildImage1 = UIImage(named: "icon_building_loading_1")!
@@ -20,17 +38,25 @@ class MNMTRefreshView: MNRefreshView {
     }()
         
     var earthIconView = UIImageView(image: UIImage(named: "icon_earth"))
-    var kangarooIconView = UIImageView(image: UIImage(named: "icon_small_kangaroo_loading_1"))
+    var kangarooIconView = { () -> UIImageView in
+        
+        let kangarooImage1 = UIImage(named: "icon_small_kangaroo_loading_1")!
+        let kangarooImage2 = UIImage(named: "icon_small_kangaroo_loading_2")!
+        let iv = UIImageView()
+        iv.image = UIImage.animatedImage(with: [kangarooImage1,kangarooImage2], duration: 0.5)
+        return  iv
+    }()
     
-    private let earthIconWidth = 212.0
-    private let backgroudIconHeight = 126.0
+    private let earthIconWidth:CGFloat = 212.0
+    private let backgroudIconHeight:CGFloat = 126.0
+    private let earthIconDisplayHeight:CGFloat = 25
     
     override func setupUI(){
         self.frame = CGRect(x: 0, y: 0, width: earthIconWidth, height: backgroudIconHeight)
         clipsToBounds = true
         
         addSubview(backgroudIconView)
-        let backgroudIconWidth = 197.5
+        let backgroudIconWidth:CGFloat = 197.5
         let backgroudIconX = (earthIconWidth - backgroudIconWidth) / 2
         backgroudIconView.frame = CGRect(x: backgroudIconX,
                                          y: 0,
@@ -38,17 +64,17 @@ class MNMTRefreshView: MNRefreshView {
                                          height: backgroudIconHeight)
         
         addSubview(earthIconView)
-        let earthIconY = 100.0
+        let earthIconY:CGFloat = 100.0
         earthIconView.frame = CGRect(x: 0,
                                      y: earthIconY,
                                      width: earthIconWidth,
                                      height: earthIconWidth)
         
         addSubview(kangarooIconView)
-        let kangarooIconWidth = 61.0
-        let kangarooIconX = (earthIconWidth - kangarooIconWidth)/2.0
-        let kangarooIconY = 30.0
-        let kangarooIconHeight = 71.5
+        let kangarooIconWidth:CGFloat = 61.0
+        let kangarooIconX:CGFloat = (earthIconWidth - kangarooIconWidth)/2.0
+        let kangarooIconY:CGFloat = 30.0
+        let kangarooIconHeight:CGFloat = 71.5
         kangarooIconView.frame = CGRect(x: kangarooIconX,
                                      y: kangarooIconY,
                                      width: kangarooIconWidth,
@@ -57,6 +83,7 @@ class MNMTRefreshView: MNRefreshView {
     }
     
     private func setupMTAnimation(){
+        //earth spin
         let animate = CABasicAnimation(keyPath: "transform.rotation")
         animate.repeatCount = Float.greatestFiniteMagnitude
         animate.toValue = -2 * Double.pi
@@ -64,6 +91,12 @@ class MNMTRefreshView: MNRefreshView {
         animate.isRemovedOnCompletion = false
         earthIconView.layer.add(animate, forKey: nil)
         
+        //袋鼠
+        kangarooIconView.layer.anchorPoint = CGPoint(x: 0.5, y: 1)
+        let x = self.bounds.width * 0.5
+        let y = self.bounds.height - earthIconDisplayHeight
+        kangarooIconView.center = CGPoint(x: x, y: y)
+        kangarooIconView.transform = CGAffineTransform(scaleX: 0.2, y: 0.2)
     }
     
     override class func refreshView() -> MNRefreshView{

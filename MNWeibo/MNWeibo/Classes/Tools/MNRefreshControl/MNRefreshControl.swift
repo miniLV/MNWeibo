@@ -72,7 +72,12 @@ class MNRefreshControl: UIControl {
             return
         }
         
-        self.frame = CGRect(x: 0, y: -height, width: scrollView.bounds.width, height: height)
+        self.frame = CGRect(x: 0,
+                            y: -height,
+                            width: scrollView.bounds.width,
+                            height: height)
+        
+        refreshView.parentViewHeight = height
         
         //判断临界点
         if scrollView.isDragging{
@@ -109,6 +114,8 @@ class MNRefreshControl: UIControl {
         var inset = scrollView.contentInset
         inset.top += MNRefreshOffsetY
         scrollView.contentInset = inset
+        
+        refreshView.parentViewHeight = MNRefreshOffsetY
     }
 
     func endRefreshing() {

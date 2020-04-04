@@ -16,6 +16,8 @@ class MNRefreshView: UIView {
     lazy var contentLabel: UILabel? = UILabel()
     // 指示器(菊花)
     lazy var activityIndicator: UIActivityIndicatorView? = UIActivityIndicatorView()
+    // 父视图高度
+    lazy var parentViewHeight:CGFloat = 0.0
     
     var refreshState:MNRefreshState = .normal{
         didSet{

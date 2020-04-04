@@ -116,7 +116,13 @@ class MNStatusListViewModel {
         //3. 调度组完成
         group.notify(queue: DispatchQueue.main) {
             print("down load finish ...")
-            finish()
+            
+            //FIXME: Debug gcd.
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                finish()
+            }
+            
+//            finish()
         }
     }
 }
