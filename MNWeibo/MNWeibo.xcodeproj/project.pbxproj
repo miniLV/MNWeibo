@@ -28,6 +28,7 @@
 		A79511202434D08A00E46C98 /* MNRefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A795111F2434D08A00E46C98 /* MNRefreshControl.swift */; };
 		A79511222434E03000E46C98 /* MNRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79511212434E03000E46C98 /* MNRefreshView.swift */; };
 		A79511262438A99100E46C98 /* MNMTRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79511252438A99100E46C98 /* MNMTRefreshView.swift */; };
+		A79511292438C7A600E46C98 /* MNPublishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79511282438C7A500E46C98 /* MNPublishView.swift */; };
 		A79836142427B0750095586A /* MNWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79836132427B0750095586A /* MNWelcomeView.swift */; };
 		A79836162427B0BB0095586A /* MNNewFeatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79836152427B0BB0095586A /* MNNewFeatureView.swift */; };
 		A79ABD822427BAC300EF602F /* MNLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79ABD812427BAC300EF602F /* MNLayout.swift */; };
@@ -117,6 +118,7 @@
 		A795111F2434D08A00E46C98 /* MNRefreshControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNRefreshControl.swift; sourceTree = "<group>"; };
 		A79511212434E03000E46C98 /* MNRefreshView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNRefreshView.swift; sourceTree = "<group>"; };
 		A79511252438A99100E46C98 /* MNMTRefreshView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNMTRefreshView.swift; sourceTree = "<group>"; };
+		A79511282438C7A500E46C98 /* MNPublishView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNPublishView.swift; sourceTree = "<group>"; };
 		A79836132427B0750095586A /* MNWelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNWelcomeView.swift; sourceTree = "<group>"; };
 		A79836152427B0BB0095586A /* MNNewFeatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNNewFeatureView.swift; sourceTree = "<group>"; };
 		A79ABD812427BAC300EF602F /* MNLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNLayout.swift; sourceTree = "<group>"; };
@@ -335,6 +337,14 @@
 			path = MNRefreshControl;
 			sourceTree = "<group>";
 		};
+		A79511272438C77B00E46C98 /* CenterButton */ = {
+			isa = PBXGroup;
+			children = (
+				A79511282438C7A500E46C98 /* MNPublishView.swift */,
+			);
+			path = CenterButton;
+			sourceTree = "<group>";
+		};
 		A79836122427AFB30095586A /* NewFeature */ = {
 			isa = PBXGroup;
 			children = (
@@ -450,6 +460,7 @@
 		A7FFE6852417D05E0082F464 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				A79511272438C77B00E46C98 /* CenterButton */,
 				A79836122427AFB30095586A /* NewFeature */,
 				A7E684ED24210E0200A58E9E /* OAuth */,
 				A700BE2B241A73A0000E2A1A /* VisitorView */,
@@ -774,6 +785,7 @@
 				A7EFF4B2242F2904001AB430 /* MNStatusToolView.swift in Sources */,
 				A745A5982419206F00F9E138 /* UIBarButtonItem+Extension.swift in Sources */,
 				A79511202434D08A00E46C98 /* MNRefreshControl.swift in Sources */,
+				A79511292438C7A600E46C98 /* MNPublishView.swift in Sources */,
 				A7EFF4B82430D99C001AB430 /* MNHomeRepostCell.swift in Sources */,
 				A7FFE6902417D1510082F464 /* MNDiscoverViewController.swift in Sources */,
 				A7FFE6EC2417D68D0082F464 /* NSArray+Log.m in Sources */,

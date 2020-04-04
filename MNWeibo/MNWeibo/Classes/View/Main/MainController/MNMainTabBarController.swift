@@ -56,10 +56,13 @@ class MNMainTabBarController: UITabBarController {
     //@objc: 可以用OC的消息机制调用
     @objc private func centerBtnClick() {
         
-        let vc = UIViewController()
-        let navi = UINavigationController(rootViewController: vc)
-        vc.view.backgroundColor = UIColor.orange
-        present(navi, animated: true, completion: nil)
+        // FIXME: 发布微博
+        let view = MNPublishView()
+        view.show()
+//        let vc = UIViewController()
+//        let navi = UINavigationController(rootViewController: vc)
+//        vc.view.backgroundColor = UIColor.orange
+//        present(navi, animated: true, completion: nil)
     }
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask{

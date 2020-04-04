@@ -25,8 +25,7 @@ class MNRefreshControl: UIControl {
 
     let MNRefreshControlKey = "contentOffset"
     
-//    lazy var refreshView = MNRefreshView.refreshView()
-    lazy var refreshView = MNMTRefreshView.refreshView()
+    lazy var refreshView = MNRefreshView.refreshView()
     
     /// 刷新控件RefreshControl父视图
     private weak var scrollView: UIScrollView?

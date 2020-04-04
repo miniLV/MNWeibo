@@ -35,9 +35,6 @@ class MNNavigationController: UINavigationController {
                 vc.naviItem.leftBarButtonItem = UIBarButtonItem(title: title, target: self, action: #selector(popViewController(animated:)), isBackItem: true)
             }
         }
-        
-     
-        
         super.pushViewController(viewController, animated: animated)
     }
     
