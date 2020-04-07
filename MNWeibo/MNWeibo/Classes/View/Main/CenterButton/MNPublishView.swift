@@ -13,6 +13,12 @@ class MNPublishView: UIView {
     //每页最多6个按钮
     let pageCount = 6
     
+    private var scrollView = UIScrollView()
+    ///关闭按钮
+    private var closeBtn = UIButton()
+    ///返回前一页按钮
+    private var returnBtn = UIButton()
+    
     override init(frame: CGRect) {
         super.init(frame: UIScreen.main.bounds)
         backgroundColor = UIColor.clear
@@ -28,7 +34,7 @@ class MNPublishView: UIView {
                                ["imageName": "tabbar_compose_weibo", "title": "长微博"],
                                ["imageName": "tabbar_compose_lbs", "title": "签到"],
                                ["imageName": "tabbar_compose_review", "title": "点评"],
-                               ["imageName": "tabbar_compose_more", "title": "更多", "actionName": "clickMore"],
+                               ["imageName": "tabbar_compose_more", "title": "更多", "actionName": "clickMoreButton"],
                                ["imageName": "tabbar_compose_friend", "title": "好友圈"],
                                ["imageName": "tabbar_compose_wbcamera", "title": "微博相机"],
                                ["imageName": "tabbar_compose_music", "title": "音乐"],
@@ -57,27 +63,36 @@ class MNPublishView: UIView {
             make.height.equalTo(44)
         }
         
-        let closelBtn = UIButton()
-        closelBtn.setImage(UIImage(named: "tabbar_compose_background_icon_close"), for: .normal)
-        bottomView.addSubview(closelBtn)
-        closelBtn.addTarget(self, action: #selector(clickCloseBtn), for: .touchUpInside)
-        closelBtn.snp.makeConstraints { (make) in
+        closeBtn.setImage(UIImage(named: "tabbar_compose_background_icon_close"), for: .normal)
+        bottomView.addSubview(closeBtn)
+        closeBtn.addTarget(self, action: #selector(clickCloseBtn), for: .touchUpInside)
+        closeBtn.snp.makeConstraints { (make) in
             make.center.equalToSuperview()
             make.width.height.equalTo(MNLayout.Layout(25))
         }
         
-        let scrollView = UIScrollView()
+        returnBtn.setImage(UIImage(named: "tabbar_compose_background_icon_return"), for: .normal)
+        returnBtn.isHidden = true
+        bottomView.addSubview(returnBtn)
+        returnBtn.addTarget(self, action: #selector(clickReturnBtn), for: .touchUpInside)
+        returnBtn.snp.makeConstraints { (make) in
+            make.center.equalToSuperview()
+            make.width.height.equalTo(MNLayout.Layout(25))
+        }
+        
+        
+        
         addSubview(scrollView)
         scrollView.contentSize = CGSize(width: bounds.width * 2, height: 0)
         scrollView.showsVerticalScrollIndicator = false
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.bounces = false
-//        scrollView.isScrollEnabled = false
+        scrollView.isScrollEnabled = false
         scrollView.backgroundColor = UIColor.orange
         scrollView.snp.makeConstraints { (make) in
             make.left.right.equalToSuperview()
             make.height.equalTo(MNLayout.Layout(224))
-            make.bottom.equalTo(closelBtn.snp.top).offset(-MNLayout.Layout(56))
+            make.bottom.equalTo(closeBtn.snp.top).offset(-MNLayout.Layout(56))
         }
         
         setupCompostButtons(parentView: scrollView)
@@ -95,8 +110,46 @@ class MNPublishView: UIView {
         
     }
     
+    @objc func clickReturnBtn(){
+        scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
+        returnBtn.snp.updateConstraints { (make) in
+            make.centerX.equalToSuperview()
+        }
+        closeBtn.snp.updateConstraints { (make) in
+            make.centerX.equalToSuperview()
+        }
+        
+        UIView.animate(withDuration: 0.2, animations: {
+            self.layoutIfNeeded()
+            self.returnBtn.alpha = 0
+        }) { (_) in
+            self.returnBtn.isHidden = true
+            self.returnBtn.alpha = 1
+        }
+    }
+    
     @objc func clickButton(){
         print("clickButton")
+    }
+    
+    ///点击更多
+    @objc func clickMoreButton(){
+        scrollView.setContentOffset(CGPoint(x: scrollView.bounds.width, y: 0), animated: true)
+        
+        returnBtn.isHidden = false
+        
+        //三等分
+        let margin = scrollView.bounds.width / 6
+        returnBtn.snp.updateConstraints { (make) in
+            make.centerX.equalToSuperview().offset(-MNLayout.Layout(margin))
+        }
+        closeBtn.snp.updateConstraints { (make) in
+            make.centerX.equalToSuperview().offset(MNLayout.Layout(margin))
+        }
+        
+        UIView.animate(withDuration: 0.2) {
+           self.layoutIfNeeded()
+        }
     }
 }
 
@@ -131,6 +184,9 @@ private extension MNPublishView{
             }
             let button = MNCompostTypeButton(imageName: imageName, title: title)
             parentView.addSubview(button)
+            if let actionName = dic["actionName"]{
+                button.addTarget(self, action: Selector(actionName), for: .touchUpInside)
+            }
         }
         
         //布局
