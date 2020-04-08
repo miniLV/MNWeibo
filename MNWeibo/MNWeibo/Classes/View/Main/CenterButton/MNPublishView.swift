@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import pop
 class MNPublishView: UIView {
 
     //每页最多6个按钮
@@ -18,6 +18,8 @@ class MNPublishView: UIView {
     private var closeBtn = UIButton()
     ///返回前一页按钮
     private var returnBtn = UIButton()
+    
+    private let btnAnimateDuration = 0.025
     
     override init(frame: CGRect) {
         super.init(frame: UIScreen.main.bounds)
@@ -89,6 +91,7 @@ class MNPublishView: UIView {
         scrollView.bounces = false
         scrollView.isScrollEnabled = false
         scrollView.backgroundColor = UIColor.orange
+        scrollView.clipsToBounds = false
         scrollView.snp.makeConstraints { (make) in
             make.left.right.equalToSuperview()
             make.height.equalTo(MNLayout.Layout(224))
@@ -104,10 +107,12 @@ class MNPublishView: UIView {
         }
         
         mainVC.view.addSubview(self)
+        
+        showCurrentViewAnimate()
     }
     
     @objc func clickCloseBtn(){
-        
+        hideButtons()
     }
     
     @objc func clickReturnBtn(){
@@ -200,6 +205,56 @@ private extension MNPublishView{
             let x = margin + CGFloat(column) * (buttonWH + margin)
             let y = CGFloat(row) * (buttonWH + margin)
             btn.frame = CGRect(x: x, y: y, width: buttonWH, height: buttonWH)
+        }
+    }
+}
+
+// MARK: - Animate
+private extension MNPublishView{
+    
+    func showCurrentViewAnimate() {
+        let anim:POPBasicAnimation = POPBasicAnimation(propertyNamed: kPOPViewAlpha)
+        
+        anim.fromValue = 0
+        anim.toValue = 1
+        anim.duration = 0.25
+        pop_add(anim, forKey: nil)
+        
+        showButtonAnimate()
+    }
+    
+    func showButtonAnimate() {
+        let backgroundView = scrollView.subviews[0]
+        
+        
+        for (index, btn) in backgroundView.subviews.enumerated(){
+            
+            let anim:POPSpringAnimation = POPSpringAnimation(propertyNamed: kPOPLayerPositionY)
+            
+            anim.fromValue = btn.center.y + 400
+            anim.toValue = btn.center.y
+            //弹力系数 - [0,20],数值越大弹性越大，default = 4
+            anim.springBounciness = 8
+            //弹力速度 - [0,20],数值越大弹速度越快，default = 12
+            anim.springSpeed = 8
+            
+            anim.beginTime = CACurrentMediaTime() + CFTimeInterval(index) * btnAnimateDuration
+            btn.pop_add(anim, forKey: nil)
+        }
+    }
+    
+    func hideButtons(){
+        let offset = scrollView.contentOffset.x
+        let page = Int(offset / scrollView.bounds.width)
+        let view = scrollView.subviews[page]
+        for (index,btn) in view.subviews.enumerated().reversed(){
+            let anim:POPSpringAnimation = POPSpringAnimation(propertyNamed: kPOPLayerPositionY)
+            anim.fromValue = btn.center.y
+            anim.toValue = btn.center.y + 400
+            //消失动画: 从最后一个按钮开始消失
+            let hiddenIndexOrder = view.subviews.count - index
+            anim.beginTime = CACurrentMediaTime() + CFTimeInterval(hiddenIndexOrder) * btnAnimateDuration
+            btn.pop_add(anim, forKey: nil)
         }
     }
 }
