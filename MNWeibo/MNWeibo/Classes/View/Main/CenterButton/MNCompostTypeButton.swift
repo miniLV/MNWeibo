@@ -12,6 +12,8 @@ class MNCompostTypeButton: UIButton {
 
     let buttonWH = MNLayout.Layout(100)
     
+    var clsName: String?
+    
     init(imageName:String, title:String) {
         super.init(frame: CGRect(x: 0, y: 0, width:buttonWH , height: buttonWH))
         setupUI(imageName: imageName, title: title)

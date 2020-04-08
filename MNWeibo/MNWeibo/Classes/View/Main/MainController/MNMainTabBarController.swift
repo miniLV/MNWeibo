@@ -58,11 +58,20 @@ class MNMainTabBarController: UITabBarController {
         
         // FIXME: 发布微博
         let view = MNPublishView()
-        view.show()
-//        let vc = UIViewController()
-//        let navi = UINavigationController(rootViewController: vc)
-//        vc.view.backgroundColor = UIColor.orange
-//        present(navi, animated: true, completion: nil)
+        view.show { [weak view] (clsName) in
+            guard let clsName = clsName,
+                let cls = NSClassFromString(Bundle.main.namespace + "." + clsName) as? UIViewController.Type
+                else{
+                    view?.removeFromSuperview()
+                    return
+            }
+
+            let vc = cls.init()
+            let navi = UINavigationController(rootViewController: vc)
+            self.present(navi, animated: true) {
+                view?.removeFromSuperview()
+            }
+        }
     }
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask{

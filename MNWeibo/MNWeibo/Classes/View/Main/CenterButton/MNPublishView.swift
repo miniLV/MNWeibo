@@ -21,6 +21,8 @@ class MNPublishView: UIView {
     
     private let btnAnimateDuration = 0.025
     
+    private var completionBlock:((_ clsName: String?)->())?
+    
     override init(frame: CGRect) {
         super.init(frame: UIScreen.main.bounds)
         backgroundColor = UIColor.clear
@@ -31,7 +33,7 @@ class MNPublishView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private let buttonInfos = [["imageName": "tabbar_compose_idea", "title": "文字", "clsName": "WBComposeViewController"],
+    private let buttonInfos = [["imageName": "tabbar_compose_idea", "title": "文字", "clsName": "MNWriteController"],
                                ["imageName": "tabbar_compose_photo", "title": "照片/视频"],
                                ["imageName": "tabbar_compose_weibo", "title": "长微博"],
                                ["imageName": "tabbar_compose_lbs", "title": "签到"],
@@ -99,10 +101,11 @@ class MNPublishView: UIView {
         setupCompostButtons(parentView: scrollView)
     }
     
-    func show() {
+    func show(completion: @escaping ((_ clsName: String?)->())) {
         guard let mainVC = UIApplication.shared.keyWindow?.rootViewController else{
             return
         }
+        completionBlock = completion
         
         mainVC.view.addSubview(self)
         
@@ -131,8 +134,38 @@ class MNPublishView: UIView {
         }
     }
     
-    @objc func clickButton(){
-        print("clickButton")
+    @objc func clickButton(selectedButton:MNCompostTypeButton ){
+        
+        let pageIndex = Int(scrollView.contentOffset.x / scrollView.bounds.width)
+        let view = scrollView.subviews[pageIndex]
+        
+        for (index,btn) in view.subviews.enumerated(){
+            //缩放动画
+            let scaleAnim:POPBasicAnimation = POPBasicAnimation(propertyNamed: kPOPViewScaleXY)
+            let scale = (selectedButton == btn) ? 2 : 0.2
+            // x,y 在坐标系中用CGPoint显示，不能直接用基本数据类型，需要 NSValue 转换下
+            scaleAnim.toValue = NSValue(cgPoint: CGPoint(x: scale, y: scale))
+            scaleAnim.duration = 0.5
+            btn.pop_add(scaleAnim, forKey: nil)
+            
+            //渐变动画
+            let alphaAnim:POPBasicAnimation = POPBasicAnimation(propertyNamed: kPOPViewAlpha)
+            alphaAnim.toValue = 0.2
+            alphaAnim.duration = 0.5
+            btn.pop_add(alphaAnim, forKey: nil)
+            
+            //监听动画完成
+            if index == 0 {
+                alphaAnim.completionBlock = {_,_ in
+                    print("show vc")
+                    self.completionBlock?(selectedButton.clsName)
+                }
+            }
+        }
+    }
+    
+    func presentNewVC(){
+        
     }
     
     ///点击更多
@@ -188,7 +221,11 @@ private extension MNPublishView{
             parentView.addSubview(button)
             if let actionName = dic["actionName"]{
                 button.addTarget(self, action: Selector(actionName), for: .touchUpInside)
+            }else{
+                button.addTarget(self, action: #selector(clickButton(selectedButton:)), for: .touchUpInside)
             }
+            let clsName = dic["clsName"]
+            button.clsName = clsName
         }
         
         //布局

@@ -30,6 +30,7 @@
 		A79511262438A99100E46C98 /* MNMTRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79511252438A99100E46C98 /* MNMTRefreshView.swift */; };
 		A79511292438C7A600E46C98 /* MNPublishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79511282438C7A500E46C98 /* MNPublishView.swift */; };
 		A795112B243CBBE800E46C98 /* MNCompostTypeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A795112A243CBBE800E46C98 /* MNCompostTypeButton.swift */; };
+		A795112D243E0A5D00E46C98 /* MNWriteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A795112C243E0A5D00E46C98 /* MNWriteController.swift */; };
 		A79836142427B0750095586A /* MNWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79836132427B0750095586A /* MNWelcomeView.swift */; };
 		A79836162427B0BB0095586A /* MNNewFeatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79836152427B0BB0095586A /* MNNewFeatureView.swift */; };
 		A79ABD822427BAC300EF602F /* MNLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79ABD812427BAC300EF602F /* MNLayout.swift */; };
@@ -121,6 +122,7 @@
 		A79511252438A99100E46C98 /* MNMTRefreshView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNMTRefreshView.swift; sourceTree = "<group>"; };
 		A79511282438C7A500E46C98 /* MNPublishView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNPublishView.swift; sourceTree = "<group>"; };
 		A795112A243CBBE800E46C98 /* MNCompostTypeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNCompostTypeButton.swift; sourceTree = "<group>"; };
+		A795112C243E0A5D00E46C98 /* MNWriteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNWriteController.swift; sourceTree = "<group>"; };
 		A79836132427B0750095586A /* MNWelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNWelcomeView.swift; sourceTree = "<group>"; };
 		A79836152427B0BB0095586A /* MNNewFeatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNNewFeatureView.swift; sourceTree = "<group>"; };
 		A79ABD812427BAC300EF602F /* MNLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNLayout.swift; sourceTree = "<group>"; };
@@ -344,6 +346,7 @@
 			children = (
 				A79511282438C7A500E46C98 /* MNPublishView.swift */,
 				A795112A243CBBE800E46C98 /* MNCompostTypeButton.swift */,
+				A795112C243E0A5D00E46C98 /* MNWriteController.swift */,
 			);
 			path = CenterButton;
 			sourceTree = "<group>";
@@ -782,6 +785,7 @@
 				A7E684F42422766C00A58E9E /* MNUserAccount.swift in Sources */,
 				A7FFE6892417D0E00082F464 /* MNNavigationController.swift in Sources */,
 				A7E684EF24210E2300A58E9E /* MNOAuthViewController.swift in Sources */,
+				A795112D243E0A5D00E46C98 /* MNWriteController.swift in Sources */,
 				A79836162427B0BB0095586A /* MNNewFeatureView.swift in Sources */,
 				A7FFE6EB2417D68D0082F464 /* NSAttributedString+CZAdditon.m in Sources */,
 				A700BE2D241A73BD000E2A1A /* MNVisitorView.swift in Sources */,
