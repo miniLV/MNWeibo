@@ -82,15 +82,13 @@ class MNPublishView: UIView {
             make.width.height.equalTo(MNLayout.Layout(25))
         }
         
-        
-        
         addSubview(scrollView)
         scrollView.contentSize = CGSize(width: bounds.width * 2, height: 0)
         scrollView.showsVerticalScrollIndicator = false
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.bounces = false
         scrollView.isScrollEnabled = false
-        scrollView.backgroundColor = UIColor.orange
+        scrollView.backgroundColor = UIColor.clear
         scrollView.clipsToBounds = false
         scrollView.snp.makeConstraints { (make) in
             make.left.right.equalToSuperview()
@@ -160,16 +158,15 @@ class MNPublishView: UIView {
 
 private extension MNPublishView{
     
-    
     func setupCompostButtons(parentView: UIView) {
         layoutIfNeeded()
         
         let rect = parentView.bounds
         let width = parentView.bounds.width
-        for i in 0...1{
+        let maxPage = buttonInfos.count / pageCount
+        for i in 0...maxPage{
             
             let view = UIView(frame: rect.offsetBy(dx: width * CGFloat(i), dy: 0))
-            view.backgroundColor = UIColor.lightGray
             parentView.addSubview(view)
             createButtons(parentView: view, index: i * pageCount)
         }
@@ -226,7 +223,6 @@ private extension MNPublishView{
     func showButtonAnimate() {
         let backgroundView = scrollView.subviews[0]
         
-        
         for (index, btn) in backgroundView.subviews.enumerated(){
             
             let anim:POPSpringAnimation = POPSpringAnimation(propertyNamed: kPOPLayerPositionY)
@@ -255,6 +251,28 @@ private extension MNPublishView{
             let hiddenIndexOrder = view.subviews.count - index
             anim.beginTime = CACurrentMediaTime() + CFTimeInterval(hiddenIndexOrder) * btnAnimateDuration
             btn.pop_add(anim, forKey: nil)
+            
+            hideCurrentView(index: index, btnAnim: anim)
+        }
+    }
+    
+    func hideCurrentView(index:Int, btnAnim:POPSpringAnimation){
+        //消失的逆序逐渐消失的，当第一个按钮消失时，说明所有按钮都消失了 ==> 此时隐藏view
+        if index > 0{
+            return
+        }
+        
+        btnAnim.completionBlock = {_,_ in
+            let viewAnim:POPBasicAnimation = POPBasicAnimation(propertyNamed: kPOPViewAlpha)
+            viewAnim.fromValue = 1
+            viewAnim.toValue = 0
+            viewAnim.duration = 0.25
+            
+            self.pop_add(viewAnim, forKey: nil)
+            
+            viewAnim.completionBlock = {_,_ in
+                self.removeFromSuperview()
+            }
         }
     }
 }
