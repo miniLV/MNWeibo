@@ -23,6 +23,10 @@ class MNHomeNormalCell: MNHomeBaseCell {
                                     isAvatar: true)
             bottomView.viewModel = viewModel
             contentPictureView.viewModel = viewModel
+            
+            sourceLabel.text = viewModel?.status.source
+//            timeLabel.text = viewModel?.sourceStr
+            
         }
     }
     var avatarImage = UIImageView()

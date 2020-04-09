@@ -24,6 +24,14 @@ class MNStatusModel: NSObject {
     
     @objc var pic_urls: [MNStatusPicture]?
     
+    @objc var create_at: String?
+    
+    @objc var source: String?{
+        didSet{
+            source = "来自" + (source?.mn_href()?.text ?? "")
+        }
+    }
+    
     //被转发微博
     @objc var retweeted_status: MNStatusModel?
     
