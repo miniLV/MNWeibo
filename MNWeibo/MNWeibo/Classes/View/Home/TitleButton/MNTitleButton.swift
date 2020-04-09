@@ -41,17 +41,8 @@ class MNTitleButton: UIButton {
             return
         }
 
-        //FIXME: call layoutSubviews twice
-        
         //设置文字在做，图片在右
-        //1.将titlelabel 的 x, 向左移动 imageView的宽度
-        if titleLabel.frame.origin.x > 0 {
-            titleLabel.frame = titleLabel.frame.offsetBy(dx: -imageView.frame.width, dy: 0)
-        }
-
-        //2.将imageView 的 x, 向右移动 titleLabel的宽度
-        if imageView.frame.origin.x == 0 {
-            imageView.frame = imageView.frame.offsetBy(dx: titleLabel.frame.width, dy: 0)
-        }
+        titleLabel.frame.origin.x = 0
+        imageView.frame.origin.x = titleLabel.bounds.width
     }
 }

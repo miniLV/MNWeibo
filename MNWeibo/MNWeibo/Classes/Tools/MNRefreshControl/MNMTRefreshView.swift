@@ -17,10 +17,6 @@ class MNMTRefreshView: MNRefreshView {
                 return
             }
             
-            if refreshState == .refreshing && parentViewHeight < backgroudIconHeight{
-                return
-            }
-            
             var scale:CGFloat = 0
             if parentViewHeight > backgroudIconHeight{
                 scale = 1

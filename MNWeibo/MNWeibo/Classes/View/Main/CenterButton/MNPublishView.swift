@@ -101,13 +101,10 @@ class MNPublishView: UIView {
         setupCompostButtons(parentView: scrollView)
     }
     
-    func show(completion: @escaping ((_ clsName: String?)->())) {
-        guard let mainVC = UIApplication.shared.keyWindow?.rootViewController else{
-            return
-        }
+    func show(rootVC:UIViewController, completion: @escaping ((_ clsName: String?)->())) {
         completionBlock = completion
         
-        mainVC.view.addSubview(self)
+        rootVC.view.addSubview(self)
         
         showCurrentViewAnimate()
     }

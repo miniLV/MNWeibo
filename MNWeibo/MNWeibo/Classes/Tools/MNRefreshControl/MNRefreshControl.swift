@@ -25,7 +25,7 @@ class MNRefreshControl: UIControl {
 
     let MNRefreshControlKey = "contentOffset"
     
-    lazy var refreshView = MNRefreshView.refreshView()
+    lazy var refreshView = MNMTRefreshView.refreshView()
     
     /// 刷新控件RefreshControl父视图
     private weak var scrollView: UIScrollView?
@@ -76,7 +76,9 @@ class MNRefreshControl: UIControl {
                             width: scrollView.bounds.width,
                             height: height)
         
-        refreshView.parentViewHeight = height
+        if refreshView.refreshState != .refreshing{
+            refreshView.parentViewHeight = height
+        }
         
         //判断临界点
         if scrollView.isDragging{

@@ -58,7 +58,7 @@ class MNMainTabBarController: UITabBarController {
         
         // FIXME: 发布微博
         let view = MNPublishView()
-        view.show { [weak view] (clsName) in
+        view.show(rootVC: self) { [weak view] (clsName) in
             guard let clsName = clsName,
                 let cls = NSClassFromString(Bundle.main.namespace + "." + clsName) as? UIViewController.Type
                 else{
