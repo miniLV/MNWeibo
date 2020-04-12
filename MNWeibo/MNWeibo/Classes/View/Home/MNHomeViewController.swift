@@ -73,6 +73,10 @@ extension MNHomeViewController{
 extension MNHomeViewController:MNHomeCellDelegate{
     func homeCellDidClickUrlString(cell: MNHomeNormalCell, urlStr: String) {
         print("urlStr = \(urlStr)")
+        let vc = MNWebViewController()
+        vc.urlString = urlStr
+        vc.title = "123"
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 

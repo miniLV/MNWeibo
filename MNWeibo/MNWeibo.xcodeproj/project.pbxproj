@@ -37,6 +37,7 @@
 		A79511372443049000E46C98 /* MNEmojiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79511362443049000E46C98 /* MNEmojiModel.swift */; };
 		A79511392443055300E46C98 /* MNEmojiPackageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79511382443055300E46C98 /* MNEmojiPackageModel.swift */; };
 		A795114124435CB200E46C98 /* MNLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A795114024435CB200E46C98 /* MNLabel.swift */; };
+		A79511432443661C00E46C98 /* MNWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79511422443661B00E46C98 /* MNWebViewController.swift */; };
 		A79836142427B0750095586A /* MNWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79836132427B0750095586A /* MNWelcomeView.swift */; };
 		A79836162427B0BB0095586A /* MNNewFeatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79836152427B0BB0095586A /* MNNewFeatureView.swift */; };
 		A79ABD822427BAC300EF602F /* MNLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79ABD812427BAC300EF602F /* MNLayout.swift */; };
@@ -135,6 +136,7 @@
 		A79511362443049000E46C98 /* MNEmojiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNEmojiModel.swift; sourceTree = "<group>"; };
 		A79511382443055300E46C98 /* MNEmojiPackageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNEmojiPackageModel.swift; sourceTree = "<group>"; };
 		A795114024435CB200E46C98 /* MNLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNLabel.swift; sourceTree = "<group>"; };
+		A79511422443661B00E46C98 /* MNWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNWebViewController.swift; sourceTree = "<group>"; };
 		A79836132427B0750095586A /* MNWelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNWelcomeView.swift; sourceTree = "<group>"; };
 		A79836152427B0BB0095586A /* MNNewFeatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNNewFeatureView.swift; sourceTree = "<group>"; };
 		A79ABD812427BAC300EF602F /* MNLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNLayout.swift; sourceTree = "<group>"; };
@@ -524,6 +526,7 @@
 				A73B4445242A544500033F5B /* Cell */,
 				A7D736322427304100CD3A04 /* TitleButton */,
 				A7FFE68D2417D1440082F464 /* MNHomeViewController.swift */,
+				A79511422443661B00E46C98 /* MNWebViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -813,6 +816,7 @@
 				A73B444B242A61CE00033F5B /* MNStatusViewModel.swift in Sources */,
 				A7FFE68B2417D1070082F464 /* MNBaseViewController.swift in Sources */,
 				A73B4447242A548200033F5B /* MNHomeNormalCell.swift in Sources */,
+				A79511432443661C00E46C98 /* MNWebViewController.swift in Sources */,
 				A7EFF4AC242E439A001AB430 /* UIImage+MNExtensions.swift in Sources */,
 				A79511262438A99100E46C98 /* MNMTRefreshView.swift in Sources */,
 				A7FFE6E42417D68D0082F464 /* UILabel+CZAddition.m in Sources */,
