@@ -41,8 +41,8 @@ extension MNEmojiManager{
     /// 根据传入的字符串[abc]，查找对应的表情模型
     /// - Parameter string : 查询字符串
     func findEmoji(string: String) -> MNEmojiModel? {
+
         
-       
         for pModel in packages{
             
             //传入的参数和model对比，过滤出一致字符串对应的模型.
@@ -58,8 +58,8 @@ extension MNEmojiManager{
     /// 将字符串转换成属性文本
     /// - Parameter string: 原始字符串
     func getEmojiString(string: String, font: UIFont) -> NSAttributedString {
+//        let validString = (string as NSString).replacingOccurrences(of: " ", with: "")
         let attrStr = NSMutableAttributedString(string: string)
-        
         //1.正则过滤 [xxx] 的表情文字
         let pattern = "\\[.*?\\]"
         
@@ -100,7 +100,6 @@ extension MNEmojiManager{
         
         attrStr.addAttributes([NSAttributedString.Key.font : font],
                               range: NSRange(location: 0, length: attrStr.length))
-        
         return attrStr
     }
 }

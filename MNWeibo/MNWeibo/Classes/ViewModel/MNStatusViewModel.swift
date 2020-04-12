@@ -18,7 +18,7 @@ class MNStatusViewModel: CustomStringConvertible {
     
     var vipIcon: UIImage?
     
-    /// 转发内容 - 属性文本
+    //字符串 - “转发”
     var repostTitle: String?
     
     var commentTitle: String?
@@ -29,21 +29,26 @@ class MNStatusViewModel: CustomStringConvertible {
     
     var rowHeight:CGFloat = 0
     
-    ///正文内容 - 属性文本
-    var statusAttrText: NSAttributedString?
+    /// 正文内容 - 属性文本
+    var statusAttrText: NSAttributedString?{
+        let originFontSize = UIFont.systemFont(ofSize: MNLayout.Layout(15))
+        return MNEmojiManager.shared.getEmojiString(string: status.text ?? "", font: originFontSize)
+    }
+
+    /// 转发微博的属性文本
+    var repostAttrText: NSAttributedString?{
+        let str1 = "@" + (status.retweeted_status?.user?.screen_name ?? "")
+        let str2 = ":" + (status.retweeted_status?.text ?? "")
+        let resultStr = str1 + str2
+        let repostFontSize = UIFont.systemFont(ofSize: MNLayout.Layout(14))
+        return MNEmojiManager.shared.getEmojiString(string: resultStr, font: repostFontSize)
+    }
     
     //原创&被转发微博
     var picUrls:[MNStatusPicture]?{
         //如果有被转发的微博 ==> 返回被转发的微博配图
         //如果没有被转发的微博 ==> 返回原创微博配图
         return status.retweeted_status?.pic_urls ?? status.pic_urls
-    }
-    
-    /// 转发微博的属性文本
-    var repostText:String?{
-        let str1 = "@" + (status.retweeted_status?.user?.screen_name ?? "")
-        let str2 = ":" + (status.retweeted_status?.text ?? "")
-        return str1 + str2
     }
     
     init(model:MNStatusModel) {
@@ -171,31 +176,18 @@ class MNStatusViewModel: CustomStringConvertible {
         //顶部视图
         height = margin * 2 + avatarHeight + margin
         let textSize = CGSize(width:width, height: CGFloat.greatestFiniteMagnitude)
-        
-        let originFontSize = UIFont.systemFont(ofSize: MNLayout.Layout(15))
-        let repostFontSize = UIFont.systemFont(ofSize: MNLayout.Layout(14))
-        
+
         //calcute content label size
-        if let text = status.text{
-            let attributes = [NSAttributedString.Key.font : originFontSize]
-            let textHeight = (text as NSString).boundingRect(with:textSize,
-                                                             options: [.usesLineFragmentOrigin],
-                                                             attributes: attributes,
-                                                             context: nil).height
-            height += textHeight
+        if let text = statusAttrText{
+            height += text.boundingRect(with: textSize, options: [.usesLineFragmentOrigin], context: nil).height
         }
         
         //repost
         if status.retweeted_status != nil{
             height += (margin * 2)
             
-            if let text = repostText{
-                let attributes = [NSAttributedString.Key.font : repostFontSize]
-                let textHeight = (text as NSString).boundingRect(with:textSize,
-                                                                 options: [.usesLineFragmentOrigin],
-                                                                 attributes: attributes,
-                                                                 context: nil).height
-                height += textHeight
+            if let text = repostAttrText{
+                height += text.boundingRect(with: textSize, options: [.usesLineFragmentOrigin], context: nil).height
             }
         }
         

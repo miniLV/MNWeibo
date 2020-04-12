@@ -12,9 +12,10 @@ class MNHomeRepostCell: MNHomeBaseCell {
 
     override var viewModel: MNStatusViewModel?{
         didSet{
-            contentLabel.text = viewModel?.status.text
+            contentLabel.attributedText = viewModel?.statusAttrText
+            repostLabel.attributedText = viewModel?.repostAttrText
+            
             nameLabel.text = viewModel?.status.user?.screen_name
-            //提前计算好
             levelIconView.image = viewModel?.levelIcon
             vipIconView.image = viewModel?.vipIcon
             
@@ -23,7 +24,6 @@ class MNHomeRepostCell: MNHomeBaseCell {
                                     isAvatar: true)
             bottomView.viewModel = viewModel
             contentPictureView.viewModel = viewModel
-            repostLabel.text = viewModel?.repostText
         }
     }
     var avatarImage = UIImageView()

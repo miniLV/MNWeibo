@@ -32,7 +32,7 @@ class MNEmojiPackageModel: NSObject {
             for model in models{
                 model.directory = directory
             }
-            self.emotions += models
+            emotions += models
         }
     }
     
