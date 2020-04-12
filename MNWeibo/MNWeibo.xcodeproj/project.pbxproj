@@ -32,6 +32,10 @@
 		A795112B243CBBE800E46C98 /* MNCompostTypeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A795112A243CBBE800E46C98 /* MNCompostTypeButton.swift */; };
 		A795112D243E0A5D00E46C98 /* MNWriteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A795112C243E0A5D00E46C98 /* MNWriteController.swift */; };
 		A795112F243F600E00E46C98 /* String+Extensions..swift in Sources */ = {isa = PBXBuildFile; fileRef = A795112E243F600E00E46C98 /* String+Extensions..swift */; };
+		A7951131244300B800E46C98 /* MNEmojiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7951130244300B800E46C98 /* MNEmojiManager.swift */; };
+		A7951134244301E200E46C98 /* MNEmoji.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A7951133244301E100E46C98 /* MNEmoji.bundle */; };
+		A79511372443049000E46C98 /* MNEmojiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79511362443049000E46C98 /* MNEmojiModel.swift */; };
+		A79511392443055300E46C98 /* MNEmojiPackageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79511382443055300E46C98 /* MNEmojiPackageModel.swift */; };
 		A79836142427B0750095586A /* MNWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79836132427B0750095586A /* MNWelcomeView.swift */; };
 		A79836162427B0BB0095586A /* MNNewFeatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79836152427B0BB0095586A /* MNNewFeatureView.swift */; };
 		A79ABD822427BAC300EF602F /* MNLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79ABD812427BAC300EF602F /* MNLayout.swift */; };
@@ -125,6 +129,10 @@
 		A795112A243CBBE800E46C98 /* MNCompostTypeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNCompostTypeButton.swift; sourceTree = "<group>"; };
 		A795112C243E0A5D00E46C98 /* MNWriteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNWriteController.swift; sourceTree = "<group>"; };
 		A795112E243F600E00E46C98 /* String+Extensions..swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions..swift"; sourceTree = "<group>"; };
+		A7951130244300B800E46C98 /* MNEmojiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNEmojiManager.swift; sourceTree = "<group>"; };
+		A7951133244301E100E46C98 /* MNEmoji.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MNEmoji.bundle; sourceTree = "<group>"; };
+		A79511362443049000E46C98 /* MNEmojiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNEmojiModel.swift; sourceTree = "<group>"; };
+		A79511382443055300E46C98 /* MNEmojiPackageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNEmojiPackageModel.swift; sourceTree = "<group>"; };
 		A79836132427B0750095586A /* MNWelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNWelcomeView.swift; sourceTree = "<group>"; };
 		A79836152427B0BB0095586A /* MNNewFeatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNNewFeatureView.swift; sourceTree = "<group>"; };
 		A79ABD812427BAC300EF602F /* MNLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNLayout.swift; sourceTree = "<group>"; };
@@ -353,6 +361,25 @@
 			path = CenterButton;
 			sourceTree = "<group>";
 		};
+		A7951132244301B000E46C98 /* Emoji */ = {
+			isa = PBXGroup;
+			children = (
+				A79511352443045D00E46C98 /* Model */,
+				A7951133244301E100E46C98 /* MNEmoji.bundle */,
+				A7951130244300B800E46C98 /* MNEmojiManager.swift */,
+			);
+			path = Emoji;
+			sourceTree = "<group>";
+		};
+		A79511352443045D00E46C98 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A79511362443049000E46C98 /* MNEmojiModel.swift */,
+				A79511382443055300E46C98 /* MNEmojiPackageModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		A79836122427AFB30095586A /* NewFeature */ = {
 			isa = PBXGroup;
 			children = (
@@ -409,6 +436,7 @@
 		A7FFE67F2417D05E0082F464 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				A7951132244301B000E46C98 /* Emoji */,
 				A795111E2434D06600E46C98 /* MNRefreshControl */,
 				A700BE30241DF882000E2A1A /* Network */,
 				A7FFE7142417DA160082F464 /* Extensions */,
@@ -646,6 +674,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A700BE2F241A8ED8000E2A1A /* main.json in Resources */,
+				A7951134244301E200E46C98 /* MNEmoji.bundle in Resources */,
 				A7383B00241682AA0099822E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -758,8 +787,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A7FFE6E22417D68D0082F464 /* UIView+CZAddition.m in Sources */,
+				A79511392443055300E46C98 /* MNEmojiPackageModel.swift in Sources */,
 				A7FFE71F2417DA160082F464 /* Bundle+Extensions.swift in Sources */,
 				A7FFE6E62417D68D0082F464 /* NSString+CZPath.m in Sources */,
+				A7951131244300B800E46C98 /* MNEmojiManager.swift in Sources */,
 				A7E684EC24210C8A00A58E9E /* MNWeiboCommon.swift in Sources */,
 				A7EFF4BA2430E41A001AB430 /* MNHomeBaseCell.swift in Sources */,
 				A79836142427B0750095586A /* MNWelcomeView.swift in Sources */,
@@ -801,6 +832,7 @@
 				A7EFF4B82430D99C001AB430 /* MNHomeRepostCell.swift in Sources */,
 				A7FFE6902417D1510082F464 /* MNDiscoverViewController.swift in Sources */,
 				A7FFE6EC2417D68D0082F464 /* NSArray+Log.m in Sources */,
+				A79511372443049000E46C98 /* MNEmojiModel.swift in Sources */,
 				A7FFE6922417D1570082F464 /* MNMessageViewController.swift in Sources */,
 				A700BE38241E1646000E2A1A /* MNStatusListViewModel.swift in Sources */,
 				A7EFF4B0242F258E001AB430 /* UIButton+Tool.swift in Sources */,

@@ -19,6 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         setupAdditions()
         
+        print("111\(MNEmojiManager.shared.packages)")
+        
         return true
     }
 
