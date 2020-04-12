@@ -38,41 +38,69 @@ private extension MNEmojiManager{
 //MARK: - 表情符号处理
 extension MNEmojiManager{
     
-    
     /// 根据传入的字符串[abc]，查找对应的表情模型
     /// - Parameter string : 查询字符串
     func findEmoji(string: String) -> MNEmojiModel? {
         
        
         for pModel in packages{
-            /**case1: 常规写法
-            let result = pModel.emotions.filter { (model) -> Bool in
-                return model.chs == string
-            }
-             */
             
-            /**case2: 尾随闭包
-            let result = pModel.emotions.filter() { (model) -> Bool in
-                return model.chs == string
-            }
-            */
-            
-            /**case3: 闭包中执行语句只有一句，且是返回 ==> 省略 参数 & 返回值
-             let result = pModel.emotions.filter {
-                 return $0.chs == string
-             }
-             */
-            
-            //case4: case3的基础上，return 也可以省略
-            let result = pModel.emotions.filter {
-                $0.chs == string
-            }
+            //传入的参数和model对比，过滤出一致字符串对应的模型.
+            let result = pModel.emotions.filter { $0.chs == string }
             if result.count > 0 {
-                
                 return result.first
             }
         }
-        
         return nil
+    }
+    
+    
+    /// 将字符串转换成属性文本
+    /// - Parameter string: 原始字符串
+    func getEmojiString(string: String, font: UIFont) -> NSAttributedString {
+        let attrStr = NSMutableAttributedString(string: string)
+        
+        //1.正则过滤 [xxx] 的表情文字
+        let pattern = "\\[.*?\\]"
+        
+        guard let regx = try? NSRegularExpression(pattern: pattern, options: []) else {
+            return attrStr
+        }
+        
+        //2. 字符串全量匹配
+        let matchs = regx.matches(in: string, options: [], range: NSRange(location: 0, length: attrStr.length))
+        
+        //3. 所有匹配结果(倒序)
+        /**图片替换 - 必须倒序遍历！(*类比算法的字符串替换*)
+              今天[小蠢驴]来[打代码]
+              
+              r1 = {2,5}
+              r2 = {9,5}
+              
+              - 正序查找,替换之后，原始字符串长度会变
+              今天[小蠢驴的图片]来[打代码]
+              
+              ==> r2 就找不到 [打代码] 的范围了
+              
+              - 倒序查找
+              今天[小蠢驴]来[打代码的图片]
+              
+              ==> r1 的{2,5} 对应的还是range还是正确的
+        */
+        for result in matchs.reversed(){
+            let range = result.range(at: 0)
+            let subStr = (attrStr.string as NSString).substring(with: range)
+            print(subStr)
+
+            //查找[xxx] 对应的 表情
+            if let model = findEmoji(string: subStr){
+                attrStr.replaceCharacters(in: range, with: model.imageText(font: font))
+            }
+        }
+        
+        attrStr.addAttributes([NSAttributedString.Key.font : font],
+                              range: NSRange(location: 0, length: attrStr.length))
+        
+        return attrStr
     }
 }

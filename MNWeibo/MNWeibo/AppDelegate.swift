@@ -19,8 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         setupAdditions()
         
-//        print("111\(MNEmojiManager.shared.packages)")
-        print(MNEmojiManager.shared.findEmoji(string: "[笑哈哈]"))
         
         return true
     }

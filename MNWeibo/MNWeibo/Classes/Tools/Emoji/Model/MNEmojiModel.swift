@@ -40,6 +40,24 @@ class MNEmojiModel: NSObject {
         return UIImage(named: "\(directory)/\(png)",in: bundle, compatibleWith: nil)
     }
     
+    /// 返回图文混排对应的文本字符串
+    func imageText(font: UIFont) -> NSAttributedString{
+        //判断是否有图像，没有的话就是纯文本
+        guard let image = image else {
+            return NSAttributedString(string: "")
+        }
+        
+        let atta = NSTextAttachment()
+        atta.image = image
+        let height = font.lineHeight
+        
+        //topMargin = -4,防止图片被切割
+        let topMargin:CGFloat = -MNLayout.Layout(4)
+        atta.bounds = CGRect(x: 0, y: topMargin, width: height, height: height)
+        
+        return NSAttributedString(attachment: atta)
+    }
+    
     override var description: String{
         return yy_modelDescription()
     }

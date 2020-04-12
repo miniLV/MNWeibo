@@ -18,6 +18,7 @@ class MNStatusViewModel: CustomStringConvertible {
     
     var vipIcon: UIImage?
     
+    /// 转发内容 - 属性文本
     var repostTitle: String?
     
     var commentTitle: String?
@@ -28,6 +29,9 @@ class MNStatusViewModel: CustomStringConvertible {
     
     var rowHeight:CGFloat = 0
     
+    ///正文内容 - 属性文本
+    var statusAttrText: NSAttributedString?
+    
     //原创&被转发微博
     var picUrls:[MNStatusPicture]?{
         //如果有被转发的微博 ==> 返回被转发的微博配图
@@ -35,6 +39,7 @@ class MNStatusViewModel: CustomStringConvertible {
         return status.retweeted_status?.pic_urls ?? status.pic_urls
     }
     
+    /// 转发微博的属性文本
     var repostText:String?{
         let str1 = "@" + (status.retweeted_status?.user?.screen_name ?? "")
         let str2 = ":" + (status.retweeted_status?.text ?? "")
