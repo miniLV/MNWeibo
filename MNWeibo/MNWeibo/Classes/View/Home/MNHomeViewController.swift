@@ -60,12 +60,19 @@ extension MNHomeViewController{
         cell.selectionStyle = .none
 
         cell.viewModel = viewModel
+        cell.delegate = self
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let viewModel = listViewModel.statusList[indexPath.row]
         return viewModel.rowHeight
+    }
+}
+
+extension MNHomeViewController:MNHomeCellDelegate{
+    func homeCellDidClickUrlString(cell: MNHomeNormalCell, urlStr: String) {
+        print("urlStr = \(urlStr)")
     }
 }
 

@@ -16,6 +16,8 @@ class MNHomeBaseCell: UITableViewCell {
         }
     }
     
+    weak var delegate:MNHomeCellDelegate?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

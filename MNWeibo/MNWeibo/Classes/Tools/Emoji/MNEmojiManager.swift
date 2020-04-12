@@ -104,7 +104,8 @@ extension MNEmojiManager{
         }
         
         //统一设置属性&颜色
-        attrStr.addAttributes([NSAttributedString.Key.font : font],
+        attrStr.addAttributes([NSAttributedString.Key.font : font,
+                               NSAttributedString.Key.foregroundColor: UIColor.darkGray],
                               range: NSRange(location: 0, length: attrStr.length))
         return attrStr
     }
