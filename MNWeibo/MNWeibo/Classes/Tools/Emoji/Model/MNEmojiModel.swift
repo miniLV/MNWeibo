@@ -21,6 +21,25 @@ class MNEmojiModel: NSObject {
     /// emoji - 16进制编码字符串
     @objc var code:String?
     
+    /// 表情所在目录
+    @objc var directory: String?
+    
+    /// 图片表情图片
+    @objc var image: UIImage?{
+        if type{
+            //is emoji
+            return nil
+        }
+        
+        guard let path = Bundle.main.path(forResource: "MNEmoji.bundle", ofType: nil),
+            let bundle = Bundle(path:path),
+            let directory = directory,
+            let png = png else{
+                return nil
+        }
+        return UIImage(named: "\(directory)/\(png)",in: bundle, compatibleWith: nil)
+    }
+    
     override var description: String{
         return yy_modelDescription()
     }

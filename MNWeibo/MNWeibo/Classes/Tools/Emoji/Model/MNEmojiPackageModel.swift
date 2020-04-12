@@ -26,7 +26,12 @@ class MNEmojiPackageModel: NSObject {
                     print("set directory failure.")
                     return
             }
-
+            
+            
+            //设置表情目录
+            for model in models{
+                model.directory = directory
+            }
             self.emotions += models
         }
     }
