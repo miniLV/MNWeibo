@@ -35,7 +35,7 @@ class MNHomeNormalCell: MNHomeBaseCell {
     var timeLabel = UILabel()
     var sourceLabel = UILabel()
     var vipIconView = UIImageView(image: UIImage(named: "avatar_enterprise_vip"))
-    var contentLabel = UILabel()
+    var contentLabel = MNLabel()
     
     //toolButton
     var bottomView:MNStatusToolView = MNStatusToolView(parentView: nil)

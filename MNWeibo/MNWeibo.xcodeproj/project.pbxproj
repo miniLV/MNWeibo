@@ -36,6 +36,7 @@
 		A7951134244301E200E46C98 /* MNEmoji.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A7951133244301E100E46C98 /* MNEmoji.bundle */; };
 		A79511372443049000E46C98 /* MNEmojiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79511362443049000E46C98 /* MNEmojiModel.swift */; };
 		A79511392443055300E46C98 /* MNEmojiPackageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79511382443055300E46C98 /* MNEmojiPackageModel.swift */; };
+		A795114124435CB200E46C98 /* MNLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A795114024435CB200E46C98 /* MNLabel.swift */; };
 		A79836142427B0750095586A /* MNWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79836132427B0750095586A /* MNWelcomeView.swift */; };
 		A79836162427B0BB0095586A /* MNNewFeatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79836152427B0BB0095586A /* MNNewFeatureView.swift */; };
 		A79ABD822427BAC300EF602F /* MNLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79ABD812427BAC300EF602F /* MNLayout.swift */; };
@@ -133,6 +134,7 @@
 		A7951133244301E100E46C98 /* MNEmoji.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MNEmoji.bundle; sourceTree = "<group>"; };
 		A79511362443049000E46C98 /* MNEmojiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNEmojiModel.swift; sourceTree = "<group>"; };
 		A79511382443055300E46C98 /* MNEmojiPackageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNEmojiPackageModel.swift; sourceTree = "<group>"; };
+		A795114024435CB200E46C98 /* MNLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNLabel.swift; sourceTree = "<group>"; };
 		A79836132427B0750095586A /* MNWelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNWelcomeView.swift; sourceTree = "<group>"; };
 		A79836152427B0BB0095586A /* MNNewFeatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNNewFeatureView.swift; sourceTree = "<group>"; };
 		A79ABD812427BAC300EF602F /* MNLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNLayout.swift; sourceTree = "<group>"; };
@@ -380,6 +382,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		A795113D24435C8700E46C98 /* MNLabel */ = {
+			isa = PBXGroup;
+			children = (
+				A795114024435CB200E46C98 /* MNLabel.swift */,
+			);
+			path = MNLabel;
+			sourceTree = "<group>";
+		};
 		A79836122427AFB30095586A /* NewFeature */ = {
 			isa = PBXGroup;
 			children = (
@@ -436,6 +446,7 @@
 		A7FFE67F2417D05E0082F464 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				A795113D24435C8700E46C98 /* MNLabel */,
 				A7951132244301B000E46C98 /* Emoji */,
 				A795111E2434D06600E46C98 /* MNRefreshControl */,
 				A700BE30241DF882000E2A1A /* Network */,
@@ -789,6 +800,7 @@
 				A7FFE6E22417D68D0082F464 /* UIView+CZAddition.m in Sources */,
 				A79511392443055300E46C98 /* MNEmojiPackageModel.swift in Sources */,
 				A7FFE71F2417DA160082F464 /* Bundle+Extensions.swift in Sources */,
+				A795114124435CB200E46C98 /* MNLabel.swift in Sources */,
 				A7FFE6E62417D68D0082F464 /* NSString+CZPath.m in Sources */,
 				A7951131244300B800E46C98 /* MNEmojiManager.swift in Sources */,
 				A7E684EC24210C8A00A58E9E /* MNWeiboCommon.swift in Sources */,

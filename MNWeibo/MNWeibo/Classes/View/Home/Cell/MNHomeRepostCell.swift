@@ -32,11 +32,11 @@ class MNHomeRepostCell: MNHomeBaseCell {
     var timeLabel = UILabel()
     var sourceLabel = UILabel()
     var vipIconView = UIImageView(image: UIImage(named: "avatar_enterprise_vip"))
-    var contentLabel = UILabel()
+    var contentLabel = MNLabel()
     
     //转发内容
     var repostButton = UIButton()
-    var repostLabel = UILabel()
+    var repostLabel = MNLabel()
     
     //toolButton
     var bottomView:MNStatusToolView = MNStatusToolView(parentView: nil)

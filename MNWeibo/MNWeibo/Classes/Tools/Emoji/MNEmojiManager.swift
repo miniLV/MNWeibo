@@ -42,7 +42,6 @@ extension MNEmojiManager{
     /// - Parameter string : 查询字符串
     func findEmoji(string: String) -> MNEmojiModel? {
 
-        
         for pModel in packages{
             
             //传入的参数和model对比，过滤出一致字符串对应的模型.
@@ -51,6 +50,12 @@ extension MNEmojiManager{
                 return result.first
             }
         }
+        
+        let temp = packages.last?.emotions.first
+        print("temp ====> \(String(describing: temp))")
+        return temp
+        
+        print("\(string) 没有表情包")
         return nil
     }
     
@@ -98,6 +103,7 @@ extension MNEmojiManager{
             }
         }
         
+        //统一设置属性&颜色
         attrStr.addAttributes([NSAttributedString.Key.font : font],
                               range: NSRange(location: 0, length: attrStr.length))
         return attrStr

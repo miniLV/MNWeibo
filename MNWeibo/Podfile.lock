@@ -37,15 +37,14 @@ DEPENDENCIES:
   - YYModel
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/cocoapods/specs.git:
     - AFNetworking
     - FMDB
     - pop
     - SDWebImage
+    - SnapKit
     - SwiftyJSON
     - YYModel
-  trunk:
-    - SnapKit
 
 EXTERNAL SOURCES:
   SVProgressHUD:
@@ -68,4 +67,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 05fd011eeb45417f6480352c089f8f54be879e5e
 
-COCOAPODS: 1.9.1
+COCOAPODS: 1.7.5
