@@ -105,11 +105,8 @@ extension MNBaseViewController:LoginDelegate{
         tableView?.scrollIndicatorInsets = tableView!.contentInset
     }
     
-    func setupNaviTitle(){
+    @objc func setupNaviTitle(){
 
-        let title = MNNetworkManager.shared.userAccount.screen_name
-        let button = MNTitleButton(title: title, target: self, action: #selector(clickTitleButton(button:)))
-        naviItem.titleView = button
     }
     
     @objc func clickTitleButton(button: UIButton){

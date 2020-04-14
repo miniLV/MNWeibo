@@ -24,7 +24,6 @@ class MNWebViewController: MNBaseViewController {
     }
     
     override func setupTableView() {
-//        naviItem.title = "网页"
         self.title = "网页"
         webView.scrollView.automaticallyAdjustsScrollIndicatorInsets = false
         view.insertSubview(webView, belowSubview: navigationBar)

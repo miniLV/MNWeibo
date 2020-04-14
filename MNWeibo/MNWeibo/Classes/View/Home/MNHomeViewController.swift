@@ -28,6 +28,13 @@ class MNHomeViewController: MNBaseViewController {
         }
     }
 
+    override func setupNaviTitle(){
+        
+        let title = MNNetworkManager.shared.userAccount.screen_name
+        let button = MNTitleButton(title: title, target: self, action: #selector(clickTitleButton(button:)))
+        naviItem.titleView = button
+    }
+    
     @objc func showFridends() {
         let vc = DemoViewController.init()
         vc.title = "Demo"
