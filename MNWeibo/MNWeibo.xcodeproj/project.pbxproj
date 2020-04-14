@@ -319,11 +319,11 @@
 		A73B4445242A544500033F5B /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				A7EFF4B92430E41A001AB430 /* MNHomeBaseCell.swift */,
 				A73B4446242A548200033F5B /* MNHomeNormalCell.swift */,
+				A7EFF4B72430D99C001AB430 /* MNHomeRepostCell.swift */,
 				A7EFF4B1242F2904001AB430 /* MNStatusToolView.swift */,
 				A7EFF4B3242F34E2001AB430 /* MNStatusPictureView.swift */,
-				A7EFF4B72430D99C001AB430 /* MNHomeRepostCell.swift */,
-				A7EFF4B92430E41A001AB430 /* MNHomeBaseCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";

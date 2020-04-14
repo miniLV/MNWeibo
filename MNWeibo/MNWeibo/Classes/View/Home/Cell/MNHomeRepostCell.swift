@@ -25,18 +25,9 @@ class MNHomeRepostCell: MNHomeBaseCell {
             bottomView.viewModel = viewModel
             contentPictureView.viewModel = viewModel
         }
-    }
-    var avatarImage = UIImageView()
-    var nameLabel = UILabel()
-    var levelIconView = UIImageView(image: UIImage(named: "common_icon_membership"))
-    var timeLabel = UILabel()
-    var sourceLabel = UILabel()
-    var vipIconView = UIImageView(image: UIImage(named: "avatar_enterprise_vip"))
-    var contentLabel = MNLabel()
-    
+    }    
     //转发内容
     var repostButton = UIButton()
-    var repostLabel = MNLabel()
     
     //toolButton
     var bottomView:MNStatusToolView = MNStatusToolView(parentView: nil)

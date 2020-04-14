@@ -8,10 +8,6 @@
 
 import UIKit
 
-@objc protocol MNHomeCellDelegate {
-    @objc optional func homeCellDidClickUrlString(cell: MNHomeNormalCell, urlStr: String)
-}
-
 class MNHomeNormalCell: MNHomeBaseCell {
 
     override var viewModel: MNStatusViewModel?{
@@ -33,15 +29,7 @@ class MNHomeNormalCell: MNHomeBaseCell {
             
         }
     }
-    var avatarImage = UIImageView()
-    var nameLabel = UILabel()
-    var levelIconView = UIImageView(image: UIImage(named: "common_icon_membership"))
-    var timeLabel = UILabel()
-    var sourceLabel = UILabel()
-    var vipIconView = UIImageView(image: UIImage(named: "avatar_enterprise_vip"))
-    var contentLabel = MNLabel()
-//    override weak var delegate:MNHomeCellDelegate?
-    
+
     //toolButton
     var bottomView:MNStatusToolView = MNStatusToolView(parentView: nil)
     
@@ -56,8 +44,6 @@ class MNHomeNormalCell: MNHomeBaseCell {
         self.layer.shouldRasterize = true
         //指定分辨率
         self.layer.rasterizationScale = UIScreen.main.scale
-        
-        contentLabel.delegate = self
     }
     
     required init?(coder: NSCoder) {
@@ -149,13 +135,4 @@ class MNHomeNormalCell: MNHomeBaseCell {
     }
 }
 
-extension MNHomeNormalCell : MNLabelDelegate{
-    
-    func labelDidSelectedLinkText(label: MNLabel, text: String) {
-        if !text.hasPrefix("http"){
-            return
-        }
-        delegate?.homeCellDidClickUrlString?(cell: self, urlStr: text)
-    }
-}
 
