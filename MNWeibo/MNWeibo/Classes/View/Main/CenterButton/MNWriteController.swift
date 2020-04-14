@@ -42,7 +42,6 @@ class MNWriteController: UIViewController {
             make.top.equalTo(MNLayout.Layout(10))
         }
         
-//        let userNameLabel = UILabel()
         userNameLabel.text = "miniLV"
         userNameLabel.font = UIFont.systemFont(ofSize: MNLayout.Layout(12))
         userNameLabel.textColor = UIColor.lightGray
@@ -59,8 +58,44 @@ class MNWriteController: UIViewController {
         super.viewDidLoad()
         
         setupUI()
+        
+        //键盘监听
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardChange(noti:)), name:UIResponder.keyboardWillChangeFrameNotification, object: nil)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        textView.becomeFirstResponder()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        textView.resignFirstResponder()
+    }
+    
+    
+    @objc func keyboardChange(noti:NSNotification){
+        print("noti = \(String(describing: noti.userInfo))")
+        
+        
+        guard let rect = (noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue ,
+        let duration = (noti.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue else{
+            return
+        }
+
+        
+        //更新工具条底部约束(工具栏上移操作)
+//        let offset = view.bounds.height - rect.origin.y + toolBar.bounds.height
+         let offset = view.bounds.height - rect.origin.y + 40
+        print("offset = \(offset)")
+        toolBar.snp.updateConstraints { (make) in
+            make.bottom.equalTo(-offset)
+        }
+        
+        UIView.animate(withDuration: duration) {
+            self.view.layoutIfNeeded()
+        }
+    }
 
     
     @objc func dismissVC(){
@@ -70,10 +105,39 @@ class MNWriteController: UIViewController {
 
 private extension MNWriteController{
     func setupUI() {
+        view.backgroundColor = UIColor.white
         setNavigationBar()
         setupSubviews()
+        setupToolBar()
     }
     
+    func setupToolBar() {
+        let images = [["imageName": "compose_toolbar_picture"],
+                      ["imageName": "compose_mentionbutton_background"],
+                      ["imageName": "compose_trendbutton_background"],
+                      ["imageName": "compose_emoticonbutton_background", "actionName": "emoticonKeyboard"],
+                      ["imageName": "compose_add_background"]]
+        
+        var items = [UIBarButtonItem]()
+        for obj in images{
+            guard let imageName = obj["imageName"] else {
+                continue
+            }
+            
+            let normalImage = UIImage(named: imageName)
+            let hightLightImage = UIImage(named: imageName + "_highlight")
+            let btn = UIButton()
+            btn.setImage(normalImage, for: .normal)
+            btn.setImage(hightLightImage, for: .highlighted)
+            btn.sizeToFit()
+            items.append(UIBarButtonItem(customView: btn))
+            //添加弹簧
+            items.append(UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil))
+        }
+        //删除最后一个弹簧 - 消除间隙
+        items.removeLast()
+        toolBar.items = items
+    }
     func setupSubviews(){
         view.addSubview(toolBar)
         toolBar.snp.makeConstraints { (make) in
