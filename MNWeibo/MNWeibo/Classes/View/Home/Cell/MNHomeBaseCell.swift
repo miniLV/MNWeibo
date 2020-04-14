@@ -16,7 +16,7 @@ class MNHomeBaseCell: UITableViewCell {
 
     var viewModel: MNStatusViewModel?{
             didSet{
-                contentLabel.text = viewModel?.status.text
+                contentLabel.attributedText = viewModel?.statusAttrText
                 nameLabel.text = viewModel?.status.user?.screen_name
                 //提前计算好
                 levelIconView.image = viewModel?.levelIcon
@@ -144,14 +144,7 @@ class MNHomeBaseCell: UITableViewCell {
             make.top.equalTo(avatarImage.snp.bottom).offset(MNLayout.Layout(12))
             make.right.equalToSuperview().offset(-MNLayout.Layout(12))
         }
-        
-        contentPictureView = MNStatusPictureView(parentView: self,
-                                                 topView: contentLabel,
-                                                 bottomView: bottomView)
-        
     }
-
-
 }
 
 extension MNHomeBaseCell : MNLabelDelegate{

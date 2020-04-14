@@ -9,7 +9,12 @@
 import UIKit
 
 class MNHomeNormalCell: MNHomeBaseCell {
-    
+    override func setupSubviews() {
+        super.setupSubviews()
+        contentPictureView = MNStatusPictureView(parentView: self,
+                                                 topView: contentLabel,
+                                                 bottomView: bottomView)
+    }
 }
 
 
