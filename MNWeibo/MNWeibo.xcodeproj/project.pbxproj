@@ -25,6 +25,7 @@
 		A73B444B242A61CE00033F5B /* MNStatusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73B444A242A61CE00033F5B /* MNStatusViewModel.swift */; };
 		A745A5982419206F00F9E138 /* UIBarButtonItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A745A5972419206F00F9E138 /* UIBarButtonItem+Extension.swift */; };
 		A745A59B241923F600F9E138 /* DemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A745A59A241923F600F9E138 /* DemoViewController.swift */; };
+		A760EDCB24470E3500F698DF /* MNTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A760EDCA24470E3500F698DF /* MNTextView.swift */; };
 		A79511202434D08A00E46C98 /* MNRefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A795111F2434D08A00E46C98 /* MNRefreshControl.swift */; };
 		A79511222434E03000E46C98 /* MNRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79511212434E03000E46C98 /* MNRefreshView.swift */; };
 		A79511262438A99100E46C98 /* MNMTRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79511252438A99100E46C98 /* MNMTRefreshView.swift */; };
@@ -124,6 +125,7 @@
 		A73B444A242A61CE00033F5B /* MNStatusViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNStatusViewModel.swift; sourceTree = "<group>"; };
 		A745A5972419206F00F9E138 /* UIBarButtonItem+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Extension.swift"; sourceTree = "<group>"; };
 		A745A59A241923F600F9E138 /* DemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoViewController.swift; sourceTree = "<group>"; };
+		A760EDCA24470E3500F698DF /* MNTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNTextView.swift; sourceTree = "<group>"; };
 		A795111F2434D08A00E46C98 /* MNRefreshControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNRefreshControl.swift; sourceTree = "<group>"; };
 		A79511212434E03000E46C98 /* MNRefreshView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNRefreshView.swift; sourceTree = "<group>"; };
 		A79511252438A99100E46C98 /* MNMTRefreshView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNMTRefreshView.swift; sourceTree = "<group>"; };
@@ -358,9 +360,10 @@
 		A79511272438C77B00E46C98 /* CenterButton */ = {
 			isa = PBXGroup;
 			children = (
+				A795112C243E0A5D00E46C98 /* MNWriteController.swift */,
+				A760EDCA24470E3500F698DF /* MNTextView.swift */,
 				A79511282438C7A500E46C98 /* MNPublishView.swift */,
 				A795112A243CBBE800E46C98 /* MNCompostTypeButton.swift */,
-				A795112C243E0A5D00E46C98 /* MNWriteController.swift */,
 			);
 			path = CenterButton;
 			sourceTree = "<group>";
@@ -840,6 +843,7 @@
 				A79836162427B0BB0095586A /* MNNewFeatureView.swift in Sources */,
 				A7FFE6EB2417D68D0082F464 /* NSAttributedString+CZAdditon.m in Sources */,
 				A700BE2D241A73BD000E2A1A /* MNVisitorView.swift in Sources */,
+				A760EDCB24470E3500F698DF /* MNTextView.swift in Sources */,
 				A7383AF9241682A90099822E /* SceneDelegate.swift in Sources */,
 				A7EFF4B2242F2904001AB430 /* MNStatusToolView.swift in Sources */,
 				A745A5982419206F00F9E138 /* UIBarButtonItem+Extension.swift in Sources */,

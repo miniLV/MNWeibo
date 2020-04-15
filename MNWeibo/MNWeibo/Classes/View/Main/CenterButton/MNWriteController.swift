@@ -10,7 +10,7 @@ import UIKit
 
 class MNWriteController: UIViewController {
 
-    var textView:UITextView = UITextView()
+    var textView = MNTextView()
     var toolBar:UIToolbar = UIToolbar()
     lazy var sendButton:UIButton = {
         let btn = UIButton()
@@ -149,22 +149,30 @@ private extension MNWriteController{
         textView.bounces = true
         textView.alwaysBounceVertical = true
         view.addSubview(textView)
+        textView.font = UIFont.systemFont(ofSize: MNLayout.Layout(14))
+//        textView.updatePlaceholder()
+        textView.delegate = self
         textView.snp.makeConstraints { (make) in
-            make.left.top.right.equalToSuperview()
+            make.top.equalTo(64)
+            make.left.right.equalToSuperview()
             make.bottom.equalTo(toolBar.snp.top)
         }
-        textView.text = "dakflkdjsalkfjlkdsjlafj ldakflkdjsalkfjlkdsjlafj ldakflkdjsalkfjlkdsjlafj ldakflkdjsalkfjlkdsjlafj ldakflkdjsalkfjlkdsjlafj ldakflkdjsalkfjlkdsjlafj ldakflkdjsalkfjlkdsjlafj ldakflkdjsalkfjlkdsjlafj ldakflkdjsalkfjlkdsjlafj ldakflkdjsalkfjlkdsjlafj ldakflkdjsalkfjlkdsjlafj ldakflkdjsalkfjlkdsjlafj ldakflkdjsalkfjlkdsjlafj ldakflkdjsalkfjlkdsjlafj ldakflkdjsalkfjlkdsjlafj ldakflkdjsalkfjlkdsjlafj l"
     }
     
     func setNavigationBar() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "关闭", target: self, action: #selector(dismissVC))
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: sendButton)
         navigationItem.titleView = titleView
-//        titleView.userla
         userNameLabel.text = "saklfjkldsaj"
     }
     
     @objc func clickSendButton(){
         
+    }
+}
+
+extension MNWriteController:UITextViewDelegate{
+    func textViewDidChange(_ textView: UITextView) {
+        sendButton.isEnabled = textView.hasText
     }
 }
