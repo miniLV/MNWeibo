@@ -18,11 +18,10 @@ class MNTextView: UITextView {
         registerNoti()
     }
     
-    override var font: UIFont?{
-        didSet{
-            placeholderLabel.font = self.font
-            placeholderLabel.sizeToFit()
-        }
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        placeholderLabel.font = self.font
+        placeholderLabel.sizeToFit()
     }
     
     required init?(coder: NSCoder) {

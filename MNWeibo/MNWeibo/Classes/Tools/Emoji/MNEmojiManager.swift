@@ -13,6 +13,8 @@ class MNEmojiManager {
     
     lazy var packages = [MNEmojiPackageModel]()
     
+    let pageCells = 20
+    
     lazy var bundle: Bundle = {
         let path = Bundle.main.path(forResource: "MNEmoji.bundle", ofType: nil)
         return Bundle(path:path ?? "") ?? Bundle()
@@ -55,10 +57,6 @@ extension MNEmojiManager{
                 return result.first
             }
         }
-        
-        let temp = packages.last?.emotions.first
-        print("temp ====> \(String(describing: temp))")
-        return temp
         
         print("\(string) 没有表情包")
         return nil

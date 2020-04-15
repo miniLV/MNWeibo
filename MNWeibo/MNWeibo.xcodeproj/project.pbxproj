@@ -28,6 +28,8 @@
 		A760EDCB24470E3500F698DF /* MNTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A760EDCA24470E3500F698DF /* MNTextView.swift */; };
 		A760EDCE244749A100F698DF /* MNEmojiInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A760EDCD244749A100F698DF /* MNEmojiInputView.swift */; };
 		A760EDD0244749FD00F698DF /* MNEmojiToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A760EDCF244749FD00F698DF /* MNEmojiToolbar.swift */; };
+		A760EDD22447555900F698DF /* MNEmojiCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A760EDD12447555900F698DF /* MNEmojiCell.swift */; };
+		A760EDD42447584C00F698DF /* MNEmojiLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A760EDD32447584C00F698DF /* MNEmojiLayout.swift */; };
 		A79511202434D08A00E46C98 /* MNRefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A795111F2434D08A00E46C98 /* MNRefreshControl.swift */; };
 		A79511222434E03000E46C98 /* MNRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79511212434E03000E46C98 /* MNRefreshView.swift */; };
 		A79511262438A99100E46C98 /* MNMTRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79511252438A99100E46C98 /* MNMTRefreshView.swift */; };
@@ -130,6 +132,8 @@
 		A760EDCA24470E3500F698DF /* MNTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNTextView.swift; sourceTree = "<group>"; };
 		A760EDCD244749A100F698DF /* MNEmojiInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNEmojiInputView.swift; sourceTree = "<group>"; };
 		A760EDCF244749FD00F698DF /* MNEmojiToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNEmojiToolbar.swift; sourceTree = "<group>"; };
+		A760EDD12447555900F698DF /* MNEmojiCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNEmojiCell.swift; sourceTree = "<group>"; };
+		A760EDD32447584C00F698DF /* MNEmojiLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNEmojiLayout.swift; sourceTree = "<group>"; };
 		A795111F2434D08A00E46C98 /* MNRefreshControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNRefreshControl.swift; sourceTree = "<group>"; };
 		A79511212434E03000E46C98 /* MNRefreshView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNRefreshView.swift; sourceTree = "<group>"; };
 		A79511252438A99100E46C98 /* MNMTRefreshView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNMTRefreshView.swift; sourceTree = "<group>"; };
@@ -356,6 +360,8 @@
 			children = (
 				A760EDCD244749A100F698DF /* MNEmojiInputView.swift */,
 				A760EDCF244749FD00F698DF /* MNEmojiToolbar.swift */,
+				A760EDD12447555900F698DF /* MNEmojiCell.swift */,
+				A760EDD32447584C00F698DF /* MNEmojiLayout.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -844,6 +850,7 @@
 				A7FFE7202417DA160082F464 /* Date+Extensions.swift in Sources */,
 				A7D736342427308400CD3A04 /* MNTitleButton.swift in Sources */,
 				A7383AF7241682A90099822E /* AppDelegate.swift in Sources */,
+				A760EDD42447584C00F698DF /* MNEmojiLayout.swift in Sources */,
 				A79ABD822427BAC300EF602F /* MNLayout.swift in Sources */,
 				A7FFE6E92417D68D0082F464 /* UIViewController+CZAddition.m in Sources */,
 				A795112B243CBBE800E46C98 /* MNCompostTypeButton.swift in Sources */,
@@ -870,6 +877,7 @@
 				A79511372443049000E46C98 /* MNEmojiModel.swift in Sources */,
 				A7FFE6922417D1570082F464 /* MNMessageViewController.swift in Sources */,
 				A700BE38241E1646000E2A1A /* MNStatusListViewModel.swift in Sources */,
+				A760EDD22447555900F698DF /* MNEmojiCell.swift in Sources */,
 				A7EFF4B0242F258E001AB430 /* UIButton+Tool.swift in Sources */,
 				A7FFE6EA2417D68D0082F464 /* NSString+CZHash.m in Sources */,
 				A7FFE6E32417D68D0082F464 /* UIScreen+CZAddition.m in Sources */,

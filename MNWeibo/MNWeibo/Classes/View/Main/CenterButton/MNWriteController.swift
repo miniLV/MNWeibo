@@ -76,9 +76,6 @@ class MNWriteController: UIViewController {
     
     
     @objc func keyboardChange(noti:NSNotification){
-        print("noti = \(String(describing: noti.userInfo))")
-        
-        
         guard let rect = (noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue ,
         let duration = (noti.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue else{
             return

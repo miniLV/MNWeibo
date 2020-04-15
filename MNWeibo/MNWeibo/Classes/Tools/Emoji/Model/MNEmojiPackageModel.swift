@@ -14,6 +14,10 @@ class MNEmojiPackageModel: NSObject {
     
     @objc var bgImageName: String?
     
+    var numberOfPage:Int{
+        return (emotions.count - 1) / 20 + 1
+    }
+    
     /// 表情包目录 - 通过info.plist 创建表情模型数字
     @objc var directory:String?{
         didSet{

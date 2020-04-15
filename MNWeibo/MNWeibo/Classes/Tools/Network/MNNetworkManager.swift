@@ -26,7 +26,8 @@ class MNNetworkManager: AFHTTPSessionManager {
     lazy var userAccount = MNUserAccount()
     
     var isLogin:Bool {
-        return userAccount.access_token != nil
+//        return userAccount.access_token != nil
+        return false
     }
     
     

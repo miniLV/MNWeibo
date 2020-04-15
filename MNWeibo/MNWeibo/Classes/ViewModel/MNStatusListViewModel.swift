@@ -90,7 +90,6 @@ class MNStatusListViewModel {
             let url = URL(string: picture) else{
                 continue
             }
-            print("url = \(url)")
             
             //SD下载图像
             //图像下载完成，会自动p保存到沙盒, 路径 ==> url 的 md5
