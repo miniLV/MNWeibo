@@ -12,6 +12,8 @@ class MNEmojiPackageModel: NSObject {
     /// 表情包分组
     @objc var groupName:String?
     
+    @objc var bgImageName: String?
+    
     /// 表情包目录 - 通过info.plist 创建表情模型数字
     @objc var directory:String?{
         didSet{

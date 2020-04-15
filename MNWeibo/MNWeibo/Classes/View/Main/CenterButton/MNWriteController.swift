@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class MNWriteController: UIViewController {
 
@@ -85,7 +86,6 @@ class MNWriteController: UIViewController {
 
         
         //更新工具条底部约束(工具栏上移操作)
-//        let offset = view.bounds.height - rect.origin.y + toolBar.bounds.height
          let offset = view.bounds.height - rect.origin.y + 40
         print("offset = \(offset)")
         toolBar.snp.updateConstraints { (make) in
@@ -101,6 +101,15 @@ class MNWriteController: UIViewController {
     @objc func dismissVC(){
         dismiss(animated: true, completion: nil)
     }
+    
+    //点击表情键盘
+    @objc func tapEmojiKeyboard(){
+        let keyboardView = MNEmojiInputView()
+        keyboardView.backgroundColor = UIColor.orange
+        //系统键盘 => textView.inputView = nil，这里是系统键盘和自定义键盘的切换
+        textView.inputView = textView.inputView == nil ? keyboardView : nil
+        textView.reloadInputViews()
+    }
 }
 
 private extension MNWriteController{
@@ -115,7 +124,7 @@ private extension MNWriteController{
         let images = [["imageName": "compose_toolbar_picture"],
                       ["imageName": "compose_mentionbutton_background"],
                       ["imageName": "compose_trendbutton_background"],
-                      ["imageName": "compose_emoticonbutton_background", "actionName": "emoticonKeyboard"],
+                      ["imageName": "compose_emoticonbutton_background", "actionName": "tapEmojiKeyboard"],
                       ["imageName": "compose_add_background"]]
         
         var items = [UIBarButtonItem]()
@@ -130,9 +139,17 @@ private extension MNWriteController{
             btn.setImage(normalImage, for: .normal)
             btn.setImage(hightLightImage, for: .highlighted)
             btn.sizeToFit()
+            
+            //add event
+            if let actionName = obj["actionName"]{
+                btn.addTarget(self, action: Selector(actionName), for: .touchUpInside)
+            }
+            
             items.append(UIBarButtonItem(customView: btn))
             //添加弹簧
             items.append(UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil))
+            
+            
         }
         //删除最后一个弹簧 - 消除间隙
         items.removeLast()
@@ -167,7 +184,19 @@ private extension MNWriteController{
     }
     
     @objc func clickSendButton(){
-        
+        guard let text = textView.text else {
+            print("text is nil")
+            return
+        }
+        MNNetworkManager.shared.createStatus(text: text) { (json, isSuccess) in
+            print("如果有权限 ==> 发布微博成功~")
+            let message = isSuccess ? "发布成功" : "没有权限"
+            //FIXME: If SVProgressHUD fix crash bug. need add HUD.
+            //SVProgressHUD .show(withStatus: message)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+                self.dismissVC()
+            }
+        }
     }
 }
 

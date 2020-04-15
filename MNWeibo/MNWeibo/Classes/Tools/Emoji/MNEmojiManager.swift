@@ -13,6 +13,13 @@ class MNEmojiManager {
     
     lazy var packages = [MNEmojiPackageModel]()
     
+    lazy var bundle: Bundle = {
+        let path = Bundle.main.path(forResource: "MNEmoji.bundle", ofType: nil)
+        return Bundle(path:path ?? "") ?? Bundle()
+    }()
+    
+    
+    
     private init(){
         loadPackageDatas()
     }
@@ -21,9 +28,7 @@ class MNEmojiManager {
 private extension MNEmojiManager{
     
     func loadPackageDatas(){
-        guard let path = Bundle.main.path(forResource: "MNEmoji.bundle", ofType: nil),
-            let bundle = Bundle(path:path),
-            let plistPath = bundle.path(forResource: "emoticons.plist", ofType: nil),
+        guard let plistPath = bundle.path(forResource: "emoticons.plist", ofType: nil),
             let array = NSArray(contentsOfFile: plistPath) as? [[String:String]],
             let models = NSArray.yy_modelArray(with: MNEmojiPackageModel.self, json: array) as? [MNEmojiPackageModel]
             else{
@@ -63,7 +68,6 @@ extension MNEmojiManager{
     /// 将字符串转换成属性文本
     /// - Parameter string: 原始字符串
     func getEmojiString(string: String, font: UIFont) -> NSAttributedString {
-//        let validString = (string as NSString).replacingOccurrences(of: " ", with: "")
         let attrStr = NSMutableAttributedString(string: string)
         //1.正则过滤 [xxx] 的表情文字
         let pattern = "\\[.*?\\]"

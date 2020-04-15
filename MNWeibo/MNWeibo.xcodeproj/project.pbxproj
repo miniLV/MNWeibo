@@ -26,6 +26,8 @@
 		A745A5982419206F00F9E138 /* UIBarButtonItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A745A5972419206F00F9E138 /* UIBarButtonItem+Extension.swift */; };
 		A745A59B241923F600F9E138 /* DemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A745A59A241923F600F9E138 /* DemoViewController.swift */; };
 		A760EDCB24470E3500F698DF /* MNTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A760EDCA24470E3500F698DF /* MNTextView.swift */; };
+		A760EDCE244749A100F698DF /* MNEmojiInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A760EDCD244749A100F698DF /* MNEmojiInputView.swift */; };
+		A760EDD0244749FD00F698DF /* MNEmojiToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A760EDCF244749FD00F698DF /* MNEmojiToolbar.swift */; };
 		A79511202434D08A00E46C98 /* MNRefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A795111F2434D08A00E46C98 /* MNRefreshControl.swift */; };
 		A79511222434E03000E46C98 /* MNRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79511212434E03000E46C98 /* MNRefreshView.swift */; };
 		A79511262438A99100E46C98 /* MNMTRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79511252438A99100E46C98 /* MNMTRefreshView.swift */; };
@@ -126,6 +128,8 @@
 		A745A5972419206F00F9E138 /* UIBarButtonItem+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Extension.swift"; sourceTree = "<group>"; };
 		A745A59A241923F600F9E138 /* DemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoViewController.swift; sourceTree = "<group>"; };
 		A760EDCA24470E3500F698DF /* MNTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNTextView.swift; sourceTree = "<group>"; };
+		A760EDCD244749A100F698DF /* MNEmojiInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNEmojiInputView.swift; sourceTree = "<group>"; };
+		A760EDCF244749FD00F698DF /* MNEmojiToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNEmojiToolbar.swift; sourceTree = "<group>"; };
 		A795111F2434D08A00E46C98 /* MNRefreshControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNRefreshControl.swift; sourceTree = "<group>"; };
 		A79511212434E03000E46C98 /* MNRefreshView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNRefreshView.swift; sourceTree = "<group>"; };
 		A79511252438A99100E46C98 /* MNMTRefreshView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNMTRefreshView.swift; sourceTree = "<group>"; };
@@ -347,6 +351,15 @@
 			path = MainController;
 			sourceTree = "<group>";
 		};
+		A760EDCC2447497D00F698DF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A760EDCD244749A100F698DF /* MNEmojiInputView.swift */,
+				A760EDCF244749FD00F698DF /* MNEmojiToolbar.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		A795111E2434D06600E46C98 /* MNRefreshControl */ = {
 			isa = PBXGroup;
 			children = (
@@ -371,6 +384,7 @@
 		A7951132244301B000E46C98 /* Emoji */ = {
 			isa = PBXGroup;
 			children = (
+				A760EDCC2447497D00F698DF /* View */,
 				A79511352443045D00E46C98 /* Model */,
 				A7951133244301E100E46C98 /* MNEmoji.bundle */,
 				A7951130244300B800E46C98 /* MNEmojiManager.swift */,
@@ -852,6 +866,7 @@
 				A7EFF4B82430D99C001AB430 /* MNHomeRepostCell.swift in Sources */,
 				A7FFE6902417D1510082F464 /* MNDiscoverViewController.swift in Sources */,
 				A7FFE6EC2417D68D0082F464 /* NSArray+Log.m in Sources */,
+				A760EDD0244749FD00F698DF /* MNEmojiToolbar.swift in Sources */,
 				A79511372443049000E46C98 /* MNEmojiModel.swift in Sources */,
 				A7FFE6922417D1570082F464 /* MNMessageViewController.swift in Sources */,
 				A700BE38241E1646000E2A1A /* MNStatusListViewModel.swift in Sources */,
@@ -860,6 +875,7 @@
 				A7FFE6E32417D68D0082F464 /* UIScreen+CZAddition.m in Sources */,
 				A7FFE6E72417D68D0082F464 /* UIButton+CZAddition.m in Sources */,
 				A700BE36241E0ED4000E2A1A /* MNStatusModel.swift in Sources */,
+				A760EDCE244749A100F698DF /* MNEmojiInputView.swift in Sources */,
 				A700BE32241DF8A4000E2A1A /* MNNetworkManager.swift in Sources */,
 				A7FFE6942417D1680082F464 /* MNProfileViewController.swift in Sources */,
 				A7EFF4B6242F3AAE001AB430 /* MNStatusPicture.swift in Sources */,

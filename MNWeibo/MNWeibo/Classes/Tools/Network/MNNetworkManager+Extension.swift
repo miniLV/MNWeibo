@@ -90,3 +90,19 @@ extension MNNetworkManager{
         }
     }
 }
+
+/// MARK: - 发布微博
+extension MNNetworkManager{
+    
+    func createStatus(text: String, completion:@escaping (_ result:[String: Any]?, _ isSuccess: Bool) -> ()) {
+        
+        //FIXME: 发布接口==>高级写入接口,要权限申请.
+        let urlString = "https://api.weibo.com/2/statuses/update.json"
+        let parms = ["status":text]
+        
+        tokenRequest(method: .POST, URLString: urlString, parameters: parms as [String : AnyObject]) { (isSuccess, json) in
+            
+            completion(json as? [String:Any], isSuccess)
+        }
+    }
+}

@@ -75,6 +75,6 @@ class MNNetworkManager: AFHTTPSessionManager {
         }
         //at this time, parameters must be valuable
         parameters!["access_token"] = token as AnyObject
-        request(URLString: URLString, parameters: parameters, completion: completion)
+        request(method: method, URLString: URLString, parameters: parameters, completion: completion)
     }
 }
