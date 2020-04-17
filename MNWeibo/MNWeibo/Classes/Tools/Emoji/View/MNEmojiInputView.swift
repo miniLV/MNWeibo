@@ -66,11 +66,17 @@ extension MNEmojiInputView:UICollectionViewDataSource{
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! MNEmojiCell
 //        let cell = MNEmojiCell()
-        cell.backgroundColor = UIColor.orange
-        cell.titleLabel.text = "123"
-        //        let cell = UICollectionViewCell()
+        let package = MNEmojiManager.shared.packages[indexPath.section]
+        cell.emojiModels = package.emojiModel(page: indexPath.item)
+        cell.deleagage = self
         return cell
     }
     
     
+}
+
+extension MNEmojiInputView:MNEmojiCellDelegagte{
+    func emojiCellSelectedEmoji(cell: MNEmojiCell, model: MNEmojiModel?) {
+        
+    }
 }

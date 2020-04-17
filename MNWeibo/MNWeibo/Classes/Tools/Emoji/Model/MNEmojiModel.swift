@@ -13,13 +13,28 @@ class MNEmojiModel: NSObject {
     @objc var type = false
     
     /// 表情字符串 - 提交给服务端
-    @objc var chs:String?
+    @objc var chs: String?
     
     /// 表情图片，本地图文混排
-    @objc var png:String?
+    @objc var png: String?
     
     /// emoji - 16进制编码字符串
-    @objc var code:String?
+    @objc var code: String?{
+        didSet{
+            guard let code = code else {
+                return
+            }
+            
+            //16进制数据转 emoji字符
+            let scanner = Scanner(string: code)
+            var result:Double = 0.0
+            scanner.scanHexDouble(&result)
+            emojiStr = String(Character(UnicodeScalar(Int(result)) ?? UnicodeScalar(0)))
+        }
+    }
+    
+    var emojiStr: String?
+    
     
     /// 表情所在目录
     @objc var directory: String?

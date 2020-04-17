@@ -18,7 +18,8 @@ class MNEmojiLayout: UICollectionViewFlowLayout {
         }
         collectionView.layoutIfNeeded()
         itemSize = collectionView.bounds.size
-        
+        minimumInteritemSpacing = 0
+        minimumLineSpacing = 0
         //滚动方向
         scrollDirection = .horizontal
     }

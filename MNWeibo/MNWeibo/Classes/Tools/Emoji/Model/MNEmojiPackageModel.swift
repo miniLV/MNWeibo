@@ -14,8 +14,27 @@ class MNEmojiPackageModel: NSObject {
     
     @objc var bgImageName: String?
     
+    /// 表情页面页数
     var numberOfPage:Int{
         return (emotions.count - 1) / 20 + 1
+    }
+    
+    /// 返回第 n 页的表情模型数组
+    func emojiModel(page:Int) -> [MNEmojiModel] {
+        // 表情包每页数量
+        let count = 20
+        let location = page * count
+        var length = count
+        
+        // 越界处理
+        if location + length > emotions.count{
+            length = emotions.count - location
+        }
+        
+        let range = NSRange(location: location, length: length)
+        let subArray = (emotions as NSArray).subarray(with: range)
+        
+        return subArray as! [MNEmojiModel]
     }
     
     /// 表情包目录 - 通过info.plist 创建表情模型数字
