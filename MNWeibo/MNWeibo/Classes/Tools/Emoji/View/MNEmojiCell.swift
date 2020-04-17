@@ -43,7 +43,7 @@ class MNEmojiCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: CGRect())
         setupUI()
-        contentView.backgroundColor = UIColor.cz_random()
+        contentView.backgroundColor = UIColor.white
     }
 
     required init?(coder: NSCoder) {

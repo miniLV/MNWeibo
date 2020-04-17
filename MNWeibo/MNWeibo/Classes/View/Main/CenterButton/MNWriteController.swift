@@ -30,6 +30,10 @@ class MNWriteController: UIViewController {
     
     var userNameLabel = UILabel()
     
+    lazy var emojiView: MNEmojiInputView = MNEmojiInputView { [weak self](emojiModel) in
+        self?.insertEmoji(model: emojiModel)
+    }
+    
     lazy var titleView:UIView = {
         let view = UIView()
         view.frame = CGRect(x: 0, y: 0, width: 100, height: 35)
@@ -101,11 +105,40 @@ class MNWriteController: UIViewController {
     
     //点击表情键盘
     @objc func tapEmojiKeyboard(){
-        let keyboardView = MNEmojiInputView()
-        keyboardView.backgroundColor = UIColor.orange
         //系统键盘 => textView.inputView = nil，这里是系统键盘和自定义键盘的切换
-        textView.inputView = textView.inputView == nil ? keyboardView : nil
+        textView.inputView = textView.inputView == nil ? emojiView : nil
         textView.reloadInputViews()
+    }
+    
+    ///往textView中插入表情符号，model = nil 表示执行的是 `删除`
+    func insertEmoji(model: MNEmojiModel?) {
+        guard let model = model else {
+            //model = nil,删除文本
+            textView.deleteBackward()
+            return
+        }
+        
+        //emoji
+        if let emojiStr = model.emojiStr,
+            let textRange = textView.selectedTextRange{
+            textView.replace(textRange, withText: emojiStr)
+        }
+        
+        //表情图片
+        guard let textFont = textView.font else {
+            return
+        }
+        
+        let imageText = model.imageText(font: textFont)
+        let attrStr = NSMutableAttributedString(attributedString: textView.attributedText)
+        
+        //1.图片插入 - 光标所在位置
+        let startRange = textView.selectedRange
+        attrStr.replaceCharacters(in: startRange, with: imageText)
+        textView.attributedText = attrStr
+        
+        //2.恢复之前光标位置
+        textView.selectedRange = NSRange(location: startRange.location + 1, length: 0)
     }
 }
 
@@ -164,7 +197,6 @@ private extension MNWriteController{
         textView.alwaysBounceVertical = true
         view.addSubview(textView)
         textView.font = UIFont.systemFont(ofSize: MNLayout.Layout(14))
-//        textView.updatePlaceholder()
         textView.delegate = self
         textView.snp.makeConstraints { (make) in
             make.top.equalTo(64)

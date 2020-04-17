@@ -16,8 +16,11 @@ class MNEmojiInputView: UIView {
     
     var keyboardHeight:CGFloat = 254.0
     
-    init() {
+    private var selectedEmojiCallBack:((_ emojiModel: MNEmojiModel?)->())?
+    
+    init(selectedEmoji:@escaping (_ emojiModel: MNEmojiModel?) -> ()) {
         super.init(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: keyboardHeight))
+        selectedEmojiCallBack = selectedEmoji
         setupUI()
     }
     
@@ -77,6 +80,7 @@ extension MNEmojiInputView:UICollectionViewDataSource{
 
 extension MNEmojiInputView:MNEmojiCellDelegagte{
     func emojiCellSelectedEmoji(cell: MNEmojiCell, model: MNEmojiModel?) {
-        
+        //通过闭包回传选中的表情
+        selectedEmojiCallBack?(model)
     }
 }

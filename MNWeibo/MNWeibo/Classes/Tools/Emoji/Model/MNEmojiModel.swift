@@ -70,7 +70,9 @@ class MNEmojiModel: NSObject {
         let topMargin:CGFloat = -MNLayout.Layout(4)
         atta.bounds = CGRect(x: 0, y: topMargin, width: height, height: height)
         
-        return NSAttributedString(attachment: atta)
+        let attrStr = NSMutableAttributedString(attributedString: NSAttributedString(attachment: atta))
+        attrStr.addAttributes([NSAttributedString.Key.font:font], range: NSRange(location: 0, length: 0))
+        return attrStr
     }
     
     override var description: String{
