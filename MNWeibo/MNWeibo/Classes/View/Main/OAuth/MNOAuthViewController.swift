@@ -53,7 +53,9 @@ class MNOAuthViewController: UIViewController {
     @objc func autoInput(){
         
         //动态注入JS
-        let js =  "document.getElementById('userId').value = '13055279240';" + "document.getElementById('passwd').value = 'test123';"
+        let account = ""
+        let password = ""
+        let js =  "document.getElementById('userId').value = '\(account)';" + "document.getElementById('passwd').value = '\(password)';"
 
         webView.evaluateJavaScript(js, completionHandler: nil)
     }

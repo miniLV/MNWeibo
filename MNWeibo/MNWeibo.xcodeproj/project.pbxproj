@@ -46,6 +46,9 @@
 		A79836142427B0750095586A /* MNWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79836132427B0750095586A /* MNWelcomeView.swift */; };
 		A79836162427B0BB0095586A /* MNNewFeatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79836152427B0BB0095586A /* MNNewFeatureView.swift */; };
 		A79A206A244AD4F800F6619F /* MNEmojiAttachment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79A2069244AD4F800F6619F /* MNEmojiAttachment.swift */; };
+		A79A206D244AFA5A00F6619F /* MNSQLiteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79A206C244AFA5A00F6619F /* MNSQLiteManager.swift */; };
+		A79A2073244AFE2E00F6619F /* MNWeibo.sql in Resources */ = {isa = PBXBuildFile; fileRef = A79A2072244AFE2E00F6619F /* MNWeibo.sql */; };
+		A79A2075244B51B800F6619F /* MNStatusListDAL.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79A2074244B51B800F6619F /* MNStatusListDAL.swift */; };
 		A79ABD822427BAC300EF602F /* MNLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79ABD812427BAC300EF602F /* MNLayout.swift */; };
 		A7D736342427308400CD3A04 /* MNTitleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D736332427308400CD3A04 /* MNTitleButton.swift */; };
 		A7E684EC24210C8A00A58E9E /* MNWeiboCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E684EB24210C8A00A58E9E /* MNWeiboCommon.swift */; };
@@ -151,6 +154,9 @@
 		A79836132427B0750095586A /* MNWelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNWelcomeView.swift; sourceTree = "<group>"; };
 		A79836152427B0BB0095586A /* MNNewFeatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNNewFeatureView.swift; sourceTree = "<group>"; };
 		A79A2069244AD4F800F6619F /* MNEmojiAttachment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNEmojiAttachment.swift; sourceTree = "<group>"; };
+		A79A206C244AFA5A00F6619F /* MNSQLiteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNSQLiteManager.swift; sourceTree = "<group>"; };
+		A79A2072244AFE2E00F6619F /* MNWeibo.sql */ = {isa = PBXFileReference; lastKnownFileType = text; path = MNWeibo.sql; sourceTree = "<group>"; };
+		A79A2074244B51B800F6619F /* MNStatusListDAL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNStatusListDAL.swift; sourceTree = "<group>"; };
 		A79ABD812427BAC300EF602F /* MNLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNLayout.swift; sourceTree = "<group>"; };
 		A7D736332427308400CD3A04 /* MNTitleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNTitleButton.swift; sourceTree = "<group>"; };
 		A7E684EB24210C8A00A58E9E /* MNWeiboCommon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNWeiboCommon.swift; sourceTree = "<group>"; };
@@ -427,6 +433,15 @@
 			path = NewFeature;
 			sourceTree = "<group>";
 		};
+		A79A206B244AF96100F6619F /* SQLite */ = {
+			isa = PBXGroup;
+			children = (
+				A79A206C244AFA5A00F6619F /* MNSQLiteManager.swift */,
+				A79A2072244AFE2E00F6619F /* MNWeibo.sql */,
+			);
+			path = SQLite;
+			sourceTree = "<group>";
+		};
 		A7D736322427304100CD3A04 /* TitleButton */ = {
 			isa = PBXGroup;
 			children = (
@@ -467,6 +482,7 @@
 			children = (
 				A700BE37241E1646000E2A1A /* MNStatusListViewModel.swift */,
 				A73B444A242A61CE00033F5B /* MNStatusViewModel.swift */,
+				A79A2074244B51B800F6619F /* MNStatusListDAL.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -474,6 +490,7 @@
 		A7FFE67F2417D05E0082F464 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				A79A206B244AF96100F6619F /* SQLite */,
 				A795113D24435C8700E46C98 /* MNLabel */,
 				A7951132244301B000E46C98 /* Emoji */,
 				A795111E2434D06600E46C98 /* MNRefreshControl */,
@@ -715,6 +732,7 @@
 			files = (
 				A700BE2F241A8ED8000E2A1A /* main.json in Resources */,
 				A7951134244301E200E46C98 /* MNEmoji.bundle in Resources */,
+				A79A2073244AFE2E00F6619F /* MNWeibo.sql in Resources */,
 				A7383B00241682AA0099822E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -830,6 +848,7 @@
 				A79511392443055300E46C98 /* MNEmojiPackageModel.swift in Sources */,
 				A7FFE71F2417DA160082F464 /* Bundle+Extensions.swift in Sources */,
 				A795114124435CB200E46C98 /* MNLabel.swift in Sources */,
+				A79A2075244B51B800F6619F /* MNStatusListDAL.swift in Sources */,
 				A7FFE6E62417D68D0082F464 /* NSString+CZPath.m in Sources */,
 				A7951131244300B800E46C98 /* MNEmojiManager.swift in Sources */,
 				A7E684EC24210C8A00A58E9E /* MNWeiboCommon.swift in Sources */,
@@ -882,6 +901,7 @@
 				A7FFE6922417D1570082F464 /* MNMessageViewController.swift in Sources */,
 				A700BE38241E1646000E2A1A /* MNStatusListViewModel.swift in Sources */,
 				A760EDD22447555900F698DF /* MNEmojiCell.swift in Sources */,
+				A79A206D244AFA5A00F6619F /* MNSQLiteManager.swift in Sources */,
 				A7EFF4B0242F258E001AB430 /* UIButton+Tool.swift in Sources */,
 				A7FFE6EA2417D68D0082F464 /* NSString+CZHash.m in Sources */,
 				A7FFE6E32417D68D0082F464 /* UIScreen+CZAddition.m in Sources */,

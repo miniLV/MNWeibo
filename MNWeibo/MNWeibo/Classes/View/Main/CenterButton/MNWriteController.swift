@@ -85,7 +85,6 @@ class MNWriteController: UIViewController {
             return
         }
 
-        
         //更新工具条底部约束(工具栏上移操作)
          let offset = view.bounds.height - rect.origin.y + 40
         print("offset = \(offset)")
