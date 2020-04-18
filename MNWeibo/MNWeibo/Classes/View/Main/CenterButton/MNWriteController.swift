@@ -31,7 +31,7 @@ class MNWriteController: UIViewController {
     var userNameLabel = UILabel()
     
     lazy var emojiView: MNEmojiInputView = MNEmojiInputView { [weak self](emojiModel) in
-        self?.insertEmoji(model: emojiModel)
+        self?.textView.insertEmoji(model: emojiModel)
     }
     
     lazy var titleView:UIView = {
@@ -109,37 +109,6 @@ class MNWriteController: UIViewController {
         textView.inputView = textView.inputView == nil ? emojiView : nil
         textView.reloadInputViews()
     }
-    
-    ///往textView中插入表情符号，model = nil 表示执行的是 `删除`
-    func insertEmoji(model: MNEmojiModel?) {
-        guard let model = model else {
-            //model = nil,删除文本
-            textView.deleteBackward()
-            return
-        }
-        
-        //emoji
-        if let emojiStr = model.emojiStr,
-            let textRange = textView.selectedTextRange{
-            textView.replace(textRange, withText: emojiStr)
-        }
-        
-        //表情图片
-        guard let textFont = textView.font else {
-            return
-        }
-        
-        let imageText = model.imageText(font: textFont)
-        let attrStr = NSMutableAttributedString(attributedString: textView.attributedText)
-        
-        //1.图片插入 - 光标所在位置
-        let startRange = textView.selectedRange
-        attrStr.replaceCharacters(in: startRange, with: imageText)
-        textView.attributedText = attrStr
-        
-        //2.恢复之前光标位置
-        textView.selectedRange = NSRange(location: startRange.location + 1, length: 0)
-    }
 }
 
 private extension MNWriteController{
@@ -213,14 +182,12 @@ private extension MNWriteController{
     }
     
     @objc func clickSendButton(){
-        guard let text = textView.text else {
-            print("text is nil")
-            return
-        }
+        let text = textView.emojiText
+        print("创建微博 ==> 提交的属性文本字符串 = \(text)")
         MNNetworkManager.shared.createStatus(text: text) { (json, isSuccess) in
             print("如果有权限 ==> 发布微博成功~")
-            let message = isSuccess ? "发布成功" : "没有权限"
             //FIXME: If SVProgressHUD fix crash bug. need add HUD.
+            //let message = isSuccess ? "发布成功" : "没有权限"
             //SVProgressHUD .show(withStatus: message)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
                 self.dismissVC()

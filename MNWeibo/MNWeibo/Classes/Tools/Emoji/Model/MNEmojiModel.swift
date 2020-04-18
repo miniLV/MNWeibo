@@ -62,8 +62,9 @@ class MNEmojiModel: NSObject {
             return NSAttributedString(string: "")
         }
         
-        let atta = NSTextAttachment()
+        let atta = MNEmojiAttachment()
         atta.image = image
+        atta.chs = chs
         let height = font.lineHeight
         
         //topMargin = -4,防止图片被切割

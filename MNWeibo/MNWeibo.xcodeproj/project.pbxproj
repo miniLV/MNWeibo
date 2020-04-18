@@ -45,6 +45,7 @@
 		A79511432443661C00E46C98 /* MNWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79511422443661B00E46C98 /* MNWebViewController.swift */; };
 		A79836142427B0750095586A /* MNWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79836132427B0750095586A /* MNWelcomeView.swift */; };
 		A79836162427B0BB0095586A /* MNNewFeatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79836152427B0BB0095586A /* MNNewFeatureView.swift */; };
+		A79A206A244AD4F800F6619F /* MNEmojiAttachment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79A2069244AD4F800F6619F /* MNEmojiAttachment.swift */; };
 		A79ABD822427BAC300EF602F /* MNLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79ABD812427BAC300EF602F /* MNLayout.swift */; };
 		A7D736342427308400CD3A04 /* MNTitleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D736332427308400CD3A04 /* MNTitleButton.swift */; };
 		A7E684EC24210C8A00A58E9E /* MNWeiboCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E684EB24210C8A00A58E9E /* MNWeiboCommon.swift */; };
@@ -149,6 +150,7 @@
 		A79511422443661B00E46C98 /* MNWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNWebViewController.swift; sourceTree = "<group>"; };
 		A79836132427B0750095586A /* MNWelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNWelcomeView.swift; sourceTree = "<group>"; };
 		A79836152427B0BB0095586A /* MNNewFeatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNNewFeatureView.swift; sourceTree = "<group>"; };
+		A79A2069244AD4F800F6619F /* MNEmojiAttachment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNEmojiAttachment.swift; sourceTree = "<group>"; };
 		A79ABD812427BAC300EF602F /* MNLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNLayout.swift; sourceTree = "<group>"; };
 		A7D736332427308400CD3A04 /* MNTitleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNTitleButton.swift; sourceTree = "<group>"; };
 		A7E684EB24210C8A00A58E9E /* MNWeiboCommon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNWeiboCommon.swift; sourceTree = "<group>"; };
@@ -358,6 +360,7 @@
 		A760EDCC2447497D00F698DF /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A760EDCA24470E3500F698DF /* MNTextView.swift */,
 				A760EDCD244749A100F698DF /* MNEmojiInputView.swift */,
 				A760EDCF244749FD00F698DF /* MNEmojiToolbar.swift */,
 				A760EDD12447555900F698DF /* MNEmojiCell.swift */,
@@ -380,7 +383,6 @@
 			isa = PBXGroup;
 			children = (
 				A795112C243E0A5D00E46C98 /* MNWriteController.swift */,
-				A760EDCA24470E3500F698DF /* MNTextView.swift */,
 				A79511282438C7A500E46C98 /* MNPublishView.swift */,
 				A795112A243CBBE800E46C98 /* MNCompostTypeButton.swift */,
 			);
@@ -403,6 +405,7 @@
 			children = (
 				A79511362443049000E46C98 /* MNEmojiModel.swift */,
 				A79511382443055300E46C98 /* MNEmojiPackageModel.swift */,
+				A79A2069244AD4F800F6619F /* MNEmojiAttachment.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -835,6 +838,7 @@
 				A7FFE6E12417D68D0082F464 /* UIColor+CZAddition.m in Sources */,
 				A7FFE68E2417D1440082F464 /* MNHomeViewController.swift in Sources */,
 				A73B4449242A5EE500033F5B /* MNUserModel.swift in Sources */,
+				A79A206A244AD4F800F6619F /* MNEmojiAttachment.swift in Sources */,
 				A7FFE6E52417D68D0082F464 /* NSString+CZBase64.m in Sources */,
 				A73B444B242A61CE00033F5B /* MNStatusViewModel.swift in Sources */,
 				A7FFE68B2417D1070082F464 /* MNBaseViewController.swift in Sources */,
