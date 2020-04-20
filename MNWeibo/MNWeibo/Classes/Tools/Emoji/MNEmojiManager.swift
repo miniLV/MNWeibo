@@ -57,8 +57,6 @@ extension MNEmojiManager{
                 return result.first
             }
         }
-        
-        print("\(string) 没有表情包")
         return nil
     }
     
@@ -97,7 +95,6 @@ extension MNEmojiManager{
         for result in matchs.reversed(){
             let range = result.range(at: 0)
             let subStr = (attrStr.string as NSString).substring(with: range)
-            print(subStr)
 
             //查找[xxx] 对应的 表情
             if let model = findEmoji(string: subStr){

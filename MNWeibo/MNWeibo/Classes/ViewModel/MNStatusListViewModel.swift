@@ -36,12 +36,12 @@ class MNStatusListViewModel {
         let max_id = !pullup ? 0 : (statusList.last?.status.id ?? 0)
         
         MNStatusListDAL.loadStatus(since_id: since_id, max_id: max_id) { (isSuccess, list) in
-            
+
             if !isSuccess{
                 completion(false, false)
                 return
             }
-            
+
             var array = [MNStatusViewModel]()
             for dic in list ?? []{
                 guard let model = MNStatusModel.yy_model(with: dic) else{
@@ -50,7 +50,7 @@ class MNStatusListViewModel {
                 //转换成 model -> MNStatusViewModel
                 array.append(MNStatusViewModel(model: model))
             }
-            
+
             //data handle
             if pullup{
                 //上拉加载更多，拼接在数组最后
@@ -59,7 +59,7 @@ class MNStatusListViewModel {
                 //下拉刷新，拼接在数组最前面
                 self.statusList = array + self.statusList
             }
-            
+
             if pullup && array.count == 0{
                 self.pullupErrorTimes += 1
                 completion(isSuccess,false)
@@ -69,41 +69,6 @@ class MNStatusListViewModel {
                 }
             }
         }
-        
-//        MNNetworkManager.shared.fetchHomePageList(since_id: since_id, max_id: max_id){ (isSuccess, list) in
-//            
-//            if !isSuccess{
-//                completion(false, false)
-//                return
-//            }
-//            
-//            var array = [MNStatusViewModel]()
-//            for dic in list ?? []{
-//                guard let model = MNStatusModel.yy_model(with: dic) else{
-//                    continue
-//                }
-//                //转换成 model -> MNStatusViewModel
-//                array.append(MNStatusViewModel(model: model))
-//            }
-// 
-//            //data handle
-//            if pullup{
-//                //上拉加载更多，拼接在数组最后
-//                self.statusList += array
-//            }else{
-//                //下拉刷新，拼接在数组最前面
-//                self.statusList = array + self.statusList
-//            }
-//            
-//            if pullup && array.count == 0{
-//                self.pullupErrorTimes += 1
-//                completion(isSuccess,false)
-//            }else{
-//                self.cacheSingleImage(list: array) {
-//                    completion(isSuccess,true)
-//                }
-//            }
-//        }
     }
     
     //本次下载的单张图片 - 换成

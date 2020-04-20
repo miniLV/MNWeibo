@@ -31,6 +31,7 @@ class MNStatusListDAL {
             return
         }
         
+        print("本地缓存 = nil, 加载网络数据")
         //2.加载网络请求
         MNNetworkManager.shared.fetchHomePageList(since_id: since_id, max_id: max_id) { (isSuccess, array) in
             if !isSuccess{
@@ -44,7 +45,7 @@ class MNStatusListDAL {
             }
             
             //3.加载完成之后, 写入数据库
-            MNSQLiteManager.shared.updateStatus(userId: userId, array: array)
+            MNSQLiteManager.shared.updateStatus(userId: userId, array: array)   
             
             //4.返回网络请求数据
             completion(isSuccess, array)

@@ -9,42 +9,58 @@
 import Foundation
 import FMDB
 
+// 最大缓存时间(7天)
+private let maxDBCacheTime:TimeInterval = 60 * 60 * 24 * 7
+
 class MNSQLiteManager {
     
     /// 数据库单例
     static let shared = MNSQLiteManager()
     
     /// 数据库队列
-    let queue: FMDatabaseQueue = FMDatabaseQueue()
+    let queue: FMDatabaseQueue
     
     private init(){
         // 数据库路径
         let dbName = "MNDatabase.db"
         var path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
         path = (path as NSString).appendingPathComponent(dbName)
-//        queue= FMDatabaseQueue()
-        queue.path = path
+        
+        // 创建数据库队列，同时`创建或者打开`数据库
+        queue = FMDatabaseQueue(path: path) ?? FMDatabaseQueue()
+        print("数据库路径 = \(path)")
+        
         createTable()
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(clearDBCache),
+            name: UIApplication.didEnterBackgroundNotification,
+            object: nil)
     }
     
-//    @objc private func clearDBCache() {
-//
-//        let dateString = Date.cz_dateString(delta: maxDBCacheTime)
-//
-//        print("清理数据缓存 \(dateString)")
-//
-//        // 准备 SQL
-//        let sql = "DELETE FROM T_WeiboStatus WHERE createTime < ?;"
-//
-//        // 执行 SQL
-//        queue.inDatabase { (db) in
-//
-//            if db?.executeUpdate(sql, withArgumentsIn: [dateString]) == true {
-//
-//                print("删除了 \(db?.changes()) 条记录")
-//            }
-//        }
-//    }
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    //清理数据缓存
+    @objc private func clearDBCache(){
+
+        let dateString = Date.cz_dateString(delta: maxDBCacheTime)
+        
+        print("清理数据缓存 \(dateString)")
+        
+        let sql = "DELETE FROM T_WeiboStatus WHERE createTime < ?;"
+        
+        // 执行 SQL
+        queue.inDatabase { (db) in
+            
+            if db.executeUpdate(sql, withArgumentsIn: [dateString]) == true {
+                
+                print("删除了 \(db.changes) 条记录")
+            }
+        }
+    }
 }
 
 
@@ -80,7 +96,6 @@ extension MNSQLiteManager {
                         let value = rs.object(forColumnIndex: column) else {
                             continue
                     }
-
                     result.append([name: value])
                 }
             }
@@ -131,17 +146,17 @@ extension MNSQLiteManager {
         sql += "WHERE userId = \(userId) \n"
         
         // 上拉加载更多／下拉刷新
-//        if since_id > 0 {
-//            sql += "AND statusId > \(since_id) \n"
-//        } else if max_id > 0 {
-//            sql += "AND statusId < \(max_id) \n"
-//        }
+        if since_id > 0 {
+            sql += "AND statusId > \(since_id) \n"
+        } else if max_id > 0 {
+            sql += "AND statusId < \(max_id) \n"
+        }
         
         // 降序排列 & 最多20条数据
         sql += "ORDER BY statusId DESC LIMIT 20;"
         
         // 拼接 SQL 结束后，一定一定一定要测试！
-        print(sql)
+        print("sql === \(sql)")
         
         // 2. 执行 SQL
         let array = execRecordSet(sql: sql)
@@ -163,11 +178,6 @@ extension MNSQLiteManager {
         return result
     }
     
-    /**
-     思考：从网路加载结束后，返回的是微博的`字典数组`，每一个字典对应一个完整的微博记录
-     - 完整的微博记录中，包含微博的代号
-     - 微博记录中，没有`当前登录的用户代号`
-    */
     /// 新增或者修改微博数据，微博数据在刷新的时候，可能会出现重叠
     ///
     /// - parameter userId: 当前登录用户的 id
@@ -198,7 +208,7 @@ extension MNSQLiteManager {
                 if db.executeUpdate(sql, withArgumentsIn: [statusId, userId, jsonData]) == false {
                     
                     //回滚
-                    print("sql 执行失败，回滚一哈 -\(sql)")
+                    print("sql 执行失败，回滚一哈 \(sql)")
                     rollback.pointee = true
                     break
                 }
