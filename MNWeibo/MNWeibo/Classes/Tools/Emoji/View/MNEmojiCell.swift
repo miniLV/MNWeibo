@@ -40,6 +40,9 @@ class MNEmojiCell: UICollectionViewCell {
         }
     }
     
+    /// 表情按钮长按的提示视图
+    var tipView = MNEmojiTipView()
+    
     override init(frame: CGRect) {
         super.init(frame: CGRect())
         setupUI()
@@ -48,6 +51,17 @@ class MNEmojiCell: UICollectionViewCell {
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // 视图remove的时候，willMove函数一样会触发
+    override func willMove(toWindow newWindow: UIWindow?) {
+        super.willMove(toWindow: newWindow)
+        
+        guard let window = newWindow else {
+            return
+        }
+        tipView.isHidden = true
+        window.addSubview(tipView)
     }
     
     @objc private func clickEmojiBtn(button:UIButton){
@@ -60,6 +74,58 @@ class MNEmojiCell: UICollectionViewCell {
             model = emojiModels?[tag]
         }
         deleagage?.emojiCellSelectedEmoji(cell: self, model: model)
+    }
+    
+    @objc private func longGesture(gesture: UILongPressGestureRecognizer){
+        
+        let location = gesture.location(in: self)
+        guard let button = getButtonFromLocation(location: location) else{
+            tipView.isHidden = true
+            return
+        }
+        print("button = \(button)")
+        
+        //手势处理
+        switch gesture.state {
+        case .began, .changed:
+            tipView.isHidden = false
+            
+            //坐标系转换()
+            let center = self.convert(button.center, to: window)
+            tipView.center = center
+            
+            guard let models = emojiModels else {
+                return
+            }
+            if button.tag < models.count{
+                tipView.emojiModel = models[button.tag]
+            }
+        case .cancelled, .failed:
+            tipView.isHidden = true
+        case .ended:
+            tipView.isHidden = true
+            clickEmojiBtn(button: button)
+        default:
+            break
+        }
+    }
+    
+    private func getButtonFromLocation(location: CGPoint) -> UIButton?{
+        
+        for btn in contentView.subviews{
+            if !btn.isMember(of: UIButton.self){
+                continue
+            }
+            
+            let q1 = !btn.isHidden
+            let q2 = btn.frame.contains(location)
+            //最后一个按钮 ==> 删除按钮
+            let q3 = btn != contentView.subviews.last
+            if q1 && q2 && q3 {
+                return (btn as? UIButton)
+            }
+        }
+        return nil
     }
 }
 
@@ -88,8 +154,13 @@ private extension MNEmojiCell{
             btn.frame = CGRect(x: x, y: y, width: width, height: height)
             btn.tag = i
             btn.addTarget(self, action: #selector(clickEmojiBtn(button:)), for: .touchUpInside)
+            
             contentView.addSubview(btn)
         }
+        
+        //长按手势
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(longGesture))
+        addGestureRecognizer(longPress)
         
         //handle last delete button
         guard let deleteBtn = contentView.subviews.last as? UIButton else{

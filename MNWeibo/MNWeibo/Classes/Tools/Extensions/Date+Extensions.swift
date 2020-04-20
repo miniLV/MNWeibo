@@ -1,9 +1,9 @@
 //
 //  Date+Extensions.swift
-//  传智微博
+//  MNWeibo
 //
-//  Created by apple on 16/7/13.
-//  Copyright © 2016年 itcast. All rights reserved.
+//  Created by miniLV on 2020/4/20.
+//  Copyright © 2020 miniLV. All rights reserved.
 //
 
 import Foundation
@@ -16,14 +16,13 @@ private let calendar = Calendar.current
 extension Date {
     
     /// 计算与当前系统时间偏差 delta 秒数的日期字符串
-    /// 在 Swift 中，如果要定义结构体的 `类`函数，使用 static 修饰 -> 静态函数
-    static func cz_dateString(delta: TimeInterval) -> String {
+    /// 结构体 static 修饰 -> 静态函数 == 类方法 class func
+    static func mn_dateString(delta: TimeInterval) -> String {
         
         let date = Date(timeIntervalSinceNow: delta)
         
         // 指定日期格式
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        
         return dateFormatter.string(from: date)
     }
     
@@ -32,7 +31,7 @@ extension Date {
     /// - parameter string: Tue Sep 15 12:12:00 +0800 2015
     ///
     /// - returns: 日期
-    static func cz_sinaDate(string: String) -> Date? {
+    static func mn_sinaDate(string: String) -> Date? {
         
         // 1. 设置日期格式
         dateFormatter.dateFormat = "EEE MMM dd HH:mm:ss zzz yyyy"
@@ -49,7 +48,7 @@ extension Date {
      MM-dd HH:mm(一年内)
      yyyy-MM-dd HH:mm(更早期)
     */
-    var cz_dateDescription: String {
+    var mn_dateDescription: String {
         
         // 1. 判断日期是否是今天
         if calendar.isDateInToday(self) {

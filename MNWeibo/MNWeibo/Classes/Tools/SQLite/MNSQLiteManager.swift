@@ -9,8 +9,8 @@
 import Foundation
 import FMDB
 
-// 最大缓存时间(7天)
-private let maxDBCacheTime:TimeInterval = 60 * 60 * 24 * 7
+// 最大缓存时间(7天), 负数表示过去时间
+private let maxDBCacheTime:TimeInterval = -(60 * 60 * 24 * 7)
 
 class MNSQLiteManager {
     
@@ -32,10 +32,23 @@ class MNSQLiteManager {
         
         createTable()
         
+        //进入后台之后，清除缓存
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(clearDBCache),
             name: UIApplication.didEnterBackgroundNotification,
+            object: nil)
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(clearDBCache),
+            name: UIApplication.willTerminateNotification,
+            object: nil)
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(clearDBCache),
+            name: UIApplication.didReceiveMemoryWarningNotification,
             object: nil)
     }
     
@@ -46,7 +59,7 @@ class MNSQLiteManager {
     //清理数据缓存
     @objc private func clearDBCache(){
 
-        let dateString = Date.cz_dateString(delta: maxDBCacheTime)
+        let dateString = Date.mn_dateString(delta: maxDBCacheTime)
         
         print("清理数据缓存 \(dateString)")
         
