@@ -228,7 +228,7 @@ private extension MNPublishView{
         //布局
         let buttonWH = MNLayout.Layout(100)
         let linesNum:CGFloat = 3
-        let margin = (MNScreen.screenW - linesNum * buttonWH) / (linesNum + 1)
+        let margin = (UIScreen.mn_screenW - linesNum * buttonWH) / (linesNum + 1)
         
         for (index, btn) in parentView.subviews.enumerated(){
             let row = index / Int(linesNum)

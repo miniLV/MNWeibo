@@ -11,7 +11,7 @@ import UIKit
 class MNBaseViewController: UIViewController{
 
     //custom navigation bar
-    lazy var navigationBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: UIScreen.cz_screenWidth(), height: 64))
+    lazy var navigationBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: UIScreen.mn_screenW, height: 64))
     
     lazy var naviItem = UINavigationItem()
     

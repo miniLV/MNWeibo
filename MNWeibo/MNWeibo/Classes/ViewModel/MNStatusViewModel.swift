@@ -169,7 +169,7 @@ class MNStatusViewModel: CustomStringConvertible {
         let avatarHeight = MNLayout.Layout(34)
         let bottomViewHeight = MNLayout.Layout(35)
         var height:CGFloat = 0
-        let width = MNScreen.screenW - 2 * margin
+        let width = UIScreen.mn_screenW - 2 * margin
         //原创微博 = 顶部分割线(12) + margin(12) + 头像图片(34) + margin(12) + 正文内容(计算) + 配图高度(计算) + margin(12) + 底部视图(35)
         //转发微博 = 顶部分割线(12) + margin(12) + 头像图片(34) + margin(12) + 正文内容(计算) + margin(12) + margin(12) + 配图高度(计算) + margin(12) + 底部视图(35)
         

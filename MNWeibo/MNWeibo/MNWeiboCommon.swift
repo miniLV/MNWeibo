@@ -41,6 +41,6 @@ let MNStatusPictureInnerMargin = MNLayout.Layout(5)
 let MNPictureMaxPerLine:CGFloat = 3
 
 //1.calculate width
-let MNPictureViewWidth = MNScreen.screenW - (2 * MNStatusPictureOutterMargin)
+let MNPictureViewWidth = UIScreen.mn_screenW - (2 * MNStatusPictureOutterMargin)
 
 let MNPictureItemWidth = (MNPictureViewWidth - (2 * MNStatusPictureInnerMargin)) / MNPictureMaxPerLine

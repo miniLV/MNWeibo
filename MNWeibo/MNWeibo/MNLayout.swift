@@ -44,7 +44,7 @@ struct MNLayout {
     }
 }
 
-struct MNScreen {
-    static let screenW:CGFloat = UIScreen.main.bounds.width
-    static let screenH:CGFloat = UIScreen.main.bounds.height
-}
+//struct MNScreen {
+//    static let screenW:CGFloat = UIScreen.main.bounds.width
+//    static let screenH:CGFloat = UIScreen.main.bounds.height
+//}
