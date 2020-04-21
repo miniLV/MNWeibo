@@ -16,6 +16,16 @@ class MNEmojiInputView: UIView {
     
     var keyboardHeight:CGFloat = 254.0
     
+    var collectionView:UICollectionView = {
+        let layout = MNEmojiLayout()
+        let collectionView = UICollectionView(frame: CGRect(), collectionViewLayout: layout)
+        collectionView.showsVerticalScrollIndicator = false
+        collectionView.isPagingEnabled = true
+        collectionView.bounces = false
+        collectionView.backgroundColor = UIColor.white
+        return collectionView
+    }()
+    
     private var selectedEmojiCallBack:((_ emojiModel: MNEmojiModel?)->())?
     
     init(selectedEmoji:@escaping (_ emojiModel: MNEmojiModel?) -> ()) {
@@ -39,14 +49,8 @@ private extension MNEmojiInputView{
             make.height.equalTo(kMNEmojiToolbarHeight)
         }
         
-        let layout = MNEmojiLayout()
-        let collectionView = UICollectionView(frame: CGRect(), collectionViewLayout: layout)
-        collectionView.register(MNEmojiCell.self, forCellWithReuseIdentifier: cellID)
         collectionView.dataSource = self
-        collectionView.showsVerticalScrollIndicator = false
-        collectionView.isPagingEnabled = true
-        collectionView.bounces = false
-        collectionView.backgroundColor = UIColor.white
+        collectionView.register(MNEmojiCell.self, forCellWithReuseIdentifier: cellID)
         addSubview(collectionView)
         collectionView.snp.makeConstraints { (make) in
             make.left.right.top.equalToSuperview()
@@ -82,5 +86,23 @@ extension MNEmojiInputView:MNEmojiCellDelegagte{
     func emojiCellSelectedEmoji(cell: MNEmojiCell, model: MNEmojiModel?) {
         //通过闭包回传选中的表情
         selectedEmojiCallBack?(model)
+        
+        //最近使用表情
+        guard let model = model else {
+            return
+        }
+        MNEmojiManager.shared.recentEmoji(model: model)
+        
+        //“最近使用”的不用添加表情逻辑
+        let indexPath = collectionView.indexPathsForVisibleItems[0]
+        if indexPath.section == 0{
+            print("这是‘最近使用’的表情")
+            return
+        }
+        
+        //数据刷新
+        var indexSet = IndexSet()
+        indexSet.insert(0)
+        collectionView.reloadSections(indexSet)
     }
 }

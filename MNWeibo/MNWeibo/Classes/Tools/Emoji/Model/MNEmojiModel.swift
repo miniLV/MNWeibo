@@ -33,8 +33,11 @@ class MNEmojiModel: NSObject {
         }
     }
     
+    /// 表情对应的文本字符串
     var emojiStr: String?
     
+    /// 表情使用次数
+    var times = 0
     
     /// 表情所在目录
     @objc var directory: String?

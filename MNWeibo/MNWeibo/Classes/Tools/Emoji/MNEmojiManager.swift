@@ -20,10 +20,30 @@ class MNEmojiManager {
         return Bundle(path:path ?? "") ?? Bundle()
     }()
     
-    
-    
     private init(){
         loadPackageDatas()
+    }
+    
+    // 添加最近使用的表情
+    func recentEmoji(model:MNEmojiModel){
+        //1.表情使用次数+1
+        model.times += 1
+        
+        //2.添加表情
+        if !packages[0].emotions.contains(model){
+            packages[0].emotions.append(model)
+        }
+        
+        //3.排序(降序)
+        packages[0].emotions.sort { (model1, model2) -> Bool in
+            return model1.times > model.times
+        }
+        
+        //4.表情数组长度处理
+        if packages[0].emotions.count > pageCells{
+            let subRange = pageCells..<packages[0].emotions.count
+            packages[0].emotions.removeSubrange(subRange)
+        }
     }
 }
 

@@ -65,9 +65,7 @@ class MNEmojiCell: UICollectionViewCell {
     }
     
     @objc private func clickEmojiBtn(button:UIButton){
-        print("i = \(button.tag)")
         let tag = button.tag
-        
         //判断是否是删除按钮
         var model:MNEmojiModel?
         if tag < (emojiModels?.count ?? 0){
@@ -83,7 +81,6 @@ class MNEmojiCell: UICollectionViewCell {
             tipView.isHidden = true
             return
         }
-        print("button = \(button)")
         
         //手势处理
         switch gesture.state {
