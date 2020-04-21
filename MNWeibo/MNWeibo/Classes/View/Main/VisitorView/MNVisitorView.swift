@@ -67,9 +67,8 @@ class MNVisitorView: UIView {
     
     private lazy var houseView = UIImageView(image:(UIImage (named: "visitordiscover_feed_image_house")))
     
-    private lazy var tipLabel:UILabel = UILabel.cz_label(withText: "talk is cheep, show me the code",
-                                                 fontSize: 16,
-                                                 color: UIColor.darkGray)
+    private lazy var tipLabel:UILabel = UILabel.mn_label(text: "talk is cheep, show me the code", fontSize: 16, color: UIColor.darkGray)
+    
     private lazy var registerButton:UIButton = UIButton.cz_textButton("注册",
                                                              fontSize: 16,
                                                              normalColor: UIColor.orange,

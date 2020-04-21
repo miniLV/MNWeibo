@@ -9,7 +9,7 @@
 import UIKit
 import YYModel
 
-private let accountFileName:NSString = "userAccount.json"
+private let accountFileName = "userAccount.json"
 
 class MNUserAccount: NSObject {
 
@@ -34,7 +34,7 @@ class MNUserAccount: NSObject {
         super.init()
         
         //load save userAccount info form disk
-        guard let filePath = accountFileName.cz_appendDocumentDir(),
+        guard let filePath = accountFileName.mn_appendDocumentDir(),
             let data = NSData(contentsOfFile: filePath),
             let dic = try? JSONSerialization.jsonObject(with: data as Data, options: []) as? [String:AnyObject] else {
                 print("filePath or data is nil")
@@ -74,7 +74,7 @@ class MNUserAccount: NSObject {
         
         //序列化
         guard let data = try? JSONSerialization.data(withJSONObject: dic, options: []),
-        let filePath = accountFileName.cz_appendDocumentDir()
+        let filePath = accountFileName.mn_appendDocumentDir()
             else{
             return
         }
