@@ -32,6 +32,13 @@ class MNStatusPictureView: UIView {
                 iv.mn_setImage(urlString: url.thumbnail_pic, placeholderImage: nil)
                 iv.isHidden = false
                 index += 1
+                
+                //处理gif图片
+                guard let gifImageView = iv.subviews.first else{
+                    return
+                }
+                let isGif = (url.thumbnail_pic as NSString?)?.pathExtension == "gif"
+                gifImageView.isHidden = !isGif
             }
         }
     }
@@ -55,7 +62,7 @@ class MNStatusPictureView: UIView {
         if picUrls.count == 4 && selectedIndex > 1{
             selectedIndex -= 1
         }
-        let urls = ((picUrls as NSArray).value(forKey: "thumbnail_pic") as? [String]) ?? []
+        let urls = ((picUrls as NSArray).value(forKey: "largePic") as? [String]) ?? []
         var imageViews = [UIImageView]()
         for view in subviews as! [UIImageView]{
             if !view.isHidden{
@@ -139,27 +146,37 @@ extension MNStatusPictureView{
     }
     
     func setupPictures()  {
-          clipsToBounds = true
-          let maxCount = 9
+        clipsToBounds = true
+        let maxCount = 9
+        
+        for i in 0..<maxCount{
+            
+            let iv = UIImageView()
+            iv.contentMode = .scaleAspectFill
+            iv.clipsToBounds = true
+            iv.image = UIImage(named: "timeline_icon_ip")
+            let row = CGFloat(i / Int(MNPictureMaxPerLine))
+            let column = CGFloat(i % Int(MNPictureMaxPerLine))
+            let x = column * (MNPictureItemWidth + MNStatusPictureInnerMargin)
+            let y = MNStatusPictureOutterMargin + row * (MNPictureItemWidth + MNStatusPictureInnerMargin)
+            iv.frame = CGRect(x: x, y: y, width: MNPictureItemWidth, height: MNPictureItemWidth)
+            addSubview(iv)
+            
+            //点击事件
+            iv.isUserInteractionEnabled = true
+            iv.tag = i
+            let tap = UITapGestureRecognizer(target: self, action: #selector(tapImageView(tap:)))
+            iv.addGestureRecognizer(tap)
+            imageViewAddGif(parentView: iv)
+        }
+    }
     
-          for i in 0..<maxCount{
-              
-              let iv = UIImageView()
-              iv.contentMode = .scaleAspectFill
-              iv.clipsToBounds = true
-              iv.image = UIImage(named: "timeline_icon_ip")
-              let row = CGFloat(i / Int(MNPictureMaxPerLine))
-              let column = CGFloat(i % Int(MNPictureMaxPerLine))
-              let x = column * (MNPictureItemWidth + MNStatusPictureInnerMargin)
-              let y = MNStatusPictureOutterMargin + row * (MNPictureItemWidth + MNStatusPictureInnerMargin)
-              iv.frame = CGRect(x: x, y: y, width: MNPictureItemWidth, height: MNPictureItemWidth)
-              addSubview(iv)
-              
-              //点击事件
-              iv.isUserInteractionEnabled = true
-              iv.tag = i
-              let tap = UITapGestureRecognizer(target: self, action: #selector(tapImageView(tap:)))
-              iv.addGestureRecognizer(tap)
-          }
-      }
+    private func imageViewAddGif(parentView: UIImageView){
+        let gifImageView = UIImageView(image: UIImage(named: "timeline_image_gif"))
+        gifImageView.isHidden = true
+        parentView.addSubview(gifImageView)
+        gifImageView.snp.makeConstraints { (make) in
+            make.right.bottom.equalToSuperview()
+        }
+    }
 }

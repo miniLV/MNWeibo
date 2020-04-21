@@ -31,13 +31,13 @@ extension Date {
     /// - parameter string: Tue Sep 15 12:12:00 +0800 2015
     ///
     /// - returns: 日期
-    static func mn_sinaDate(string: String) -> Date? {
+    static func mn_sinaDate(string: String?) -> Date? {
         
-        // 1. 设置日期格式
+        // 1. 设置日期格式(新浪自己的特殊日期格式)
         dateFormatter.dateFormat = "EEE MMM dd HH:mm:ss zzz yyyy"
         
         // 2. 转换并且返回日期
-        return dateFormatter.date(from: string)
+        return dateFormatter.date(from: string ?? "")
     }
     
     /**

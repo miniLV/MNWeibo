@@ -24,7 +24,14 @@ class MNStatusModel: NSObject {
     
     @objc var pic_urls: [MNStatusPicture]?
     
-    @objc var create_at: String?
+    //现在新浪的api接口没有创建日期了
+    @objc var create_at: String?{
+        didSet{
+            createDate = Date.mn_sinaDate(string: create_at)
+        }
+    }
+    
+    @objc var createDate: Date?
     
     @objc var source: String?{
         didSet{
