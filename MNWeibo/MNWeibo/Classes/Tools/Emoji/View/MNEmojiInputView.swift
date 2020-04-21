@@ -26,6 +26,17 @@ class MNEmojiInputView: UIView {
         return collectionView
     }()
     
+    var pageControl:UIPageControl = {
+        let pageControl = UIPageControl()
+        pageControl.tintColor = UIColor.orange
+        pageControl.hidesForSinglePage = true
+        pageControl.pageIndicatorTintColor = UIColor.black
+        pageControl.currentPageIndicatorTintColor = UIColor.orange
+        return pageControl
+    }()
+    
+    var toolbar = MNEmojiToolbar()
+    
     private var selectedEmojiCallBack:((_ emojiModel: MNEmojiModel?)->())?
     
     init(selectedEmoji:@escaping (_ emojiModel: MNEmojiModel?) -> ()) {
@@ -41,7 +52,7 @@ class MNEmojiInputView: UIView {
 
 private extension MNEmojiInputView{
     func setupUI() {
-        let toolbar = MNEmojiToolbar()
+        toolbar.delegate = self
         toolbar.backgroundColor = UIColor.lightGray
         addSubview(toolbar)
         toolbar.snp.makeConstraints { (make) in
@@ -50,12 +61,51 @@ private extension MNEmojiInputView{
         }
         
         collectionView.dataSource = self
+        collectionView.delegate = self
         collectionView.register(MNEmojiCell.self, forCellWithReuseIdentifier: cellID)
         addSubview(collectionView)
         collectionView.snp.makeConstraints { (make) in
             make.left.right.top.equalToSuperview()
             make.bottom.equalTo(toolbar.snp.top)
         }
+        
+        addSubview(pageControl)
+        pageControl.snp.makeConstraints { (make) in
+            make.centerX.equalToSuperview()
+            make.bottom.equalTo(toolbar.snp.top).offset(-8)
+        }
+    }
+}
+
+//MARK: - UICollectionViewDelegate
+extension MNEmojiInputView: UICollectionViewDelegate{
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        //collectionView中心点
+        var center = scrollView.center
+        center.x += scrollView.contentOffset.x
+        
+        //当前中心点所在界面
+        var targetIndex:IndexPath?
+        
+        let indexPaths = collectionView.indexPathsForVisibleItems
+        
+        for indexPath in indexPaths{
+            let cell = collectionView.cellForItem(at: indexPath)
+            
+            if cell?.frame.contains(center) == true{
+                targetIndex = indexPath
+                break
+            }
+        }
+
+        guard let target = targetIndex else {
+            return
+        }
+        //indexPath.section = 组
+        toolbar.selectedIndex = target.section
+        
+        pageControl.numberOfPages = collectionView.numberOfItems(inSection: target.section)
+        pageControl.currentPage = target.item
     }
 }
 
@@ -104,5 +154,15 @@ extension MNEmojiInputView:MNEmojiCellDelegagte{
         var indexSet = IndexSet()
         indexSet.insert(0)
         collectionView.reloadSections(indexSet)
+    }
+}
+
+extension MNEmojiInputView:MNEmojiToolBarDelegate{
+    func emojiToolBarDidSelected(tooBar: MNEmojiToolbar, index: Int) {
+
+        //滚动到每个分组的第[0]页
+        let indexPath = IndexPath(item: 0, section: index)
+        collectionView.scrollToItem(at: indexPath, at: .left, animated: true)
+        tooBar.selectedIndex = index
     }
 }

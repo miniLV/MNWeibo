@@ -35,9 +35,7 @@ class MNEmojiManager {
         }
         
         //3.排序(降序)
-        packages[0].emotions.sort { (model1, model2) -> Bool in
-            return model1.times > model.times
-        }
+        packages[0].emotions.sort { $0.times > $1.times }
         
         //4.表情数组长度处理
         if packages[0].emotions.count > pageCells{

@@ -9,7 +9,30 @@
 import UIKit
 
 let kMNEmojiToolbarHeight:CGFloat = 40
+
+@objc protocol MNEmojiToolBarDelegate: NSObjectProtocol{
+    
+    
+    /// 表情工具栏分组选择
+    /// - Parameters:
+    ///   - tooBar: MNEmojiToolbar
+    ///   - index: 点击的索引下标
+    func emojiToolBarDidSelected(tooBar:MNEmojiToolbar, index:Int)
+}
+
 class MNEmojiToolbar: UIView {
+    
+    weak var delegate:MNEmojiToolBarDelegate?
+    
+    var selectedIndex = 0{
+        didSet{
+            for btn in subviews as! [UIButton]{
+                btn.isSelected = false
+            }
+            
+            (subviews[selectedIndex] as! UIButton).isSelected = true
+        }
+    }
     
     init() {
         super.init(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: kMNEmojiToolbarHeight))
@@ -31,12 +54,17 @@ class MNEmojiToolbar: UIView {
             btn.frame = CGRect(x: x, y: 0, width: width, height: bounds.height)
         }
     }
+    
+    /// 点击分组按钮
+    @objc private func clickGroupItem(button: UIButton){
+        delegate?.emojiToolBarDidSelected(tooBar: self, index: button.tag)
+    }
 }
 
 private extension MNEmojiToolbar{
     func setupUI() {
         
-        for package in MNEmojiManager.shared.packages{
+        for (index, package) in MNEmojiManager.shared.packages.enumerated(){
             
             let btn = UIButton()
             btn.setTitle(package.groupName, for: .normal)
@@ -63,8 +91,14 @@ private extension MNEmojiToolbar{
             btn.setBackgroundImage(normalImage, for: .normal)
             btn.setBackgroundImage(selectedImage, for: .selected)
             btn.setBackgroundImage(selectedImage, for: .highlighted)
-            
+            btn.tag = index
             addSubview(btn)
+            btn.addTarget(self, action: #selector(clickGroupItem(button:)), for: .touchDown)
+        }
+        //默认选中第0个按钮
+        let firstButton = subviews[0]
+        if firstButton.isMember(of: UIButton.self){
+            (firstButton as! UIButton).isSelected = true
         }
     }
 }
