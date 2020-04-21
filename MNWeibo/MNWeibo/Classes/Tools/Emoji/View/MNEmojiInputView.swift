@@ -30,8 +30,6 @@ class MNEmojiInputView: UIView {
         let pageControl = UIPageControl()
         pageControl.tintColor = UIColor.orange
         pageControl.hidesForSinglePage = true
-        pageControl.pageIndicatorTintColor = UIColor.black
-        pageControl.currentPageIndicatorTintColor = UIColor.orange
         return pageControl
     }()
     
@@ -74,6 +72,18 @@ private extension MNEmojiInputView{
             make.centerX.equalToSuperview()
             make.bottom.equalTo(toolbar.snp.top).offset(-8)
         }
+        
+        let bundle = MNEmojiManager.shared.bundle
+        
+        guard let normalImage = UIImage(named: "compose_keyboard_dot_normal", in: bundle, compatibleWith: nil),
+        let selectedImage = UIImage(named: "compose_keyboard_dot_selected", in: bundle, compatibleWith: nil)
+            else {
+            return
+        }
+//        pageControl.pageIndicatorTintColor = UIColor(patternImage: normalImage)
+//        pageControl.currentPageIndicatorTintColor = UIColor(patternImage: selectedImage)
+        pageControl.setValue(normalImage, forKey: "_pageImage")
+        pageControl.setValue(selectedImage, forKey: "_currentPageImage")
     }
 }
 

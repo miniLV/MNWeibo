@@ -67,7 +67,9 @@ class MNMainTabBarController: UITabBarController {
             }
 
             let vc = cls.init()
+            //让vc在ViewDidLoad之前刷新 - 解决动画&约束混在一起的问题
             let navi = UINavigationController(rootViewController: vc)
+            navi.view.layoutIfNeeded()
             self.present(navi, animated: true) {
                 view?.removeFromSuperview()
             }

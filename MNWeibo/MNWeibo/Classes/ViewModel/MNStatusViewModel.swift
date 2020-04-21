@@ -134,7 +134,7 @@ class MNStatusViewModel: CustomStringConvertible {
         var size = image.size
         
         //handle width image
-        let maxImageWidth:CGFloat = MNLayout.Layout(350)
+        let maxImageWidth:CGFloat = MNLayout.Layout(250)
         if size.width > maxImageWidth{
             size.width = maxImageWidth
             size.height = size.width * image.size.height / image.size.width
@@ -150,7 +150,7 @@ class MNStatusViewModel: CustomStringConvertible {
         }
         
         //handle long image(超长图片的处理)
-        let maxImageHeight:CGFloat = MNLayout.Layout(700)
+        let maxImageHeight:CGFloat = MNLayout.Layout(320)
         if size.height > maxImageHeight{
             size.height = maxImageWidth
             size.width = size.height * image.size.width / image.size.height

@@ -120,8 +120,6 @@ class MNStatusListViewModel {
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 finish()
             }
-            
-//            finish()
         }
     }
 }
