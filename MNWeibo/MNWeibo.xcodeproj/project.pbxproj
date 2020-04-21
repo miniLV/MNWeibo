@@ -53,6 +53,11 @@
 		A7D736342427308400CD3A04 /* MNTitleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D736332427308400CD3A04 /* MNTitleButton.swift */; };
 		A7E395A8244DEDB200669981 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E395A7244DEDB200669981 /* Date+Extensions.swift */; };
 		A7E395AA244DF3AB00669981 /* MNEmojiTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E395A9244DF3AB00669981 /* MNEmojiTipView.swift */; };
+		A7E395B6244F2AB700669981 /* HMPhotoBrowserController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E395AC244F2AB700669981 /* HMPhotoBrowserController.m */; };
+		A7E395B7244F2AB700669981 /* HMPhotoViewerController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E395AD244F2AB700669981 /* HMPhotoViewerController.m */; };
+		A7E395B8244F2AB700669981 /* HMPhotoBrowserPhotos.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E395AE244F2AB700669981 /* HMPhotoBrowserPhotos.m */; };
+		A7E395B9244F2AB700669981 /* HMPhotoProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E395AF244F2AB700669981 /* HMPhotoProgressView.m */; };
+		A7E395BA244F2AB700669981 /* HMPhotoBrowserAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E395B4244F2AB700669981 /* HMPhotoBrowserAnimator.m */; };
 		A7E684EC24210C8A00A58E9E /* MNWeiboCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E684EB24210C8A00A58E9E /* MNWeiboCommon.swift */; };
 		A7E684EF24210E2300A58E9E /* MNOAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E684EE24210E2300A58E9E /* MNOAuthViewController.swift */; };
 		A7E684F124226AD800A58E9E /* String+Substring.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E684F024226AD800A58E9E /* String+Substring.swift */; };
@@ -162,6 +167,16 @@
 		A7D736332427308400CD3A04 /* MNTitleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNTitleButton.swift; sourceTree = "<group>"; };
 		A7E395A7244DEDB200669981 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		A7E395A9244DF3AB00669981 /* MNEmojiTipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNEmojiTipView.swift; sourceTree = "<group>"; };
+		A7E395AC244F2AB700669981 /* HMPhotoBrowserController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMPhotoBrowserController.m; sourceTree = "<group>"; };
+		A7E395AD244F2AB700669981 /* HMPhotoViewerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMPhotoViewerController.m; sourceTree = "<group>"; };
+		A7E395AE244F2AB700669981 /* HMPhotoBrowserPhotos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMPhotoBrowserPhotos.m; sourceTree = "<group>"; };
+		A7E395AF244F2AB700669981 /* HMPhotoProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMPhotoProgressView.m; sourceTree = "<group>"; };
+		A7E395B0244F2AB700669981 /* HMPhotoBrowserAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMPhotoBrowserAnimator.h; sourceTree = "<group>"; };
+		A7E395B1244F2AB700669981 /* HMPhotoBrowserController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMPhotoBrowserController.h; sourceTree = "<group>"; };
+		A7E395B2244F2AB700669981 /* HMPhotoViewerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMPhotoViewerController.h; sourceTree = "<group>"; };
+		A7E395B3244F2AB700669981 /* HMPhotoBrowserPhotos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMPhotoBrowserPhotos.h; sourceTree = "<group>"; };
+		A7E395B4244F2AB700669981 /* HMPhotoBrowserAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMPhotoBrowserAnimator.m; sourceTree = "<group>"; };
+		A7E395B5244F2AB700669981 /* HMPhotoProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMPhotoProgressView.h; sourceTree = "<group>"; };
 		A7E684EB24210C8A00A58E9E /* MNWeiboCommon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNWeiboCommon.swift; sourceTree = "<group>"; };
 		A7E684EE24210E2300A58E9E /* MNOAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNOAuthViewController.swift; sourceTree = "<group>"; };
 		A7E684F024226AD800A58E9E /* String+Substring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Substring.swift"; sourceTree = "<group>"; };
@@ -311,6 +326,7 @@
 				A7383AF6241682A90099822E /* AppDelegate.swift */,
 				A7FFE7132417D7120082F464 /* MNWeibo-Bridge.h */,
 				A7383AF8241682A90099822E /* SceneDelegate.swift */,
+				A7E684EB24210C8A00A58E9E /* MNWeiboCommon.swift */,
 				A79ABD812427BAC300EF602F /* MNLayout.swift */,
 				A7383AFF241682AA0099822E /* Assets.xcassets */,
 				A7383B04241682AA0099822E /* Info.plist */,
@@ -453,6 +469,23 @@
 			path = TitleButton;
 			sourceTree = "<group>";
 		};
+		A7E395AB244F2AB700669981 /* PhotoBrowser */ = {
+			isa = PBXGroup;
+			children = (
+				A7E395B2244F2AB700669981 /* HMPhotoViewerController.h */,
+				A7E395AC244F2AB700669981 /* HMPhotoBrowserController.m */,
+				A7E395AD244F2AB700669981 /* HMPhotoViewerController.m */,
+				A7E395AE244F2AB700669981 /* HMPhotoBrowserPhotos.m */,
+				A7E395AF244F2AB700669981 /* HMPhotoProgressView.m */,
+				A7E395B0244F2AB700669981 /* HMPhotoBrowserAnimator.h */,
+				A7E395B1244F2AB700669981 /* HMPhotoBrowserController.h */,
+				A7E395B3244F2AB700669981 /* HMPhotoBrowserPhotos.h */,
+				A7E395B4244F2AB700669981 /* HMPhotoBrowserAnimator.m */,
+				A7E395B5244F2AB700669981 /* HMPhotoProgressView.h */,
+			);
+			path = PhotoBrowser;
+			sourceTree = "<group>";
+		};
 		A7E684ED24210E0200A58E9E /* OAuth */ = {
 			isa = PBXGroup;
 			children = (
@@ -493,6 +526,7 @@
 		A7FFE67F2417D05E0082F464 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				A7E395AB244F2AB700669981 /* PhotoBrowser */,
 				A79A206B244AF96100F6619F /* SQLite */,
 				A795113D24435C8700E46C98 /* MNLabel */,
 				A7951132244301B000E46C98 /* Emoji */,
@@ -500,7 +534,6 @@
 				A700BE30241DF882000E2A1A /* Network */,
 				A7FFE7142417DA160082F464 /* Extensions */,
 				A7FFE6952417D68B0082F464 /* Additions */,
-				A7E684EB24210C8A00A58E9E /* MNWeiboCommon.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -857,6 +890,7 @@
 				A7E684EC24210C8A00A58E9E /* MNWeiboCommon.swift in Sources */,
 				A7EFF4BA2430E41A001AB430 /* MNHomeBaseCell.swift in Sources */,
 				A79836142427B0750095586A /* MNWelcomeView.swift in Sources */,
+				A7E395BA244F2AB700669981 /* HMPhotoBrowserAnimator.m in Sources */,
 				A7FFE6E12417D68D0082F464 /* UIColor+CZAddition.m in Sources */,
 				A7FFE68E2417D1440082F464 /* MNHomeViewController.swift in Sources */,
 				A73B4449242A5EE500033F5B /* MNUserModel.swift in Sources */,
@@ -874,12 +908,14 @@
 				A7E395A8244DEDB200669981 /* Date+Extensions.swift in Sources */,
 				A745A59B241923F600F9E138 /* DemoViewController.swift in Sources */,
 				A795112F243F600E00E46C98 /* String+Extensions..swift in Sources */,
+				A7E395B9244F2AB700669981 /* HMPhotoProgressView.m in Sources */,
 				A7D736342427308400CD3A04 /* MNTitleButton.swift in Sources */,
 				A7383AF7241682A90099822E /* AppDelegate.swift in Sources */,
 				A760EDD42447584C00F698DF /* MNEmojiLayout.swift in Sources */,
 				A79ABD822427BAC300EF602F /* MNLayout.swift in Sources */,
 				A7FFE6E92417D68D0082F464 /* UIViewController+CZAddition.m in Sources */,
 				A795112B243CBBE800E46C98 /* MNCompostTypeButton.swift in Sources */,
+				A7E395B7244F2AB700669981 /* HMPhotoViewerController.m in Sources */,
 				A7FFE6872417D0B60082F464 /* MNMainTabBarController.swift in Sources */,
 				A7EFF4A8242E412A001AB430 /* UIImageView+MNWebImage.swift in Sources */,
 				A700BE34241E00D2000E2A1A /* MNNetworkManager+Extension.swift in Sources */,
@@ -893,6 +929,7 @@
 				A760EDCB24470E3500F698DF /* MNTextView.swift in Sources */,
 				A7383AF9241682A90099822E /* SceneDelegate.swift in Sources */,
 				A7EFF4B2242F2904001AB430 /* MNStatusToolView.swift in Sources */,
+				A7E395B6244F2AB700669981 /* HMPhotoBrowserController.m in Sources */,
 				A745A5982419206F00F9E138 /* UIBarButtonItem+Extension.swift in Sources */,
 				A79511202434D08A00E46C98 /* MNRefreshControl.swift in Sources */,
 				A79511292438C7A600E46C98 /* MNPublishView.swift in Sources */,
@@ -903,6 +940,7 @@
 				A79511372443049000E46C98 /* MNEmojiModel.swift in Sources */,
 				A7FFE6922417D1570082F464 /* MNMessageViewController.swift in Sources */,
 				A700BE38241E1646000E2A1A /* MNStatusListViewModel.swift in Sources */,
+				A7E395B8244F2AB700669981 /* HMPhotoBrowserPhotos.m in Sources */,
 				A760EDD22447555900F698DF /* MNEmojiCell.swift in Sources */,
 				A79A206D244AFA5A00F6619F /* MNSQLiteManager.swift in Sources */,
 				A7EFF4B0242F258E001AB430 /* UIButton+Tool.swift in Sources */,

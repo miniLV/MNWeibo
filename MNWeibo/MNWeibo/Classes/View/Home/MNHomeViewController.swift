@@ -17,6 +17,32 @@ class MNHomeViewController: MNBaseViewController {
 
     private lazy var listViewModel = MNStatusListViewModel()
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(tapBrowerPhoto(noti:)),
+            name: NSNotification.Name(rawValue: MNWeiboCellBrowserPhotoNotification),
+            object: nil)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    @objc private func tapBrowerPhoto(noti: Notification){
+        
+        let userInfo = noti.userInfo
+        guard let selectedIndex = userInfo?[MNWeiboCellBrowserPhotoIndexKey] as? Int,
+        let imageViews = userInfo?[MNWeiboCellBrowserPhotoImageViewsKeys] as? [UIImageView],
+        let urls = userInfo?[MNWeiboCellBrowserPhotoURLsKeys] as? [String] else {
+            return
+        }
+        
+        let vc = HMPhotoBrowserController.photoBrowser(withSelectedIndex: selectedIndex, urls: urls, parentImageViews: imageViews)
+        present(vc, animated: true, completion: nil)
+    }
+    
     override func loadDatas() {
         
         listViewModel.loadStatus(pullup: self.isPull) { (isSuccess, needRefresh)   in
