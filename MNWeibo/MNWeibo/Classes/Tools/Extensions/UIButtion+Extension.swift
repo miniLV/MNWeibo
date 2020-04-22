@@ -9,10 +9,15 @@
 import Foundation
 extension UIButton{
     
-    class func mn_imageButton(normalImageName:String, highlightImageName:String) -> UIButton{
+    class func mn_imageButton(normalImageName:String, backgroundImageName:String) -> UIButton{
         let button = UIButton()
         button.setImage(UIImage(named: normalImageName), for: .normal)
-        button.setImage(UIImage(named: highlightImageName), for: .highlighted)
+        let normalImageHL = normalImageName + "_highlighted"
+        button.setImage(UIImage(named: normalImageHL), for: .highlighted)
+        
+        button.setBackgroundImage(UIImage(named: backgroundImageName), for: .normal)
+        let backgroundImageHL = backgroundImageName + "_highlighted"
+        button.setBackgroundImage(UIImage(named: backgroundImageHL), for: .highlighted)
         return button
     }
     

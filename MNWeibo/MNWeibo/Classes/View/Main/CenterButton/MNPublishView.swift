@@ -64,7 +64,7 @@ class MNPublishView: UIView {
         addSubview(bottomView)
         bottomView.snp.makeConstraints { (make) in
             make.left.bottom.right.equalToSuperview()
-            make.height.equalTo(44)
+            make.height.equalTo(MN_bottomTabBarHeight)
         }
         
         closeBtn.setImage(UIImage(named: "tabbar_compose_background_icon_close"), for: .normal)

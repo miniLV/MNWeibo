@@ -50,8 +50,9 @@ class MNMainTabBarController: UITabBarController {
     }
     
     private lazy var tabBarCenterButtion:UIButton =
+        //tabbar_compose_button_highlighted
         UIButton.mn_imageButton(normalImageName: "tabbar_compose_icon_add",
-                                highlightImageName: "tabbar_compose_button")
+                                backgroundImageName: "tabbar_compose_button")
     
     //center click action
     //@objc: 可以用OC的消息机制调用

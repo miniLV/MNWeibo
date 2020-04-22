@@ -62,9 +62,7 @@ class MNHomeViewController: MNBaseViewController {
     }
     
     @objc func showFridends() {
-        let vc = DemoViewController.init()
-        vc.title = "Demo"
-        navigationController?.pushViewController(vc, animated: true)
+        print("showFridends")
     }
 }
 

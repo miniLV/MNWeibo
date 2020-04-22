@@ -53,6 +53,8 @@ let MN_statusBarHeight:CGFloat = MN_iPhoneX ? 44 : 20
 
 let MN_naviContentHeight:CGFloat = 44
 
+let MN_bottomTabBarContentHeigth:CGFloat = 49
+
 // Tabbar height.
 let MN_bottomTabBarHeight:CGFloat  =  MN_iPhoneX ? (49 + 34) : 49
 
