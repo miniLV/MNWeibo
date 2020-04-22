@@ -19,7 +19,7 @@ extension UIBarButtonItem{
     ///   - isBackItem: if is back item, add a arrow image.
     ///   - action: touch event
     convenience init(title: String, fontSize: CGFloat = 16, target: AnyObject?, action:Selector, isBackItem:Bool = false) {
-        let btn:UIButton = UIButton.cz_textButton(title,
+        let btn:UIButton = UIButton.mn_textButton(title:title,
                                                   fontSize:fontSize,
                                                   normalColor: UIColor.darkGray,
                                                   highlightedColor: UIColor.orange)

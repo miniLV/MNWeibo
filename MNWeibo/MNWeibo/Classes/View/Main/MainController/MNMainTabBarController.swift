@@ -49,8 +49,9 @@ class MNMainTabBarController: UITabBarController {
         NotificationCenter.default.removeObserver(self)
     }
     
-    private lazy var tabBarCenterButtion:UIButton = UIButton.cz_imageButton("tabbar_compose_icon_add",
-                                                                   backgroundImageName: "tabbar_compose_button")
+    private lazy var tabBarCenterButtion:UIButton =
+        UIButton.mn_imageButton(normalImageName: "tabbar_compose_icon_add",
+                                highlightImageName: "tabbar_compose_button")
     
     //center click action
     //@objc: 可以用OC的消息机制调用
