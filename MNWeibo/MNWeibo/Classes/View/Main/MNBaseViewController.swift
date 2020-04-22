@@ -11,7 +11,7 @@ import UIKit
 class MNBaseViewController: UIViewController{
 
     //custom navigation bar
-    lazy var navigationBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: UIScreen.mn_screenW, height: 64))
+    lazy var navigationBar = MNNavigationBar(frame: CGRect(x: 0, y: 0, width: UIScreen.mn_screenW, height: MN_naviBarHeight))
     
     lazy var naviItem = UINavigationItem()
     
@@ -99,7 +99,7 @@ extension MNBaseViewController:LoginDelegate{
         tableView?.dataSource = self
         
         //手动设置内容缩进
-        let toolHeight:CGFloat = 20
+        let toolHeight:CGFloat = MN_statusBarHeight
         let tabBarHeight:CGFloat = 0
         tableView?.contentInset = UIEdgeInsets(top: toolHeight, left: 0, bottom: tabBarHeight, right: 0)
         tableView?.scrollIndicatorInsets = tableView!.contentInset
@@ -128,6 +128,9 @@ extension MNBaseViewController:LoginDelegate{
         view.addSubview(navigationBar)
         
         navigationBar.items = [naviItem]
+//        navigationBar.backItem = naviItem
+//        navigationBar.addSubview(naviItem)
+//        naviItem.
         //navigationBar background color
         navigationBar.barTintColor = UIColor.init(rgb: 0xF6F6F6)
         //set title color
@@ -135,7 +138,8 @@ extension MNBaseViewController:LoginDelegate{
             NSAttributedString.Key.foregroundColor : UIColor.darkGray
         ]
         //set system item title color
-        navigationBar.tintColor = UIColor.orange
+//        navigationBar.tintColor = UIColor.purple
+        navigationBar.backgroundColor = UIColor.init(rgb: 0xF6F6F6)
     }
     
     //Mark: touch event
