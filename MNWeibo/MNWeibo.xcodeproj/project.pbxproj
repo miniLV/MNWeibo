@@ -19,6 +19,7 @@
 		A7249958244F498F003068DA /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7249957244F498F003068DA /* UILabel+Extension.swift */; };
 		A724995A244F4AF5003068DA /* String+MNPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7249959244F4AF5003068DA /* String+MNPath.swift */; };
 		A724995E24507A60003068DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A724995D24507A60003068DA /* LaunchScreen.storyboard */; };
+		A724996024507C18003068DA /* UIColor+Extentsion.swift in Sources */ = {isa = PBXBuildFile; fileRef = A724995F24507C18003068DA /* UIColor+Extentsion.swift */; };
 		A7383AF7241682A90099822E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7383AF6241682A90099822E /* AppDelegate.swift */; };
 		A7383AF9241682A90099822E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7383AF8241682A90099822E /* SceneDelegate.swift */; };
 		A7383B00241682AA0099822E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7383AFF241682AA0099822E /* Assets.xcassets */; };
@@ -81,7 +82,6 @@
 		A7FFE6902417D1510082F464 /* MNDiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FFE68F2417D1510082F464 /* MNDiscoverViewController.swift */; };
 		A7FFE6922417D1570082F464 /* MNMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FFE6912417D1570082F464 /* MNMessageViewController.swift */; };
 		A7FFE6942417D1680082F464 /* MNProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FFE6932417D1680082F464 /* MNProfileViewController.swift */; };
-		A7FFE6E12417D68D0082F464 /* UIColor+CZAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FFE6962417D68B0082F464 /* UIColor+CZAddition.m */; };
 		A7FFE6E72417D68D0082F464 /* UIButton+CZAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FFE6A22417D68B0082F464 /* UIButton+CZAddition.m */; };
 		A7FFE6EB2417D68D0082F464 /* NSAttributedString+CZAdditon.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FFE6AC2417D68B0082F464 /* NSAttributedString+CZAdditon.m */; };
 		A7FFE71F2417DA160082F464 /* Bundle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FFE7192417DA160082F464 /* Bundle+Extensions.swift */; };
@@ -122,6 +122,7 @@
 		A7249957244F498F003068DA /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		A7249959244F4AF5003068DA /* String+MNPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+MNPath.swift"; sourceTree = "<group>"; };
 		A724995D24507A60003068DA /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A724995F24507C18003068DA /* UIColor+Extentsion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extentsion.swift"; sourceTree = "<group>"; };
 		A7383AF3241682A90099822E /* MNWeibo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MNWeibo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7383AF6241682A90099822E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A7383AF8241682A90099822E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -195,11 +196,9 @@
 		A7FFE68F2417D1510082F464 /* MNDiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNDiscoverViewController.swift; sourceTree = "<group>"; };
 		A7FFE6912417D1570082F464 /* MNMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNMessageViewController.swift; sourceTree = "<group>"; };
 		A7FFE6932417D1680082F464 /* MNProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNProfileViewController.swift; sourceTree = "<group>"; };
-		A7FFE6962417D68B0082F464 /* UIColor+CZAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+CZAddition.m"; sourceTree = "<group>"; };
 		A7FFE6982417D68B0082F464 /* UIButton+CZAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+CZAddition.h"; sourceTree = "<group>"; };
 		A7FFE6A12417D68B0082F464 /* NSAttributedString+CZAdditon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+CZAdditon.h"; sourceTree = "<group>"; };
 		A7FFE6A22417D68B0082F464 /* UIButton+CZAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+CZAddition.m"; sourceTree = "<group>"; };
-		A7FFE6A42417D68B0082F464 /* UIColor+CZAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+CZAddition.h"; sourceTree = "<group>"; };
 		A7FFE6AB2417D68B0082F464 /* CZAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZAdditions.h; sourceTree = "<group>"; };
 		A7FFE6AC2417D68B0082F464 /* NSAttributedString+CZAdditon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+CZAdditon.m"; sourceTree = "<group>"; };
 		A7FFE7132417D7120082F464 /* MNWeibo-Bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MNWeibo-Bridge.h"; sourceTree = "<group>"; };
@@ -596,11 +595,9 @@
 			isa = PBXGroup;
 			children = (
 				A7FFE6AB2417D68B0082F464 /* CZAdditions.h */,
-				A7FFE6962417D68B0082F464 /* UIColor+CZAddition.m */,
 				A7FFE6982417D68B0082F464 /* UIButton+CZAddition.h */,
 				A7FFE6A12417D68B0082F464 /* NSAttributedString+CZAdditon.h */,
 				A7FFE6A22417D68B0082F464 /* UIButton+CZAddition.m */,
-				A7FFE6A42417D68B0082F464 /* UIColor+CZAddition.h */,
 				A7FFE6AC2417D68B0082F464 /* NSAttributedString+CZAdditon.m */,
 			);
 			path = Additions;
@@ -620,6 +617,7 @@
 				A795112E243F600E00E46C98 /* String+Extensions..swift */,
 				A7249957244F498F003068DA /* UILabel+Extension.swift */,
 				A7249959244F4AF5003068DA /* String+MNPath.swift */,
+				A724995F24507C18003068DA /* UIColor+Extentsion.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -857,7 +855,6 @@
 				A7EFF4BA2430E41A001AB430 /* MNHomeBaseCell.swift in Sources */,
 				A79836142427B0750095586A /* MNWelcomeView.swift in Sources */,
 				A7E395BA244F2AB700669981 /* HMPhotoBrowserAnimator.m in Sources */,
-				A7FFE6E12417D68D0082F464 /* UIColor+CZAddition.m in Sources */,
 				A7FFE68E2417D1440082F464 /* MNHomeViewController.swift in Sources */,
 				A73B4449242A5EE500033F5B /* MNUserModel.swift in Sources */,
 				A79A206A244AD4F800F6619F /* MNEmojiAttachment.swift in Sources */,
@@ -894,6 +891,7 @@
 				A7383AF9241682A90099822E /* SceneDelegate.swift in Sources */,
 				A7EFF4B2242F2904001AB430 /* MNStatusToolView.swift in Sources */,
 				A7E395B6244F2AB700669981 /* HMPhotoBrowserController.m in Sources */,
+				A724996024507C18003068DA /* UIColor+Extentsion.swift in Sources */,
 				A745A5982419206F00F9E138 /* UIBarButtonItem+Extension.swift in Sources */,
 				A79511202434D08A00E46C98 /* MNRefreshControl.swift in Sources */,
 				A79511292438C7A600E46C98 /* MNPublishView.swift in Sources */,

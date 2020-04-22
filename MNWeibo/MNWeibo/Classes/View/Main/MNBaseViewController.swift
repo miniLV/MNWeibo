@@ -72,7 +72,7 @@ class MNBaseViewController: UIViewController{
 extension MNBaseViewController:LoginDelegate{
     
     private func setupUI() {
-        view.backgroundColor = UIColor.cz_random()
+        view.backgroundColor = UIColor.white
         setupNavigationBar()
         
         MNNetworkManager.shared.isLogin ? setupLoginSuccessUI() : setupVisitorView()
@@ -129,7 +129,7 @@ extension MNBaseViewController:LoginDelegate{
         
         navigationBar.items = [naviItem]
         //navigationBar background color
-        navigationBar.barTintColor = UIColor.cz_color(withHex: 0xF6F6F6)
+        navigationBar.barTintColor = UIColor.init(rgb: 0xF6F6F6)
         //set title color
         navigationBar.titleTextAttributes = [
             NSAttributedString.Key.foregroundColor : UIColor.darkGray

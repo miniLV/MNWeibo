@@ -15,7 +15,7 @@ class MNMainTabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.cz_random()
+        self.view.backgroundColor = UIColor.white
         setupChildrenControllers()
         setupCenterButton()
         setupTimer()
