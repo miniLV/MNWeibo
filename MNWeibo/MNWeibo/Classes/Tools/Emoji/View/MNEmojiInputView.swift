@@ -80,8 +80,6 @@ private extension MNEmojiInputView{
             else {
             return
         }
-//        pageControl.pageIndicatorTintColor = UIColor(patternImage: normalImage)
-//        pageControl.currentPageIndicatorTintColor = UIColor(patternImage: selectedImage)
         pageControl.setValue(normalImage, forKey: "_pageImage")
         pageControl.setValue(selectedImage, forKey: "_currentPageImage")
     }

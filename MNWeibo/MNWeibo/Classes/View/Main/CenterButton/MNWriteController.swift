@@ -31,6 +31,7 @@ class MNWriteController: UIViewController {
     
     var userNameLabel = UILabel()
     
+    //往textView中插入表情符号
     lazy var emojiView: MNEmojiInputView = MNEmojiInputView { [weak self](emojiModel) in
         self?.textView.insertEmoji(model: emojiModel)
     }

@@ -72,7 +72,13 @@ extension MNTextView{
             return
         }
         
-        let imageText = model.imageText(font: textFont)
+        /**
+         Fix: 表情图片size显示问题(字符的插入，会跟随前一个字符的属性，但是本身没有size)
+         如果这里不设置的话，取到的size会变成12，会比设置的textView的size小.
+        */
+        let imageText = NSMutableAttributedString(attributedString:model.imageText(font: textFont))
+        imageText.addAttributes([NSAttributedString.Key.font:textFont], range: NSRange(location: 0, length: 1))
+        
         let attrStr = NSMutableAttributedString(attributedString: attributedText)
         
         //1.图片插入 - 光标所在位置

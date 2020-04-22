@@ -23,4 +23,8 @@ extension UIColor {
             green: (rgb >> 8) & 0xFF,
             blue: rgb & 0xFF)
     }
+    
+    class func mn_randomColor() -> UIColor {
+        return UIColor(red: Int(arc4random_uniform(256)), green: Int(arc4random_uniform(256)), blue: Int(arc4random_uniform(256)))
+      }
 }
