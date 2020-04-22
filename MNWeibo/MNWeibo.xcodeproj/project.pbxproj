@@ -18,6 +18,7 @@
 		A7249956244F4821003068DA /* UIScreen+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7249955244F4821003068DA /* UIScreen+Extension.swift */; };
 		A7249958244F498F003068DA /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7249957244F498F003068DA /* UILabel+Extension.swift */; };
 		A724995A244F4AF5003068DA /* String+MNPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7249959244F4AF5003068DA /* String+MNPath.swift */; };
+		A724995E24507A60003068DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A724995D24507A60003068DA /* LaunchScreen.storyboard */; };
 		A7383AF7241682A90099822E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7383AF6241682A90099822E /* AppDelegate.swift */; };
 		A7383AF9241682A90099822E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7383AF8241682A90099822E /* SceneDelegate.swift */; };
 		A7383B00241682AA0099822E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7383AFF241682AA0099822E /* Assets.xcassets */; };
@@ -120,6 +121,7 @@
 		A7249955244F4821003068DA /* UIScreen+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+Extension.swift"; sourceTree = "<group>"; };
 		A7249957244F498F003068DA /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		A7249959244F4AF5003068DA /* String+MNPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+MNPath.swift"; sourceTree = "<group>"; };
+		A724995D24507A60003068DA /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A7383AF3241682A90099822E /* MNWeibo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MNWeibo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7383AF6241682A90099822E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A7383AF8241682A90099822E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -306,6 +308,7 @@
 				A7FFE7132417D7120082F464 /* MNWeibo-Bridge.h */,
 				A7383AF8241682A90099822E /* SceneDelegate.swift */,
 				A7E684EB24210C8A00A58E9E /* MNWeiboCommon.swift */,
+				A724995D24507A60003068DA /* LaunchScreen.storyboard */,
 				A79ABD812427BAC300EF602F /* MNLayout.swift */,
 				A7383AFF241682AA0099822E /* Assets.xcassets */,
 				A7383B04241682AA0099822E /* Info.plist */,
@@ -733,6 +736,7 @@
 				A700BE2F241A8ED8000E2A1A /* main.json in Resources */,
 				A7951134244301E200E46C98 /* MNEmoji.bundle in Resources */,
 				A79A2073244AFE2E00F6619F /* MNWeibo.sql in Resources */,
+				A724995E24507A60003068DA /* LaunchScreen.storyboard in Resources */,
 				A7383B00241682AA0099822E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
