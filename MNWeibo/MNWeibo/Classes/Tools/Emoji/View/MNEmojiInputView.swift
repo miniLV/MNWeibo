@@ -8,13 +8,11 @@
 
 import UIKit
 
-
+let mnKeyboardHeight:CGFloat = 254.0
 
 class MNEmojiInputView: UIView {
     
     let cellID = "cellID"
-    
-    var keyboardHeight:CGFloat = 254.0
     
     var collectionView:UICollectionView = {
         let layout = MNEmojiLayout()
@@ -38,7 +36,7 @@ class MNEmojiInputView: UIView {
     private var selectedEmojiCallBack:((_ emojiModel: MNEmojiModel?)->())?
     
     init(selectedEmoji:@escaping (_ emojiModel: MNEmojiModel?) -> ()) {
-        super.init(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: keyboardHeight))
+        super.init(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: mnKeyboardHeight))
         selectedEmojiCallBack = selectedEmoji
         setupUI()
     }

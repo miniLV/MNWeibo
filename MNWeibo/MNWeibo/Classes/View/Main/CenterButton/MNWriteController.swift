@@ -88,8 +88,16 @@ class MNWriteController: UIViewController {
         }
 
         //更新工具条底部约束(工具栏上移操作)
-         let offset = view.bounds.height - rect.origin.y + 40
-        print("offset = \(offset)")
+        var offset = view.bounds.height - rect.origin.y
+        let toolBarOffsetY:CGFloat = MN_iPhoneX ? 34 : 44
+        if rect.height == mnKeyboardHeight{
+            //弹出键盘
+            offset += toolBarOffsetY
+        }else{
+            //弹回键盘
+            offset = 0
+        }
+        
         bottomBackgroundView.snp.updateConstraints { (make) in
             make.bottom.equalTo(-offset)
         }
