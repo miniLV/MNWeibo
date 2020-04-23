@@ -76,10 +76,13 @@ class MNUserAccount: NSObject {
         guard let data = try? JSONSerialization.data(withJSONObject: dic, options: []),
         let filePath = accountFileName.mn_appendDocumentDir()
             else{
+            print("filePath write to failure.")
             return
         }
         
         //write to disk
-        (data as NSData).write(toFile: filePath, atomically: true)
+        let result = (data as NSData).write(toFile: filePath, atomically: true)
+        print("write to \(filePath) \(result ? "success" : "failure")")
+        
     }
 }

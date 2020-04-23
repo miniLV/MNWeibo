@@ -168,7 +168,7 @@ extension MNEmojiInputView:MNEmojiToolBarDelegate{
 
         //滚动到每个分组的第[0]页
         let indexPath = IndexPath(item: 0, section: index)
-        collectionView.scrollToItem(at: indexPath, at: .left, animated: true)
+        collectionView.scrollToItem(at: indexPath, at: .left, animated: false)
         tooBar.selectedIndex = index
     }
 }

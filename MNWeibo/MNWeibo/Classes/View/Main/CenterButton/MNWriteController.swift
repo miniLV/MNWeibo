@@ -80,7 +80,6 @@ class MNWriteController: UIViewController {
         textView.resignFirstResponder()
     }
     
-    
     @objc func keyboardChange(noti:NSNotification){
         guard let rect = (noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue ,
         let duration = (noti.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue else{
@@ -90,7 +89,7 @@ class MNWriteController: UIViewController {
         //更新工具条底部约束(工具栏上移操作)
         var offset = view.bounds.height - rect.origin.y
         let toolBarOffsetY:CGFloat = MN_iPhoneX ? 34 : 44
-        if rect.height == mnKeyboardHeight{
+        if offset > MN_bottomTabBarHeight{
             //弹出键盘
             offset += toolBarOffsetY
         }else{
@@ -117,6 +116,9 @@ class MNWriteController: UIViewController {
         //系统键盘 => textView.inputView = nil，这里是系统键盘和自定义键盘的切换
         textView.inputView = textView.inputView == nil ? emojiView : nil
         textView.reloadInputViews()
+        if !textView.isFirstResponder {
+            textView.becomeFirstResponder()
+        }
     }
 }
 

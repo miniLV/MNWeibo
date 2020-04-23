@@ -11,10 +11,11 @@ import Foundation
 extension String{
     
     func mn_appendDocumentDir() -> String?{
-        guard let dir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last else {
+        
+        guard let dir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first else {
             return nil
         }
-        let path = (self as NSString).lastPathComponent
+        let path = "/userInfo.json"
         return dir + path
     }
 }
