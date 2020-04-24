@@ -27,7 +27,7 @@ class MNWebViewController: MNBaseViewController {
         self.title = "网页"
         webView.scrollView.automaticallyAdjustsScrollIndicatorInsets = false
         view.insertSubview(webView, belowSubview: navigationBar)
-        webView.scrollView.contentInset.top = 44
+        webView.scrollView.contentInset.top = MN_naviBarHeight
         webView.backgroundColor = UIColor.white
         webView.scrollView.showsHorizontalScrollIndicator = false
         webView.scrollView.showsVerticalScrollIndicator = false

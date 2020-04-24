@@ -37,7 +37,7 @@ class MNHomeRepostCell: MNHomeBaseCell {
         repostLabel.snp.makeConstraints { (make) in
             make.left.equalTo(MNDefaultMargin)
             make.top.equalToSuperview().offset(MNDefaultMargin)
-            make.right.equalToSuperview().offset(-MNLayout.Layout(12))
+            make.right.equalToSuperview().offset(-MNLayout.Layout(MNStatusPictureOutterMargin))
         }
         
         contentPictureView = MNStatusPictureView(parentView: repostButton,

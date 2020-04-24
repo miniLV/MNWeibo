@@ -73,26 +73,20 @@ extension MNHomeViewController{
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: repostCellID, for: indexPath) as! MNHomeRepostCell
         let viewModel = listViewModel.statusList[indexPath.row]
         let cellID = (viewModel.status.retweeted_status == nil) ? originCellID : repostCellID
-        
-        //FIXME:
-        var cell = MNHomeBaseCell()
-        if viewModel.status.retweeted_status == nil{
-            cell = MNHomeNormalCell(style: .default, reuseIdentifier: cellID)
-        }else{
-            if viewModel.status.retweeted_status?.pic_urls?.count ?? 0 > 0{
-                
+        var cell:MNHomeBaseCell? = tableView.dequeueReusableCell(withIdentifier: cellID) as? MNHomeBaseCell
+        if cell == nil{
+            if viewModel.status.retweeted_status == nil{
+                cell = MNHomeNormalCell(style: .default, reuseIdentifier: cellID)
+            }else{
+                cell = MNHomeRepostCell(style: .default, reuseIdentifier: cellID)
             }
-            cell = MNHomeRepostCell(style: .default, reuseIdentifier: cellID)
         }
-
-        cell.selectionStyle = .none
-
-        cell.viewModel = viewModel
-        cell.delegate = self
-        return cell
+        cell?.selectionStyle = .none
+        cell?.viewModel = viewModel
+        cell?.delegate = self
+        return cell ?? MNHomeBaseCell()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -119,8 +113,5 @@ extension MNHomeViewController{
         tableView?.estimatedRowHeight = 250
         tableView?.separatorStyle = .none
         naviItem.leftBarButtonItem = UIBarButtonItem(title: "好友", fontSize: 16, target: self, action: #selector(showFridends))
-        
-//        tableView?.register(UITableViewCell.self, forCellReuseIdentifier: originCellID)
-//        tableView.
     }
 }

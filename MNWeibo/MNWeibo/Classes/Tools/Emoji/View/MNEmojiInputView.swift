@@ -126,16 +126,12 @@ extension MNEmojiInputView:UICollectionViewDataSource{
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! MNEmojiCell
-//        let cell = MNEmojiCell()
         let package = MNEmojiManager.shared.packages[indexPath.section]
         cell.emojiModels = package.emojiModel(page: indexPath.item)
         cell.deleagage = self
         return cell
     }
-    
-    
 }
 
 extension MNEmojiInputView:MNEmojiCellDelegagte{

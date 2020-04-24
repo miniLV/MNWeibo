@@ -86,22 +86,22 @@ class MNHomeBaseCell: UITableViewCell {
         addSubview(topLineView)
         topLineView.snp.makeConstraints { (make) in
             make.left.top.right.equalToSuperview()
-            make.height.equalTo(MNLayout.Layout(12))
+            make.height.equalTo(MNLayout.Layout(MNStatusPictureOutterMargin))
         }
         
         addSubview(avatarImage)
         avatarImage.snp.makeConstraints { (make) in
-            make.left.equalTo(MNLayout.Layout(12))
-            make.top.equalTo(topLineView.snp.bottom).offset(MNLayout.Layout(12))
-            make.size.equalTo(MNLayout.Layout(34))
+            make.left.equalTo(MNLayout.Layout(MNStatusPictureOutterMargin))
+            make.top.equalTo(topLineView.snp.bottom).offset(MNLayout.Layout(MNStatusPictureOutterMargin))
+            make.size.equalTo(MNLayout.Layout(38))
         }
         
         nameLabel.textColor =  UIColor.init(rgb: 0xfc3e00)
-        nameLabel.font = UIFont.systemFont(ofSize: MNLayout.Layout(15))
+        nameLabel.font = UIFont.systemFont(ofSize: MNLayout.Layout(13.5))
         addSubview(nameLabel)
         nameLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(avatarImage.snp.top).offset(MNLayout.Layout(4))
-            make.left.equalTo(avatarImage.snp.right).offset(MNLayout.Layout(12))
+            make.top.equalTo(avatarImage.snp.top).offset(MNLayout.Layout(3))
+            make.left.equalTo(avatarImage.snp.right).offset(MNLayout.Layout(MNStatusPictureOutterMargin))
         }
         
         addSubview(levelIconView)
@@ -143,8 +143,8 @@ class MNHomeBaseCell: UITableViewCell {
         addSubview(contentLabel)
         contentLabel.snp.makeConstraints { (make) in
             make.left.equalTo(avatarImage)
-            make.top.equalTo(avatarImage.snp.bottom).offset(MNLayout.Layout(12))
-            make.right.equalToSuperview().offset(-MNLayout.Layout(12))
+            make.top.equalTo(avatarImage.snp.bottom).offset(MNLayout.Layout(MNStatusPictureOutterMargin))
+            make.right.equalToSuperview().offset(-MNLayout.Layout(MNStatusPictureOutterMargin))
         }
     }
 }
