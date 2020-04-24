@@ -1,5 +1,5 @@
 //
-//  String+Extensions..swift
+//  String+Extensions.swift
 //  MNWeibo
 //
 //  Created by miniLV on 2020/4/9.

@@ -41,6 +41,24 @@ let MNStatusPictureInnerMargin = MNLayout.Layout(5)
 let MNPictureMaxPerLine:CGFloat = 3
 
 //1.calculate width
-let MNPictureViewWidth = MNScreen.screenW - (2 * MNStatusPictureOutterMargin)
+let MNPictureViewWidth = UIScreen.mn_screenW - (2 * MNStatusPictureOutterMargin)
 
 let MNPictureItemWidth = (MNPictureViewWidth - (2 * MNStatusPictureInnerMargin)) / MNPictureMaxPerLine
+
+// iPhone X
+let MN_iPhoneX = (UIScreen.mn_screenW >= 375 && UIScreen.mn_screenH >= 812)
+
+// Status bar height.
+let MN_statusBarHeight:CGFloat = MN_iPhoneX ? 44 : 20
+
+let MN_naviContentHeight:CGFloat = 44
+
+let MN_bottomTabBarContentHeigth:CGFloat = 49
+
+let MN_bottomTabBarSpeacing:CGFloat = MN_iPhoneX ? 34 : 0
+
+// Tabbar height.
+let MN_bottomTabBarHeight:CGFloat  =  MN_iPhoneX ? (MN_bottomTabBarContentHeigth + MN_bottomTabBarSpeacing) : MN_bottomTabBarContentHeigth
+
+// Status bar & navigation bar height.
+var MN_naviBarHeight:CGFloat = MN_statusBarHeight + MN_naviContentHeight

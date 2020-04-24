@@ -8,13 +8,11 @@
 
 import UIKit
 
-
+let mnKeyboardHeight:CGFloat = 254.0
 
 class MNEmojiInputView: UIView {
     
     let cellID = "cellID"
-    
-    var keyboardHeight:CGFloat = 254.0
     
     var collectionView:UICollectionView = {
         let layout = MNEmojiLayout()
@@ -38,7 +36,7 @@ class MNEmojiInputView: UIView {
     private var selectedEmojiCallBack:((_ emojiModel: MNEmojiModel?)->())?
     
     init(selectedEmoji:@escaping (_ emojiModel: MNEmojiModel?) -> ()) {
-        super.init(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: keyboardHeight))
+        super.init(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: mnKeyboardHeight))
         selectedEmojiCallBack = selectedEmoji
         setupUI()
     }
@@ -80,8 +78,6 @@ private extension MNEmojiInputView{
             else {
             return
         }
-//        pageControl.pageIndicatorTintColor = UIColor(patternImage: normalImage)
-//        pageControl.currentPageIndicatorTintColor = UIColor(patternImage: selectedImage)
         pageControl.setValue(normalImage, forKey: "_pageImage")
         pageControl.setValue(selectedImage, forKey: "_currentPageImage")
     }
@@ -130,16 +126,12 @@ extension MNEmojiInputView:UICollectionViewDataSource{
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! MNEmojiCell
-//        let cell = MNEmojiCell()
         let package = MNEmojiManager.shared.packages[indexPath.section]
         cell.emojiModels = package.emojiModel(page: indexPath.item)
         cell.deleagage = self
         return cell
     }
-    
-    
 }
 
 extension MNEmojiInputView:MNEmojiCellDelegagte{
@@ -172,7 +164,7 @@ extension MNEmojiInputView:MNEmojiToolBarDelegate{
 
         //滚动到每个分组的第[0]页
         let indexPath = IndexPath(item: 0, section: index)
-        collectionView.scrollToItem(at: indexPath, at: .left, animated: true)
+        collectionView.scrollToItem(at: indexPath, at: .left, animated: false)
         tooBar.selectedIndex = index
     }
 }

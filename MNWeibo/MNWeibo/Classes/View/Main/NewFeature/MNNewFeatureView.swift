@@ -64,13 +64,13 @@ class MNNewFeatureView: UIView {
         for i in 0..<pageCount {
             let imageName = "new_feature_\(i + 1)"
             let imageView = UIImageView(image: UIImage(named: imageName))
-            let x = MNScreen.screenW * CGFloat(i)
-            imageView.frame = CGRect(x: x, y: 0, width: MNScreen.screenW , height: MNScreen.screenH)
+            let x = UIScreen.mn_screenW * CGFloat(i)
+            imageView.frame = CGRect(x: x, y: 0, width: UIScreen.mn_screenW , height: UIScreen.mn_screenH)
             scrollView.addSubview(imageView)
         }
         
-        let contentSizeW = MNScreen.screenW * CGFloat(pageCount + 1)
-        scrollView.contentSize = CGSize(width: contentSizeW, height: MNScreen.screenH)
+        let contentSizeW = UIScreen.mn_screenW * CGFloat(pageCount + 1)
+        scrollView.contentSize = CGSize(width: contentSizeW, height: UIScreen.mn_screenH)
         scrollView.delegate = self
     }
 }

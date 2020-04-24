@@ -11,7 +11,7 @@ import UIKit
 class MNBaseViewController: UIViewController{
 
     //custom navigation bar
-    lazy var navigationBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: UIScreen.cz_screenWidth(), height: 64))
+    lazy var navigationBar = MNNavigationBar(frame: CGRect(x: 0, y: 0, width: UIScreen.mn_screenW, height: MN_naviBarHeight))
     
     lazy var naviItem = UINavigationItem()
     
@@ -72,13 +72,13 @@ class MNBaseViewController: UIViewController{
 extension MNBaseViewController:LoginDelegate{
     
     private func setupUI() {
-        view.backgroundColor = UIColor.cz_random()
+        view.backgroundColor = UIColor.white
         setupNavigationBar()
         
         MNNetworkManager.shared.isLogin ? setupLoginSuccessUI() : setupVisitorView()
         
         //取消自动缩进
-        automaticallyAdjustsScrollViewInsets = false
+        tableView?.contentInsetAdjustmentBehavior = .never
         
         refreshControl = MNRefreshControl()
         refreshControl?.addTarget(self, action: #selector(loadDatas), for: .valueChanged)
@@ -99,15 +99,13 @@ extension MNBaseViewController:LoginDelegate{
         tableView?.dataSource = self
         
         //手动设置内容缩进
-        let toolHeight:CGFloat = 20
-        let tabBarHeight:CGFloat = 0
+        let toolHeight:CGFloat = MN_naviBarHeight
+        let tabBarHeight:CGFloat = MN_bottomTabBarHeight
         tableView?.contentInset = UIEdgeInsets(top: toolHeight, left: 0, bottom: tabBarHeight, right: 0)
         tableView?.scrollIndicatorInsets = tableView!.contentInset
     }
     
-    @objc func setupNaviTitle(){
-
-    }
+    @objc func setupNaviTitle(){}
     
     @objc func clickTitleButton(button: UIButton){
         button.isSelected = !button.isSelected
@@ -128,14 +126,18 @@ extension MNBaseViewController:LoginDelegate{
         view.addSubview(navigationBar)
         
         navigationBar.items = [naviItem]
+//        navigationBar.backItem = naviItem
+//        navigationBar.addSubview(naviItem)
+//        naviItem.
         //navigationBar background color
-        navigationBar.barTintColor = UIColor.cz_color(withHex: 0xF6F6F6)
+        navigationBar.barTintColor = UIColor.init(rgb: 0xF6F6F6)
         //set title color
         navigationBar.titleTextAttributes = [
             NSAttributedString.Key.foregroundColor : UIColor.darkGray
         ]
         //set system item title color
-        navigationBar.tintColor = UIColor.orange
+//        navigationBar.tintColor = UIColor.purple
+        navigationBar.backgroundColor = UIColor.init(rgb: 0xF6F6F6)
     }
     
     //Mark: touch event

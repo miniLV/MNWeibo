@@ -12,7 +12,8 @@ import SVProgressHUD
 class MNWriteController: UIViewController {
 
     var textView = MNTextView()
-    var toolBar:UIToolbar = UIToolbar()
+    var bottomBackgroundView = UIView()
+    var toolBar = UIToolbar()
     lazy var sendButton:UIButton = {
         let btn = UIButton()
         btn.frame = CGRect(x: 0, y: 0, width: MNLayout.Layout(45), height: MNLayout.Layout(35))
@@ -30,6 +31,7 @@ class MNWriteController: UIViewController {
     
     var userNameLabel = UILabel()
     
+    //往textView中插入表情符号
     lazy var emojiView: MNEmojiInputView = MNEmojiInputView { [weak self](emojiModel) in
         self?.textView.insertEmoji(model: emojiModel)
     }
@@ -78,7 +80,6 @@ class MNWriteController: UIViewController {
         textView.resignFirstResponder()
     }
     
-    
     @objc func keyboardChange(noti:NSNotification){
         guard let rect = (noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue ,
         let duration = (noti.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue else{
@@ -86,9 +87,17 @@ class MNWriteController: UIViewController {
         }
 
         //更新工具条底部约束(工具栏上移操作)
-         let offset = view.bounds.height - rect.origin.y + 40
-        print("offset = \(offset)")
-        toolBar.snp.updateConstraints { (make) in
+        var offset = view.bounds.height - rect.origin.y
+        let toolBarOffsetY:CGFloat = MN_iPhoneX ? 34 : 44
+        if offset > MN_bottomTabBarHeight{
+            //弹出键盘
+            offset += toolBarOffsetY
+        }else{
+            //弹回键盘
+            offset = 0
+        }
+        
+        bottomBackgroundView.snp.updateConstraints { (make) in
             make.bottom.equalTo(-offset)
         }
         
@@ -107,6 +116,9 @@ class MNWriteController: UIViewController {
         //系统键盘 => textView.inputView = nil，这里是系统键盘和自定义键盘的切换
         textView.inputView = textView.inputView == nil ? emojiView : nil
         textView.reloadInputViews()
+        if !textView.isFirstResponder {
+            textView.becomeFirstResponder()
+        }
     }
 }
 
@@ -154,10 +166,18 @@ private extension MNWriteController{
         toolBar.items = items
     }
     func setupSubviews(){
-        view.addSubview(toolBar)
-        toolBar.snp.makeConstraints { (make) in
+        
+        bottomBackgroundView.backgroundColor = UIColor(red: 248, green: 248, blue: 248)
+        view.addSubview(bottomBackgroundView)
+        bottomBackgroundView.snp.makeConstraints { (make) in
             make.left.right.bottom.equalToSuperview()
-            make.height.equalTo(44)
+            make.height.equalTo(MN_bottomTabBarHeight)
+        }
+        
+        bottomBackgroundView.addSubview(toolBar)
+        toolBar.snp.makeConstraints { (make) in
+            make.left.right.top.equalToSuperview()
+            make.height.equalTo(MN_bottomTabBarContentHeigth)
         }
         
         textView.keyboardDismissMode = .onDrag
@@ -169,7 +189,7 @@ private extension MNWriteController{
         textView.snp.makeConstraints { (make) in
             make.top.equalTo(64)
             make.left.right.equalToSuperview()
-            make.bottom.equalTo(toolBar.snp.top)
+            make.bottom.equalTo(bottomBackgroundView.snp.top)
         }
     }
     
@@ -177,7 +197,6 @@ private extension MNWriteController{
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "关闭", target: self, action: #selector(dismissVC))
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: sendButton)
         navigationItem.titleView = titleView
-        userNameLabel.text = "saklfjkldsaj"
     }
     
     @objc func clickSendButton(){

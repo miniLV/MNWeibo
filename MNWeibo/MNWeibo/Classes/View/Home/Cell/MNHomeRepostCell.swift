@@ -20,7 +20,7 @@ class MNHomeRepostCell: MNHomeBaseCell {
         super.setupSubviews()
         
         let repostButton = UIButton()
-        repostButton.backgroundColor = UIColor.cz_color(withHex: 0xe3e3e3)
+        repostButton.backgroundColor = UIColor.init(rgb: 0xf7f7f7)
         addSubview(repostButton)
         repostButton.snp.makeConstraints { (make) in
             make.left.right.equalToSuperview()
@@ -37,7 +37,7 @@ class MNHomeRepostCell: MNHomeBaseCell {
         repostLabel.snp.makeConstraints { (make) in
             make.left.equalTo(MNDefaultMargin)
             make.top.equalToSuperview().offset(MNDefaultMargin)
-            make.right.equalToSuperview().offset(-MNLayout.Layout(12))
+            make.right.equalToSuperview().offset(-MNLayout.Layout(MNStatusPictureOutterMargin))
         }
         
         contentPictureView = MNStatusPictureView(parentView: repostButton,

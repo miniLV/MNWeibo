@@ -60,7 +60,7 @@ class MNStatusToolView: UIView {
         
         //line
         let line = UIView()
-        line.backgroundColor = UIColor.cz_color(withHex: 0xf2f2f2)
+        line.backgroundColor = UIColor.init(rgb: 0xf2f2f2)
         addSubview(line)
         line.snp.makeConstraints { (make) in
             make.left.equalTo(MNDefaultMargin)

@@ -134,7 +134,7 @@ private extension MNEmojiCell{
         //最多3行
         let rowsNum = 3
         
-        let tempWidth:CGFloat = 320
+        let tempWidth:CGFloat = UIScreen.mn_screenW
         let tempHeight:CGFloat = 214
         let leftMargin:CGFloat = 8
         let bottomMargin:CGFloat = 16

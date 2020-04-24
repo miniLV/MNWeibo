@@ -15,7 +15,7 @@ class MNMainTabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.cz_random()
+        self.view.backgroundColor = UIColor.white
         setupChildrenControllers()
         setupCenterButton()
         setupTimer()
@@ -49,8 +49,10 @@ class MNMainTabBarController: UITabBarController {
         NotificationCenter.default.removeObserver(self)
     }
     
-    private lazy var tabBarCenterButtion:UIButton = UIButton.cz_imageButton("tabbar_compose_icon_add",
-                                                                   backgroundImageName: "tabbar_compose_button")
+    private lazy var tabBarCenterButtion:UIButton =
+        //tabbar_compose_button_highlighted
+        UIButton.mn_imageButton(normalImageName: "tabbar_compose_icon_add",
+                                backgroundImageName: "tabbar_compose_button")
     
     //center click action
     //@objc: 可以用OC的消息机制调用

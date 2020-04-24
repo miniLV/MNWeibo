@@ -1,9 +1,9 @@
 //
 //  Bundle+Extensions.swift
-//  反射机制
+//  MNWeibo
 //
-//  Created by apple on 16/6/29.
-//  Copyright © 2016年 itcast. All rights reserved.
+//  Created by miniLV on 2020/4/20.
+//  Copyright © 2020 miniLV. All rights reserved.
 //
 
 import Foundation
