@@ -78,7 +78,7 @@ extension MNBaseViewController:LoginDelegate{
         MNNetworkManager.shared.isLogin ? setupLoginSuccessUI() : setupVisitorView()
         
         //取消自动缩进
-        automaticallyAdjustsScrollViewInsets = false
+        tableView?.contentInsetAdjustmentBehavior = .never
         
         refreshControl = MNRefreshControl()
         refreshControl?.addTarget(self, action: #selector(loadDatas), for: .valueChanged)
@@ -99,15 +99,13 @@ extension MNBaseViewController:LoginDelegate{
         tableView?.dataSource = self
         
         //手动设置内容缩进
-        let toolHeight:CGFloat = MN_statusBarHeight
-        let tabBarHeight:CGFloat = 0
+        let toolHeight:CGFloat = MN_naviBarHeight
+        let tabBarHeight:CGFloat = MN_bottomTabBarHeight
         tableView?.contentInset = UIEdgeInsets(top: toolHeight, left: 0, bottom: tabBarHeight, right: 0)
         tableView?.scrollIndicatorInsets = tableView!.contentInset
     }
     
-    @objc func setupNaviTitle(){
-
-    }
+    @objc func setupNaviTitle(){}
     
     @objc func clickTitleButton(button: UIButton){
         button.isSelected = !button.isSelected

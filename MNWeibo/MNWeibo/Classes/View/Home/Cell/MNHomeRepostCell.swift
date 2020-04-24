@@ -20,7 +20,7 @@ class MNHomeRepostCell: MNHomeBaseCell {
         super.setupSubviews()
         
         let repostButton = UIButton()
-        repostButton.backgroundColor = UIColor.init(rgb: 0xe3e3e3)
+        repostButton.backgroundColor = UIColor.init(rgb: 0xf7f7f7)
         addSubview(repostButton)
         repostButton.snp.makeConstraints { (make) in
             make.left.right.equalToSuperview()

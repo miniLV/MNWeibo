@@ -44,7 +44,7 @@ class MNRefreshView: UIView {
     
     init() {
         super.init(frame: CGRect())
-        self.frame = CGRect(x: 0, y: 0, width: 200, height: 40)
+        self.frame = CGRect(x: 0, y: 0, width: 120, height: 40)
         self.backgroundColor = superview?.backgroundColor
         setupUI()
     }

@@ -8,8 +8,8 @@
 
 import UIKit
 
-/// 刷新控件状态变化的临界值
-private let MNRefreshOffsetY:CGFloat = 126
+/// 刷新控件状态变化的临界值(MT:126)
+private let MNRefreshOffsetY:CGFloat = 60
 
 /// 刷新状态
 /// normal : 默认状态
@@ -25,7 +25,7 @@ class MNRefreshControl: UIControl {
 
     let MNRefreshControlKey = "contentOffset"
     
-    lazy var refreshView = MNMTRefreshView.refreshView()
+    lazy var refreshView = MNRefreshView.refreshView()
     
     /// 刷新控件RefreshControl父视图
     private weak var scrollView: UIScrollView?
