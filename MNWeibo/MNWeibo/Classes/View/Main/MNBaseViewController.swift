@@ -126,9 +126,6 @@ extension MNBaseViewController:LoginDelegate{
         view.addSubview(navigationBar)
         
         navigationBar.items = [naviItem]
-//        navigationBar.backItem = naviItem
-//        navigationBar.addSubview(naviItem)
-//        naviItem.
         //navigationBar background color
         navigationBar.barTintColor = UIColor.init(rgb: 0xF6F6F6)
         //set title color
@@ -136,7 +133,6 @@ extension MNBaseViewController:LoginDelegate{
             NSAttributedString.Key.foregroundColor : UIColor.darkGray
         ]
         //set system item title color
-//        navigationBar.tintColor = UIColor.purple
         navigationBar.backgroundColor = UIColor.init(rgb: 0xF6F6F6)
     }
     
