@@ -9,6 +9,8 @@
 import UIKit
 
 /// 单条微博数据
+let homeCellAvatarHeight = MNLayout.Layout(38)
+
 class MNStatusViewModel: CustomStringConvertible {
 
     var status: MNStatusModel
@@ -166,15 +168,14 @@ class MNStatusViewModel: CustomStringConvertible {
     
     func getRowHeigth(){
         let margin: CGFloat = MNStatusPictureOutterMargin
-        let avatarHeight = MNLayout.Layout(34)
-        let bottomViewHeight = MNLayout.Layout(35)
         var height:CGFloat = 0
         let width = UIScreen.mn_screenW - 2 * margin
+        let bottomViewHeight = MNLayout.Layout(35)
         //原创微博 = 顶部分割线(12) + margin(12) + 头像图片(34) + margin(12) + 正文内容(计算) + 配图高度(计算) + margin(12) + 底部视图(35)
         //转发微博 = 顶部分割线(12) + margin(12) + 头像图片(34) + margin(12) + 正文内容(计算) + margin(12) + margin(12) + 配图高度(计算) + margin(12) + 底部视图(35)
         
         //顶部视图
-        height = margin * 2 + avatarHeight + margin
+        height = margin * 2 + homeCellAvatarHeight + margin
         let textSize = CGSize(width:width, height: CGFloat.greatestFiniteMagnitude)
 
         //calcute content label size

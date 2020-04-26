@@ -93,7 +93,7 @@ class MNHomeBaseCell: UITableViewCell {
         avatarImage.snp.makeConstraints { (make) in
             make.left.equalTo(MNLayout.Layout(MNStatusPictureOutterMargin))
             make.top.equalTo(topLineView.snp.bottom).offset(MNLayout.Layout(MNStatusPictureOutterMargin))
-            make.size.equalTo(MNLayout.Layout(38))
+            make.size.equalTo(homeCellAvatarHeight)
         }
         
         nameLabel.textColor =  UIColor.init(rgb: 0xfc3e00)

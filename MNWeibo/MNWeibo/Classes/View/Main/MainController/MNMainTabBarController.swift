@@ -21,7 +21,7 @@ class MNMainTabBarController: UITabBarController {
         setupTimer()
         //新特性
         setupNewFeatureViews()
-        
+        UITabBar.appearance().tintColor = UIColor.orange
         delegate = self
         
         NotificationCenter.default.addObserver(self, selector: #selector(userLogin(noti:)), name: NSNotification.Name(MNUserShouldLoginNotification), object: nil)
@@ -174,9 +174,17 @@ extension MNMainTabBarController{
         //swift5: set UIBarItem title color
         let attributes = [
             NSAttributedString.Key.foregroundColor : UIColor.orange,
+            NSAttributedString.Key.backgroundColor : UIColor.orange,
             NSAttributedString.Key.font : UIFont.systemFont(ofSize: 13)
         ]
         vc.tabBarItem.setTitleTextAttributes(attributes, for: .normal)
+        
+        let attributes2 = [
+            NSAttributedString.Key.foregroundColor : UIColor.orange,
+            NSAttributedString.Key.backgroundColor : UIColor.orange,
+            NSAttributedString.Key.font : UIFont.systemFont(ofSize: 13)
+        ]
+        vc.tabBarItem.setTitleTextAttributes(attributes2, for: .selected)
 
         let navi = MNNavigationController(rootViewController: vc)
         return navi
