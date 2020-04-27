@@ -77,7 +77,9 @@ extension MNTextView{
          如果这里不设置的话，取到的size会变成12，会比设置的textView的size小.
         */
         let imageText = NSMutableAttributedString(attributedString:model.imageText(font: textFont))
-        imageText.addAttributes([NSAttributedString.Key.font:textFont], range: NSRange(location: 0, length: 1))
+        if imageText.length > 0{
+            imageText.addAttributes([NSAttributedString.Key.font:textFont], range: NSRange(location: 0, length: 1))
+        }
         
         let attrStr = NSMutableAttributedString(attributedString: attributedText)
         

@@ -18,7 +18,7 @@ class MNWriteController: UIViewController {
         let btn = UIButton()
         btn.frame = CGRect(x: 0, y: 0, width: MNLayout.Layout(45), height: MNLayout.Layout(35))
         btn.titleLabel?.font = UIFont.systemFont(ofSize: MNLayout.Layout(14))
-        btn.setTitle("发布", for: .normal)
+        btn.setTitle("  发布  ", for: .normal)
         btn.setTitleColor(UIColor.white, for: .normal)
         btn.setTitleColor(UIColor.lightGray, for: .disabled)
         
@@ -26,6 +26,7 @@ class MNWriteController: UIViewController {
         btn.setBackgroundImage(UIImage(named: "common_button_orange_highlighted"), for: .highlighted)
         btn.setBackgroundImage(UIImage(named: "common_button_white_disable"), for: .disabled)
         btn.addTarget(self, action: #selector(clickSendButton), for: .touchUpInside)
+        btn.sizeToFit()
         return btn
     }()
     
@@ -196,6 +197,7 @@ private extension MNWriteController{
     func setNavigationBar() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "关闭", target: self, action: #selector(dismissVC))
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: sendButton)
+        sendButton.isEnabled = false
         navigationItem.titleView = titleView
     }
     
