@@ -1,5 +1,12 @@
 # Swift5 + MVVM + 文艺复兴微博(纯代码)
 
+<br>
+
+## 项目架构
+
+![](https://github.com/miniLV/github_images_miniLV/blob/master/juejin/171b713959fc32de?raw=true)
+
+<br>
 
 ## 主页界面
 
@@ -11,16 +18,6 @@
 
 ## 表情界面
 ![](https://github.com/miniLV/github_images_miniLV/blob/master/juejin/171bb1441ef0b8bf?raw=true)
-<br>
-
-
-
-## 项目架构
-
-![](https://github.com/miniLV/github_images_miniLV/blob/master/juejin/171b713959fc32de?raw=true)
-
-
-
 <br>
 
 
@@ -65,7 +62,7 @@
 - 多图的展示
 - ...
 
-
+<br>
 
 ## 使用的第三方库
 
@@ -77,13 +74,15 @@
 - pop
 - HMPhotoViewerController
 
+<br>
+
 ## 下期优化
 - 使用 Swift 版的字典转模型,使用Codable 替换 YYModel
 - 使用 Swift 的网络请求库, 替换 `AFNnetworking`
 - 更加 Swift~
 - ...
 
-
+<br>
 
 ## 工具分享
 
