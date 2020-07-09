@@ -36,7 +36,7 @@ class MNOAuthViewController: UIViewController {
     
     private func loadUrl(){
  
-        let urlString = "https://api.weibo.com/oauth2/authorize?client_id=\(MNAppKey)&redirect_uri=\(MNredirectUri)"
+        let urlString = "https://api.weibo.com/oauth2/authorize?client_id=\(MNAppKey)&response_type=code&redirect_uri=\(MNredirectUri)"
         guard let url = URL(string: urlString) else{
             print("url = nil")
             return

@@ -13,7 +13,7 @@ let MNAppKey = "1368316550"
 
 let MNAppSecret = "df5dc1bd561b735f025c6b637a7c25bb"
 // 登录完成-跳转的地址
-let MNredirectUri = "http://baidu.com"
+let MNredirectUri = "https://baidu.com"
 
 //MARK: - global notification
 
