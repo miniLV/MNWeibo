@@ -9,9 +9,9 @@
 import Foundation
 
 // MARK: - App infomation
-let MNAppKey = "2300355184"
+let MNAppKey = "1368316550"
 
-let MNAppSecret = "98c2feb9cca32e00b796e3cf372270a7"
+let MNAppSecret = "df5dc1bd561b735f025c6b637a7c25bb"
 // 登录完成-跳转的地址
 let MNredirectUri = "http://baidu.com"
 
