@@ -100,18 +100,28 @@
 
 <br>
 
-## 使用说明
-**方案一:**  使用App 里面的“自动填充”功能，里面有准备好的测试账号了
+## 使用说明 
+
+*Weibo Api 更新，原本的三种登录方法现在均无法使用，需使用WeiboSDK.（已更新）*
+
+**可行方案:** 使用准备好的Weibo账号登录.
+
+账号: 13580587848
+
+密码: gxt11629
 
 
-**方案二:**  使用固定的 `access_token`
+**方案一:**  ~~使用App 里面的“自动填充”功能，里面有准备好的测试账号了~~(已废弃)
+
+
+**方案二:**  ~~使用固定的 `access_token`~~(已废弃)
 
 1. 登录微博, 进入开发微博开发平台 https://open.weibo.com/apps/new?sort=mobile 创建一个app应用，平台选iPhone
 2. https://open.weibo.com/tools/console 获取 Access Token，替换项目里面的 `access_token` 的返回值即可
 
 
 
-**方案三:**  使用用户账号/密码在微博门户网站登录(OAuth授权)
+**方案三:**  ~~使用用户账号/密码在微博门户网站登录(OAuth授权)~~(已废弃)
 
 1. 登录微博, 进入开发微博开发平台 https://open.weibo.com/apps/new?sort=mobile 创建一个app应用，平台选iPhone
 2. 在 “应用信息里”，获取该 App 的 `App key` & `App Secret` , 分别替换项目里的 `MNAppKey`  & `MNAppSecret`
