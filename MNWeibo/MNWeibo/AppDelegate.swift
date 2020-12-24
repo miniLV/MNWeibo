@@ -36,6 +36,10 @@ extension AppDelegate{
     
     private func setupAdditions(){
         
+        //setup WeiboSDK
+        WeiboSDK.enableDebugMode(true)
+        WeiboSDK.registerApp(MNAppKey, universalLink: "https://myappapi.fun/")
+
         AFNetworkActivityIndicatorManager.shared().isEnabled = true
         
         //Authorization allowed(.alert, .sound, .badge)

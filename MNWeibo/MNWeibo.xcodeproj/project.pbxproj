@@ -66,7 +66,6 @@
 		A7E395B9244F2AB700669981 /* HMPhotoProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E395AF244F2AB700669981 /* HMPhotoProgressView.m */; };
 		A7E395BA244F2AB700669981 /* HMPhotoBrowserAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E395B4244F2AB700669981 /* HMPhotoBrowserAnimator.m */; };
 		A7E684EC24210C8A00A58E9E /* MNWeiboCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E684EB24210C8A00A58E9E /* MNWeiboCommon.swift */; };
-		A7E684EF24210E2300A58E9E /* MNOAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E684EE24210E2300A58E9E /* MNOAuthViewController.swift */; };
 		A7E684F124226AD800A58E9E /* String+Substring.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E684F024226AD800A58E9E /* String+Substring.swift */; };
 		A7E684F42422766C00A58E9E /* MNUserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E684F32422766C00A58E9E /* MNUserAccount.swift */; };
 		A7EFF4A8242E412A001AB430 /* UIImageView+MNWebImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7EFF4A7242E412A001AB430 /* UIImageView+MNWebImage.swift */; };
@@ -180,7 +179,6 @@
 		A7E395B4244F2AB700669981 /* HMPhotoBrowserAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMPhotoBrowserAnimator.m; sourceTree = "<group>"; };
 		A7E395B5244F2AB700669981 /* HMPhotoProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMPhotoProgressView.h; sourceTree = "<group>"; };
 		A7E684EB24210C8A00A58E9E /* MNWeiboCommon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNWeiboCommon.swift; sourceTree = "<group>"; };
-		A7E684EE24210E2300A58E9E /* MNOAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNOAuthViewController.swift; sourceTree = "<group>"; };
 		A7E684F024226AD800A58E9E /* String+Substring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Substring.swift"; sourceTree = "<group>"; };
 		A7E684F32422766C00A58E9E /* MNUserAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNUserAccount.swift; sourceTree = "<group>"; };
 		A7EFF4A7242E412A001AB430 /* UIImageView+MNWebImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+MNWebImage.swift"; sourceTree = "<group>"; };
@@ -457,14 +455,6 @@
 			path = PhotoBrowser;
 			sourceTree = "<group>";
 		};
-		A7E684ED24210E0200A58E9E /* OAuth */ = {
-			isa = PBXGroup;
-			children = (
-				A7E684EE24210E2300A58E9E /* MNOAuthViewController.swift */,
-			);
-			path = OAuth;
-			sourceTree = "<group>";
-		};
 		A7E684F22422765500A58E9E /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -559,7 +549,6 @@
 			children = (
 				A79511272438C77B00E46C98 /* CenterButton */,
 				A79836122427AFB30095586A /* NewFeature */,
-				A7E684ED24210E0200A58E9E /* OAuth */,
 				A700BE2B241A73A0000E2A1A /* VisitorView */,
 				A745A59C2419327500F9E138 /* MainController */,
 				A7FFE68A2417D1070082F464 /* MNBaseViewController.swift */,
@@ -612,6 +601,7 @@
 				A7383AF0241682A90099822E /* Frameworks */,
 				A7383AF1241682A90099822E /* Resources */,
 				F90E3215A94F15FBCBD551F4 /* [CP] Embed Pods Frameworks */,
+				98070DA6EBD6C3CBD6E09169 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -756,6 +746,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		98070DA6EBD6C3CBD6E09169 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MNWeibo/Pods-MNWeibo-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MNWeibo/Pods-MNWeibo-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MNWeibo/Pods-MNWeibo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		BAB835BF80EBE6A5E9D08C6D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -860,7 +867,6 @@
 				A700BE34241E00D2000E2A1A /* MNNetworkManager+Extension.swift in Sources */,
 				A7E684F42422766C00A58E9E /* MNUserAccount.swift in Sources */,
 				A7FFE6892417D0E00082F464 /* MNNavigationController.swift in Sources */,
-				A7E684EF24210E2300A58E9E /* MNOAuthViewController.swift in Sources */,
 				A795112D243E0A5D00E46C98 /* MNWriteController.swift in Sources */,
 				A79836162427B0BB0095586A /* MNNewFeatureView.swift in Sources */,
 				A7249956244F4821003068DA /* UIScreen+Extension.swift in Sources */,
@@ -1056,7 +1062,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.3;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.-miniLV.MNWeibo";
+				PRODUCT_BUNDLE_IDENTIFIER = com.sina.weibo.SDKDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "MNWeibo/MNWeibo-Bridge.h";
@@ -1079,7 +1085,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.3;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.-miniLV.MNWeibo";
+				PRODUCT_BUNDLE_IDENTIFIER = com.sina.weibo.SDKDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "MNWeibo/MNWeibo-Bridge.h";

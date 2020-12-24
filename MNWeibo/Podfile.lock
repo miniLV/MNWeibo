@@ -23,6 +23,7 @@ PODS:
   - SDWebImage/Core (5.6.1)
   - SnapKit (5.0.1)
   - SVProgressHUD (2.2.6)
+  - Weibo_SDK (3.3.0)
   - YYModel (1.0.4)
 
 DEPENDENCIES:
@@ -32,10 +33,11 @@ DEPENDENCIES:
   - SDWebImage
   - SnapKit (~> 5.0.0)
   - SVProgressHUD (from `https://github.com/SVProgressHUD/SVProgressHUD.git`)
+  - Weibo_SDK (from `https://github.com/sinaweibosdk/weibo_ios_sdk.git`)
   - YYModel
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - AFNetworking
     - FMDB
     - pop
@@ -46,11 +48,16 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   SVProgressHUD:
     :git: https://github.com/SVProgressHUD/SVProgressHUD.git
+  Weibo_SDK:
+    :git: https://github.com/sinaweibosdk/weibo_ios_sdk.git
 
 CHECKOUT OPTIONS:
   SVProgressHUD:
     :commit: 4fdf3fdc8703fd9915dae33fc1363c604a06b24e
     :git: https://github.com/SVProgressHUD/SVProgressHUD.git
+  Weibo_SDK:
+    :commit: acd1f69f62edefe499aa75540fcad2eefcb57c57
+    :git: https://github.com/sinaweibosdk/weibo_ios_sdk.git
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
@@ -59,8 +66,9 @@ SPEC CHECKSUMS:
   SDWebImage: 7edb9c3ea661e77a66661f7f044de8c1b55d1120
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SVProgressHUD: 6ed134667e9ebb2f33679e8273cd48fd3fa349e5
+  Weibo_SDK: 7478846cccb43c4785ba76b214115fb7ec9dc0d4
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: 3d65572a75894f9a0337fcad162ef59c2007e1fb
+PODFILE CHECKSUM: d037b97e857126bd84ebc327f7dd76d713b37502
 
-COCOAPODS: 1.7.5
+COCOAPODS: 1.9.1
