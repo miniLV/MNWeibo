@@ -10,5 +10,5 @@
 #define MNWeibo_Bridge_h
 
 #import "HMPhotoBrowserController.h"
-
+#import "WeiboSDK.h"
 #endif /* MNWeibo_Bridge_h */

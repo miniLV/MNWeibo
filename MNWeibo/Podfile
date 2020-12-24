@@ -13,6 +13,7 @@ pod "FMDB"
 pod 'SVProgressHUD', :git => 'https://github.com/SVProgressHUD/SVProgressHUD.git'
 pod "pop"
 pod 'SnapKit', '~> 5.0.0'
+pod "Weibo_SDK", :git => "https://github.com/sinaweibosdk/weibo_ios_sdk.git"
 
   target 'MNWeiboTests' do
     inherit! :search_paths

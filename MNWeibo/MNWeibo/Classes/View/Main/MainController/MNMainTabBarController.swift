@@ -37,9 +37,20 @@ class MNMainTabBarController: UITabBarController {
             when = DispatchTime.now() + 2
         }
         
-        DispatchQueue.main.asyncAfter(deadline: when) {
-            let navi = UINavigationController(rootViewController: MNOAuthViewController())
-            self.present(navi, animated: true, completion: nil)
+        DispatchQueue.main.asyncAfter(deadline: when){
+            self.showAuthorizeView()
+        }
+    }
+    
+    func showAuthorizeView(){
+        let request:WBAuthorizeRequest = WBAuthorizeRequest.request() as! WBAuthorizeRequest
+        request.redirectURI = MNredirectUri
+        request.scope = "all"
+        request.shouldShowWebViewForAuthIfCannotSSO = true
+        request.shouldOpenWeiboAppInstallPageIfNotInstalled = true
+
+        WeiboSDK.send(request) { (result) in
+            print("authorize result = \(result)")
         }
     }
     
