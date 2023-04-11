@@ -39,12 +39,16 @@ extension AppDelegate{
         //setup WeiboSDK
         WeiboSDK.enableDebugMode(true)
         WeiboSDK.registerApp(MNAppKey, universalLink: "https://myappapi.fun/")
-
+        WeiboSDK.checkUniversalLink { step, error in
+            if error != nil {
+                print("error = \(String(describing: error)), step = \(step)")
+            }
+        }
         AFNetworkActivityIndicatorManager.shared().isEnabled = true
         
         //Authorization allowed(.alert, .sound, .badge)
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge, .carPlay]) { (success, error) in
-            //print("授权" + (success ? "成功" : "失败"))
+            print("授权" + (success ? "成功" : "失败"))
         }
     }
 }

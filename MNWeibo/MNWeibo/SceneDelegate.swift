@@ -71,16 +71,17 @@ extension SceneDelegate: WeiboSDKDelegate{
     
     //登录成功的回调
     func didReceiveWeiboResponse(_ response: WBBaseResponse!) {
-        print("didReceiveWeiboResponse")
+        let userInfo = response.userInfo
+        print("didReceiveWeiboResponse, userInfo = \(String(describing: userInfo))")
+        
         if response.isKind(of: WBAuthorizeResponse.self){
-            
-            guard let authResponse = response as? WBAuthorizeResponse else {
+            guard let authResponse = response as? WBAuthorizeResponse,
+                  let token = authResponse.accessToken,
+                  let userID = authResponse.userID,
+                  let expirationDate = authResponse.expirationDate else {
                 print("authResponse is not WBAuthorizeResponse")
                 return
             }
-            let token = authResponse.accessToken
-            let userID = authResponse.userID
-            let expirationDate = authResponse.expirationDate
             
             MNNetworkManager.shared.userAccount.access_token = token
             MNNetworkManager.shared.userAccount.uid = userID
