@@ -128,6 +128,9 @@
 
 ![image-20200428150543679](https://tva1.sinaimg.cn/large/007S8ZIlgy1ge9hvgzkmjj312n0u04c6.jpg)
 
+**方案四:**  点击`注册` 按钮，可以模拟登录成功
+
+
 3. 设置 OAuth 授权页面的授权回调页
 
 ![WX20200428-145508@2x](https://tva1.sinaimg.cn/large/007S8ZIlgy1ge9hzshox4j31na0gi0zo.jpg)
