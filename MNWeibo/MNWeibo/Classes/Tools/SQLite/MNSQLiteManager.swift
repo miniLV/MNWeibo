@@ -228,4 +228,31 @@ extension MNSQLiteManager {
             }
         }
     }
+    
+    func loadMockDatas() -> [[String: AnyObject]]? {
+        
+        guard let url = Bundle.main.url(forResource: "mock.json", withExtension: nil) else{
+            print("url is nil")
+            return nil
+        }
+        
+        do {
+            let jsonData = try Data(contentsOf: url)
+            let jsonObject = try JSONSerialization.jsonObject(with: jsonData, options: [])
+            
+//            print("jsonObject = \(jsonObject)")
+            
+            if let resut = jsonObject as? [[String: AnyObject]] {
+                // 处理字典对象
+//                print("success - dictionary = \(dictionary)")
+                return resut
+            }
+        } catch {
+            // 处理错误
+//            print("zuzuzu - failed")
+        }
+        
+//        print("zuzuzu - finish")
+        return nil
+    }
 }
