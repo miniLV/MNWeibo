@@ -24,9 +24,19 @@ class MNStatusListDAL {
         }
         //1.检查本地数据, 如果有数据, 直接返回
         let array = MNSQLiteManager.shared.loadWeiboStatus(userId: userId, since_id: since_id, max_id: max_id)
-        
+
         if array.count > 0{
             print("加载本地数据库缓存数据")
+            completion(true, array)
+            return
+        }
+        
+        //2. load mock datas
+        if MNNetworkManager.shared.isLoadMockData {
+            guard let array = MNSQLiteManager.shared.loadMockDatas() else {
+                return
+            }
+            MNSQLiteManager.shared.updateStatus(userId: userId, array: array)
             completion(true, array)
             return
         }
