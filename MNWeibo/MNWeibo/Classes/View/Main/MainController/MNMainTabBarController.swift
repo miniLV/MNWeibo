@@ -24,6 +24,8 @@ class MNMainTabBarController: UITabBarController {
         UITabBar.appearance().tintColor = UIColor.orange
         delegate = self
         
+        tabBar.backgroundColor = UIColor(red: 249, green: 248, blue: 250)
+        tabBar.isTranslucent = false
         NotificationCenter.default.addObserver(self, selector: #selector(userLogin(noti:)), name: NSNotification.Name(MNUserShouldLoginNotification), object: nil)
     }
     
