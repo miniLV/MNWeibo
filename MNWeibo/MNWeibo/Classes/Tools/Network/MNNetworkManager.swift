@@ -29,7 +29,8 @@ class MNNetworkManager: AFHTTPSessionManager {
         return userAccount.access_token != nil
     }
     
-    
+    //微博SDK 有各种问题可能导致登录不上，开发mock 数据的功能，点击`注册`按钮，可以mock本地数据
+    var isLoadMockData:Bool = false
     
     /// AFNetwork request
     /// - Parameters:

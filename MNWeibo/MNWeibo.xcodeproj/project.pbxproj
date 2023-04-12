@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A4CC80D29E6DA6B00DB0772 /* mock.json in Resources */ = {isa = PBXBuildFile; fileRef = 0A4CC80C29E6CA0F00DB0772 /* mock.json */; };
 		1DAA989EC0223F1808844092 /* Pods_MNWeibo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79AD4EF2DC6883F578E56777 /* Pods_MNWeibo.framework */; };
 		89AC9C980E3290EE4EBF285C /* Pods_MNWeiboTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFB0D4EFF6B958B7B69E71DF /* Pods_MNWeiboTests.framework */; };
 		A700BE2D241A73BD000E2A1A /* MNVisitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A700BE2C241A73BD000E2A1A /* MNVisitorView.swift */; };
@@ -106,6 +107,7 @@
 
 /* Begin PBXFileReference section */
 		06258095E342DEB8D9BCEAC0 /* Pods-MNWeiboTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MNWeiboTests.release.xcconfig"; path = "Target Support Files/Pods-MNWeiboTests/Pods-MNWeiboTests.release.xcconfig"; sourceTree = "<group>"; };
+		0A4CC80C29E6CA0F00DB0772 /* mock.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mock.json; sourceTree = "<group>"; };
 		2153DBA9C435F93B47237D4C /* Pods-MNWeiboTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MNWeiboTests.debug.xcconfig"; path = "Target Support Files/Pods-MNWeiboTests/Pods-MNWeiboTests.debug.xcconfig"; sourceTree = "<group>"; };
 		350E1B2C68583F99789A13EE /* Pods-MNWeiboUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MNWeiboUITests.debug.xcconfig"; path = "Target Support Files/Pods-MNWeiboUITests/Pods-MNWeiboUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		423B7C0A866CCD66472EB9FA /* Pods-MNWeiboUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MNWeiboUITests.release.xcconfig"; path = "Target Support Files/Pods-MNWeiboUITests/Pods-MNWeiboUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -239,6 +241,14 @@
 				BD7817FF2DDFA37461B14FFD /* Pods_MNWeiboUITests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0A4CC80E29E6DAA700DB0772 /* LocalDatas */ = {
+			isa = PBXGroup;
+			children = (
+				0A4CC80C29E6CA0F00DB0772 /* mock.json */,
+			);
+			path = LocalDatas;
 			sourceTree = "<group>";
 		};
 		4ECCD7930ED8C51D691F5374 /* Pods */ = {
@@ -487,6 +497,7 @@
 		A7FFE67F2417D05E0082F464 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				0A4CC80E29E6DAA700DB0772 /* LocalDatas */,
 				A7E395AB244F2AB700669981 /* PhotoBrowser */,
 				A79A206B244AF96100F6619F /* SQLite */,
 				A795113D24435C8700E46C98 /* MNLabel */,
@@ -704,6 +715,7 @@
 				A79A2073244AFE2E00F6619F /* MNWeibo.sql in Resources */,
 				A724995E24507A60003068DA /* LaunchScreen.storyboard in Resources */,
 				A7383B00241682AA0099822E /* Assets.xcassets in Resources */,
+				0A4CC80D29E6DA6B00DB0772 /* mock.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

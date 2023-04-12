@@ -144,6 +144,10 @@ extension MNBaseViewController:LoginDelegate{
     
     @objc func clickRegister() {
         print("clickRegister")
+        MNNetworkManager.shared.userAccount.access_token = "mock"
+        MNNetworkManager.shared.userAccount.uid = "mock"
+        MNNetworkManager.shared.isLoadMockData = true
+        NotificationCenter.default.post(name: NSNotification.Name(MNUserLoginSuccessNotification), object: nil)
     }
 }
 
